@@ -28,15 +28,16 @@
                   </HBox>
                </children>
             </HBox>
-                  <TableView fx:id="studentsTable" minHeight="400.0" prefHeight="500.0" prefWidth="760.0" styleClass="table-view" VBox.vgrow="ALWAYS">
+                  <TableView fx:id="studentsTable" minHeight="400.0" prefHeight="500.0" prefWidth="760.0" styleClass="table-view" VBox.vgrow="ALWAYS" editable="true">
               <columns>
-                <TableColumn fx:id="colName" prefWidth="150.0" text="Name" />
-                <TableColumn fx:id="colId" prefWidth="100.0" text="ID" />
+                <TableColumn fx:id="colName" prefWidth="140.0" text="Name" />
+                <TableColumn fx:id="colId" prefWidth="90.0" text="ID" />
                   <TableColumn fx:id="colDept" prefWidth="100.0" text="Dept" />
-                  <TableColumn fx:id="colYear" prefWidth="50.0" text="Year" />
-                  <TableColumn fx:id="colGender" prefWidth="75.0" text="Gender" />
-                  <TableColumn fx:id="colBuilding" prefWidth="100.0" text="Building" />
-                  <TableColumn fx:id="colRoom" prefWidth="100.0" text="Room" />
+                  <TableColumn fx:id="colYear" prefWidth="60.0" text="Year" />
+                  <TableColumn fx:id="colGender" prefWidth="80.0" text="Gender" />
+                  <TableColumn fx:id="colBuilding" prefWidth="110.0" text="Building" />
+                  <TableColumn fx:id="colRoom" prefWidth="90.0" text="Room" />
+                  <TableColumn fx:id="colActions" prefWidth="60.0" text="Edit" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

@@ -73,11 +73,13 @@ public class ProctorDashboardController {
     private void loadBuildingCards(java.util.Map<String, Integer> counts) {
         buildingsFlowPane.getChildren().clear();
         for (String buildingName : counts.keySet()) {
-            // Find building to get gender
+            // Find building to get gender and room count
             String gender = "Male";
+            int maxRooms = 0;
             for (models.Building b : data.DataManager.getInstance().getBuildings()) {
                 if (b.getName().equals(buildingName)) {
                     gender = b.getGender();
+                    maxRooms = b.getRooms().size();
                     break;
                 }
             }
@@ -94,25 +96,32 @@ public class ProctorDashboardController {
             
             javafx.scene.layout.VBox card = new javafx.scene.layout.VBox();
             card.setAlignment(javafx.geometry.Pos.CENTER);
-            card.setSpacing(10);
+            card.setSpacing(8);
             card.setPadding(new javafx.geometry.Insets(15));
-            card.setStyle("-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 0); -fx-cursor: hand;");
-            card.setPrefSize(150, 150);
+            card.setStyle("-fx-background-color: rgba(255, 255, 255, 0.08); -fx-background-radius: 18; -fx-effect: dropshadow(three-pass-box, rgba(76, 201, 240, 0.15), 12, 0, 0, 6); -fx-cursor: hand;");
+            card.setPrefSize(180, 180);
 
-            // Building icon (always the same)
+            // Building icon
             Label iconLabel = new Label("🏢");
-            iconLabel.setStyle("-fx-font-size: 40px;");
+            iconLabel.setStyle("-fx-font-size: 42px;");
 
             Label nameLabel = new Label(buildingName);
-            nameLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #2b5876;");
+            nameLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #FFFFFF;");
 
             Label countLabel = new Label(counts.get(buildingName) + " Students");
-            countLabel.setStyle("-fx-text-fill: #888888;");
+            countLabel.setStyle("-fx-text-fill: #4CC9F0; -fx-font-size: 13px;");
+            
+            Label roomsLabel = new Label("Max Rooms: " + maxRooms);
+            roomsLabel.setStyle("-fx-text-fill: #FFFFFF; -fx-font-size: 12px; -fx-opacity: 0.8;");
             
             Label genderLabel = new Label("Gender: " + gender);
-            genderLabel.setStyle("-fx-text-fill: #4ecdc4; -fx-font-size: 12px;");
+            genderLabel.setStyle("-fx-text-fill: #4CC9F0; -fx-font-size: 12px;");
 
-            card.getChildren().addAll(iconLabel, nameLabel, countLabel, genderLabel);
+            card.getChildren().addAll(iconLabel, nameLabel, countLabel, roomsLabel, genderLabel);
+            
+            // Hover effect
+            card.setOnMouseEntered(e -> card.setStyle("-fx-background-color: rgba(255, 255, 255, 0.12); -fx-background-radius: 18; -fx-effect: dropshadow(three-pass-box, rgba(76, 201, 240, 0.25), 16, 0, 0, 6); -fx-cursor: hand;"));
+            card.setOnMouseExited(e -> card.setStyle("-fx-background-color: rgba(255, 255, 255, 0.08); -fx-background-radius: 18; -fx-effect: dropshadow(three-pass-box, rgba(76, 201, 240, 0.15), 12, 0, 0, 6); -fx-cursor: hand;"));
             
             // Optional: Add click handler to filter students
             card.setOnMouseClicked(e -> {
