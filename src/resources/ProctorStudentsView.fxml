@@ -23,6 +23,7 @@
                   <Label styleClass="title-label" text="Student Allocation" style="-fx-font-size: 24px;" />
                   <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS" spacing="10.0">
                      <children>
+                        <Button mnemonicParsing="false" onAction="#handleExportPDF" styleClass="action-button" text="Export PDF" />
                         <Button mnemonicParsing="false" onAction="#handleAutoAssign" styleClass="action-button" text="Auto Assign All" />
                      </children>
                   </HBox>

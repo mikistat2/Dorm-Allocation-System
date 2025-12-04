@@ -448,6 +448,113 @@ public class ProctorStudentsController {
     }
 
     @FXML
+    void handleExportPDF(ActionEvent event) {
+        if (studentsTable.getItems().isEmpty()) {
+            showAlert("No Data", "There are no students to export.", javafx.scene.control.Alert.AlertType.WARNING);
+            return;
+        }
+        
+        // Use JavaFX PrinterJob to print/save as PDF
+        javafx.print.PrinterJob printerJob = javafx.print.PrinterJob.createPrinterJob();
+        
+        if (printerJob != null) {
+            // Show print dialog (user can select "Print to PDF")
+            boolean proceed = printerJob.showPrintDialog(studentsTable.getScene().getWindow());
+            
+            if (proceed) {
+                // Create a snapshot of the table for printing
+                javafx.scene.layout.VBox printContent = new javafx.scene.layout.VBox(15);
+                printContent.setPadding(new javafx.geometry.Insets(20));
+                
+                // Title
+                javafx.scene.text.Text title = new javafx.scene.text.Text("Student Allocation Report");
+                title.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
+                
+                // Timestamp
+                java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                javafx.scene.text.Text timestamp = new javafx.scene.text.Text("Generated: " + dateFormat.format(new java.util.Date()));
+                timestamp.setStyle("-fx-font-size: 10px;");
+                
+                // Student count
+                javafx.scene.text.Text count = new javafx.scene.text.Text("Total Students: " + studentsTable.getItems().size());
+                count.setStyle("-fx-font-size: 10px;");
+                
+                // Create text representation of table
+                javafx.scene.layout.VBox tableText = new javafx.scene.layout.VBox(5);
+                
+                // Header
+                String header = String.format("%-20s %-12s %-15s %-6s %-8s %-20s %-20s", 
+                    "Name", "ID", "Department", "Year", "Gender", "Building", "Room");
+                javafx.scene.text.Text headerText = new javafx.scene.text.Text(header);
+                headerText.setStyle("-fx-font-family: 'Courier New'; -fx-font-size: 9px; -fx-font-weight: bold;");
+                tableText.getChildren().add(headerText);
+                
+                // Separator
+                javafx.scene.text.Text separator = new javafx.scene.text.Text("─".repeat(110));
+                separator.setStyle("-fx-font-family: 'Courier New'; -fx-font-size: 9px;");
+                tableText.getChildren().add(separator);
+                
+                // Rows
+                for (models.Student student : studentsTable.getItems()) {
+                    String row = String.format("%-20s %-12s %-15s %-6s %-8s %-20s %-20s",
+                        truncate(student.getName(), 20),
+                        student.getId(),
+                        truncate(student.getDepartment(), 15),
+                        student.getYear(),
+                        student.getGender(),
+                        truncate(student.getAssignedBuilding(), 20),
+                        truncate(student.getAssignedRoom(), 20)
+                    );
+                    javafx.scene.text.Text rowText = new javafx.scene.text.Text(row);
+                    rowText.setStyle("-fx-font-family: 'Courier New'; -fx-font-size: 8px;");
+                    tableText.getChildren().add(rowText);
+                }
+                
+                printContent.getChildren().addAll(title, timestamp, count, new javafx.scene.text.Text(""), tableText);
+                
+                // Print
+                boolean printed = printerJob.printPage(printContent);
+                
+                if (printed) {
+                    printerJob.endJob();
+                    showAlert("Success", "Document sent to printer/PDF successfully!", 
+                             javafx.scene.control.Alert.AlertType.INFORMATION);
+                } else {
+                    showAlert("Error", "Failed to print document.", 
+                             javafx.scene.control.Alert.AlertType.ERROR);
+                }
+            }
+        } else {
+            showAlert("Error", "No printer available. Please install a PDF printer (e.g., Microsoft Print to PDF).", 
+                     javafx.scene.control.Alert.AlertType.ERROR);
+        }
+    }
+    
+    private String truncate(String text, int maxLength) {
+        if (text == null) return "";
+        if (text.length() <= maxLength) return text;
+        return text.substring(0, maxLength - 3) + "...";
+    }
+    
+    private void showAlert(String title, String content, javafx.scene.control.Alert.AlertType type) {
+        javafx.scene.control.Alert alert = new javafx.scene.control.Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        
+        // Style the dialog
+        alert.getDialogPane().setStyle("-fx-background-color: #0A1A2F;");
+        if (alert.getDialogPane().lookup(".header-panel") != null) {
+            alert.getDialogPane().lookup(".header-panel").setStyle("-fx-background-color: #0A1A2F;");
+        }
+        if (alert.getDialogPane().lookup(".content") != null) {
+            alert.getDialogPane().lookup(".content").setStyle("-fx-text-fill: #FFFFFF;");
+        }
+        
+        alert.showAndWait();
+    }
+
+    @FXML
     void handleAutoAssign(ActionEvent event) {
         java.util.List<models.Student> students = data.DataManager.getInstance().getStudents();
         java.util.List<models.Building> buildings = data.DataManager.getInstance().getBuildings();
