@@ -150,6 +150,13 @@
     -fx-border-color: #4CC9F0;
 }
 
+/* Compact ComboBox height globally */
+.combo-box,
+.combo-box-base {
+    -fx-pref-height: 32px;
+    -fx-min-height: 32px;
+}
+
 /* Containers & Cards */
 .card {
     -fx-background-color: rgba(255, 255, 255, 0.08);
@@ -193,13 +200,16 @@
 .table-view {
     -fx-background-color: rgba(255, 255, 255, 0.06);
     -fx-background-insets: 0;
-    -fx-padding: 8;
+    -fx-padding: 10;
     -fx-border-color: rgba(76, 201, 240, 0.35);
     -fx-border-radius: 12;
+    -fx-table-cell-border-color: rgba(255, 255, 255, 0.08);
+    -fx-control-inner-background: transparent;
+    -fx-cell-size: 36px; /* uniform row height */
 }
 
 .table-view .column-header-background {
-    -fx-background-color: rgba(76, 201, 240, 0.25);
+    -fx-background-color: linear-gradient(to bottom, rgba(76,201,240,0.35), rgba(76,201,240,0.2));
 }
 
 .table-view .column-header,
@@ -211,6 +221,7 @@
 .table-view .column-header .label {
     -fx-text-fill: #FFFFFF;
     -fx-font-weight: bold;
+    -fx-padding: 8 6 8 6;
 }
 
 /* Ensure table cells have high-contrast text */
@@ -221,25 +232,75 @@
 .table-view .cell .label,
 .table-view .table-cell .label {
     -fx-text-fill: #FFFFFF;
+    -fx-padding: 8 10 8 10;
 }
 
 .table-row-cell {
     -fx-background-color: transparent;
     -fx-text-fill: #FFFFFF;
+    -fx-background-insets: 0;
 }
 
 .table-row-cell:odd {
-    -fx-background-color: rgba(255, 255, 255, 0.05);
+    -fx-background-color: rgba(255, 255, 255, 0.04);
 }
 
 .table-row-cell:selected {
-    -fx-background-color: rgba(76, 201, 240, 0.25);
+    -fx-background-color: rgba(76, 201, 240, 0.22);
+    -fx-background-insets: 0;
+    -fx-border-color: rgba(76, 201, 240, 0.45);
+    -fx-border-width: 0 0 0 3;
 }
 
 /* Hover highlight for better focus */
 .table-row-cell:hover {
-    -fx-background-color: rgba(76, 201, 240, 0.12);
+    -fx-background-color: rgba(76, 201, 240, 0.14);
 }
+
+/* Editable cell focus smoothing */
+.table-view .table-cell:focused {
+    -fx-background-color: rgba(76, 201, 240, 0.18);
+    -fx-background-insets: 0;
+}
+
+.table-view .text-field {
+    -fx-background-color: rgba(255, 255, 255, 0.12);
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: rgba(76, 201, 240, 0.45);
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-padding: 6 8 6 8;
+}
+
+.table-view .text-field:focused {
+    -fx-background-color: rgba(255, 255, 255, 0.18);
+}
+
+/* Compact density option for large tables */
+.table-view.compact .table-cell {
+    -fx-padding: 6 8 6 8;
+}
+
+/* Edit/Delete/Save icon buttons for action columns */
+.icon-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #FFFFFF;
+    -fx-cursor: hand;
+    -fx-background-radius: 8;
+    -fx-padding: 0;
+    -fx-min-width: 28px; -fx-pref-width: 28px; -fx-max-width: 28px;
+    -fx-min-height: 28px; -fx-pref-height: 28px; -fx-max-height: 28px;
+    -fx-alignment: center;
+}
+
+.edit-button { -fx-background-color: rgba(76, 201, 240, 0.18); -fx-text-fill: #4CC9F0; }
+.edit-button:hover { -fx-background-color: rgba(76, 201, 240, 0.28); }
+
+.save-button { -fx-background-color: rgba(46, 204, 113, 0.25); -fx-text-fill: #FFFFFF; }
+.save-button:hover { -fx-background-color: rgba(39, 174, 96, 0.35); }
+
+.delete-button { -fx-background-color: rgba(255, 107, 107, 0.18); -fx-text-fill: #FF6B6B; }
+.delete-button:hover { -fx-background-color: rgba(255, 107, 107, 0.28); }
 
 /* Fix alternating row colors for visibility */
 .table-row-cell:odd {
@@ -247,9 +308,7 @@
 }
 
 /* Table placeholder text color (when empty) */
-.table-view .placeholder .label {
-    -fx-text-fill: rgba(255, 255, 255, 0.7);
-}
+.table-view .placeholder .label { -fx-text-fill: rgba(255, 255, 255, 0.7); }
 
 /* ListView */
 .list-view {

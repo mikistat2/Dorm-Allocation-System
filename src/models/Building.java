@@ -13,7 +13,7 @@ public class Building {
         this.gender = gender;
         this.rooms = new ArrayList<>();
         for (int i = 1; i <= roomCount; i++) {
-            rooms.add(new Room("R" + i)); // Room constructor only takes room number
+            rooms.add(new Room(name + " - R" + i)); // Include building name in room number
         }
     }
 
