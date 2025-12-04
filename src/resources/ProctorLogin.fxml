@@ -9,48 +9,22 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(to bottom right, #2b5876, #4e4376);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProctorLoginController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProctorLoginController">
    <children>
       <VBox alignment="CENTER" layoutX="200.0" layoutY="100.0" prefHeight="400.0" prefWidth="400.0" spacing="30.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="100.0">
          <children>
-            <Label text="Proctor Portal" textFill="WHITE">
-               <font>
-                  <Font name="Segoe UI Bold" size="36.0" />
-               </font>
-            </Label>
-            <VBox alignment="CENTER" prefHeight="250.0" prefWidth="400.0" spacing="20.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 30;">
+            <Label styleClass="title-label" text="Proctor Portal" />
+            
+            <VBox alignment="CENTER" prefHeight="250.0" prefWidth="400.0" spacing="20.0" styleClass="card">
                <children>
-                  <Label text="Login Required" textFill="#2b5876">
-                     <font>
-                        <Font name="Segoe UI Bold" size="24.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="proctorIdField" promptText="Proctor ID" style="-fx-background-radius: 5; -fx-padding: 10;">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </TextField>
-                  <PasswordField fx:id="proctorPasswordField" promptText="Password" style="-fx-background-radius: 5; -fx-padding: 10;">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </PasswordField>
+                  <Label styleClass="header-label" text="Login Required" />
+                  <TextField fx:id="proctorIdField" promptText="Proctor ID" />
+                  <PasswordField fx:id="proctorPasswordField" promptText="Password" />
                   <Label fx:id="messageLabel" textFill="#ff6b6b" />
-                  <Button mnemonicParsing="false" onAction="#handleLogin" prefWidth="200.0" style="-fx-background-color: #4ecdc4; -fx-text-fill: white; -fx-background-radius: 20; -fx-cursor: hand;" text="Login">
-                     <font>
-                        <Font name="Segoe UI Bold" size="14.0" />
-                     </font>
-                     <padding>
-                        <Insets bottom="10.0" top="10.0" />
-                     </padding>
-                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleLogin" prefWidth="200.0" styleClass="action-button" text="Login" />
                </children>
             </VBox>
-            <Button mnemonicParsing="false" onAction="#handleBack" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-underline: true; -fx-cursor: hand;" text="Back to Home">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
+            <Button mnemonicParsing="false" onAction="#handleBack" styleClass="secondary-button" text="Back to Home" />
          </children>
       </VBox>
    </children>

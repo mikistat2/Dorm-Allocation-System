@@ -1,0 +1,407 @@
+/* Neon Blue + White — Clean & Modern */
+.root {
+    -fx-background-color: #0A1A2F; /* very dark navy-blue */
+    -fx-font-family: 'Segoe UI', sans-serif;
+}
+
+/* Typography */
+.label {
+    -fx-text-fill: #FFFFFF; /* pure white */
+}
+
+.title-label {
+    -fx-font-size: 34px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+    -fx-effect: dropshadow(three-pass-box, rgba(76, 201, 240, 0.25), 12, 0, 0, 0);
+}
+
+.subtitle-label {
+    -fx-font-size: 18px;
+    -fx-text-fill: #FFFFFF;
+    -fx-opacity: 0.8;
+}
+
+.header-label {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* Semantic accents */
+.accent { -fx-text-fill: #4CC9F0; }
+.success { -fx-text-fill: #2ECC71; } /* green for positive numbers */
+.danger  { -fx-text-fill: #FF6B6B; } /* red for alerts */
+
+/* Buttons */
+.button {
+    -fx-background-color: rgba(255, 255, 255, 0.12);
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 16;
+    -fx-cursor: hand;
+    -fx-font-size: 14px;
+    -fx-padding: 10 18;
+    -fx-border-color: rgba(76, 201, 240, 0.35);
+    -fx-border-radius: 16;
+    -fx-border-width: 1;
+}
+
+.button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-effect: dropshadow(three-pass-box, rgba(76, 201, 240, 0.25), 10, 0, 0, 0);
+}
+
+.button:pressed {
+    -fx-background-color: rgba(255, 255, 255, 0.18);
+}
+
+.action-button {
+    -fx-background-color: linear-gradient(to right, #4CC9F0, #34B6E6);
+    -fx-text-fill: #0A1A2F;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-background-radius: 24;
+    -fx-border-width: 0;
+}
+
+.action-button:hover {
+    -fx-background-color: linear-gradient(to right, #34B6E6, #4CC9F0);
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+}
+
+.secondary-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #4CC9F0;
+    -fx-underline: true;
+    -fx-border-width: 0;
+}
+
+.secondary-button:hover {
+    -fx-text-fill: #A5E8FA;
+}
+
+.danger-button {
+    -fx-background-color: rgba(255, 107, 107, 0.18);
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: rgba(255, 107, 107, 0.5);
+}
+
+.danger-button:hover {
+    -fx-background-color: #ff6b6b;
+    -fx-text-fill: white;
+}
+
+/* Inputs */
+.text-field,
+.password-field,
+.combo-box {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-text-fill: #FFFFFF;
+    -fx-prompt-text-fill: rgba(255, 255, 255, 0.55);
+    -fx-background-radius: 12;
+    -fx-border-color: rgba(76, 201, 240, 0.35);
+    -fx-border-radius: 12;
+    -fx-padding: 10;
+}
+
+.text-field:focused,
+.password-field:focused,
+.combo-box:focused {
+    -fx-border-color: #4CC9F0;
+    -fx-border-width: 1.5;
+    -fx-background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Stronger input background for register tab */
+.input-contrast {
+    -fx-background-color: rgba(76, 201, 240, 0.18);
+    -fx-text-fill: #FFFFFF;
+}
+
+.input-contrast:focused {
+    -fx-background-color: rgba(76, 201, 240, 0.25);
+}
+
+/* ComboBox specific styling */
+.combo-box .arrow-button {
+    -fx-background-color: rgba(76, 201, 240, 0.25);
+    -fx-background-radius: 0 12 12 0;
+}
+
+.combo-box .arrow {
+    -fx-background-color: #0A1A2F; /* dark icon for contrast on neon */
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: rgba(0, 0, 0, 0.35);
+}
+
+.combo-box-popup .list-view .list-cell {
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: transparent;
+}
+
+.combo-box-popup .list-view .list-cell:hover {
+    -fx-background-color: rgba(76, 201, 240, 0.2);
+}
+
+.combo-box-base:showing {
+    -fx-border-color: #4CC9F0;
+}
+
+/* Containers & Cards */
+.card {
+    -fx-background-color: rgba(255, 255, 255, 0.08);
+    -fx-background-radius: 18;
+    -fx-effect: dropshadow(three-pass-box, rgba(76, 201, 240, 0.15), 12, 0, 0, 6);
+    -fx-padding: 20;
+}
+
+.card:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.12);
+    -fx-effect: dropshadow(three-pass-box, rgba(76, 201, 240, 0.25), 16, 0, 0, 6);
+}
+
+.sidebar {
+    -fx-background-color: rgba(255, 255, 255, 0.06);
+    -fx-padding: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(76, 201, 240, 0.15), 10, 0, 5, 0);
+}
+
+/* ScrollPane */
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane>.viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical,
+.scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical .thumb,
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: rgba(76, 201, 240, 0.35);
+    -fx-background-radius: 6;
+}
+
+/* TableView */
+.table-view {
+    -fx-background-color: rgba(255, 255, 255, 0.06);
+    -fx-background-insets: 0;
+    -fx-padding: 8;
+    -fx-border-color: rgba(76, 201, 240, 0.35);
+    -fx-border-radius: 12;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: rgba(76, 201, 240, 0.25);
+}
+
+.table-view .column-header,
+.table-view .filler {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+}
+
+/* Ensure table cells have high-contrast text */
+.table-view .cell,
+.table-view .table-cell,
+.table-view .cell .text,
+.table-view .table-cell .text,
+.table-view .cell .label,
+.table-view .table-cell .label {
+    -fx-text-fill: #FFFFFF;
+}
+
+.table-row-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #FFFFFF;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+}
+
+.table-row-cell:selected {
+    -fx-background-color: rgba(76, 201, 240, 0.25);
+}
+
+/* Hover highlight for better focus */
+.table-row-cell:hover {
+    -fx-background-color: rgba(76, 201, 240, 0.12);
+}
+
+/* Fix alternating row colors for visibility */
+.table-row-cell:odd {
+    -fx-background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Table placeholder text color (when empty) */
+.table-view .placeholder .label {
+    -fx-text-fill: rgba(255, 255, 255, 0.7);
+}
+
+/* ListView */
+.list-view {
+    -fx-background-color: transparent;
+}
+
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #FFFFFF; /* consistent with navy background */
+    -fx-padding: 10;
+}
+
+.list-cell:even {
+    -fx-background-color: rgba(255, 255, 255, 0.06);
+}
+
+.list-cell:selected {
+    -fx-background-color: rgba(76, 201, 240, 0.25);
+}
+
+/* Utility spacing for responsiveness */
+.gap-sm { -fx-padding: 6; }
+.gap-md { -fx-padding: 12; }
+.gap-lg { -fx-padding: 20; }
+
+/* TabPane styling for Login/Register */
+.tab-pane {
+    -fx-background-color: transparent;
+}
+
+.tab-pane > .tab-header-area {
+    -fx-background-color: rgba(255, 255, 255, 0.06);
+}
+
+.tab-pane > .tab-header-area > .headers-region > .tab {
+    -fx-background-color: transparent;
+    -fx-padding: 8 16 8 16;
+}
+
+.tab-pane > .tab-header-area > .headers-region > .tab:selected {
+    -fx-background-color: rgba(76, 201, 240, 0.25);
+}
+
+.tab-pane > .tab-header-area > .headers-region > .tab .tab-label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+}
+
+.tab-pane .tab-content-area {
+    -fx-background-color: rgba(255, 255, 255, 0.06);
+    -fx-background-radius: 12;
+    -fx-padding: 20;
+}
+
+/* -------------------- GLOBAL COLORS ----------------------- */
+* {
+    -fx-font-family: "Segoe UI", "Inter", sans-serif;
+}
+
+.root, .main-container {
+    -fx-background-color: #0D1B2A; /* deep modern navy */
+}
+
+/* -------------------- TITLE STYLING ------------------------ */
+.title {
+    -fx-text-fill: #E0E1DD;
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+}
+
+.section-title {
+    -fx-text-fill: #4CC9F0;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+/* -------------------- TABS ------------------------ */
+.tab-pane, .auth-tabs {
+    -fx-background-color: transparent;
+}
+
+.tab {
+    -fx-background-insets: 0;
+}
+
+.tab-label {
+    -fx-text-fill: #E0E1DD;
+}
+
+.tab-pane .tab-header-area .tab:selected {
+    -fx-background-color: #1B263B;
+}
+
+.tab-pane .tab-header-area .tab-label {
+    -fx-text-fill: #A9BCD0;
+}
+.tab-pane .tab-header-area .tab:selected .tab-label {
+    -fx-text-fill: #4CC9F0;
+    -fx-font-weight: bold;
+}
+
+/* ---------------- INPUT FIELDS -------------------- */
+.input {
+    -fx-background-radius: 8;
+    -fx-background-color: #1B263B;
+    -fx-text-fill: #E0E1DD;
+    -fx-prompt-text-fill: #778DA9;
+    -fx-padding: 10;
+    -fx-font-size: 14px;
+    -fx-border-color: transparent;
+    -fx-border-radius: 8;
+}
+
+.input:focused {
+    -fx-border-color: #4CC9F0;
+    -fx-border-width: 2px;
+}
+
+/* ComboBox fix */
+.combo .list-cell {
+    -fx-text-fill: #E0E1DD;
+    -fx-background-color: #1B263B;
+}
+
+/* ---------------- BUTTONS -------------------- */
+.primary-btn {
+    -fx-background-color: #4CC9F0;
+    -fx-text-fill: #0D1B2A;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-padding: 12;
+}
+.primary-btn:hover {
+    -fx-background-color: #72E5FF;
+}
+
+.secondary-btn {
+    -fx-background-color: transparent;
+    -fx-border-color: #4CC9F0;
+    -fx-border-radius: 8;
+    -fx-text-fill: #4CC9F0;
+    -fx-font-size: 15px;
+    -fx-padding: 10;
+}
+.secondary-btn:hover {
+    -fx-background-color: #1B263B;
+}
+
+/* ---------------- ERROR TEXT -------------------- */
+.error-label {
+    -fx-text-fill: #FF6B6B;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}

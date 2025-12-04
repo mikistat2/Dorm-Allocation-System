@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Priority?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="30.0" style="-fx-background-color: linear-gradient(to bottom right, #2b5876, #4e4376);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LandingController">
+<VBox alignment="CENTER" spacing="30.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LandingController">
     <padding>
         <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
     </padding>
@@ -16,37 +16,21 @@
     <VBox VBox.vgrow="ALWAYS" />
 
     <!-- Title -->
-    <Label text="Dorm Management System" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-        <font>
-            <Font name="Segoe UI Bold" size="48.0" />
-        </font>
-    </Label>
+    <Label styleClass="title-label" text="Dorm Management System" textAlignment="CENTER" wrapText="true" />
 
     <!-- Subtitle -->
-    <Label text="Select your role to continue" textAlignment="CENTER" textFill="#e0e0e0" wrapText="true">
-        <font>
-            <Font name="Segoe UI" size="20.0" />
-        </font>
-    </Label>
+    <Label styleClass="subtitle-label" text="Select your role to continue" textAlignment="CENTER" wrapText="true" />
 
     <!-- Spacer between text and buttons -->
     <VBox spacing="5.0" VBox.vgrow="ALWAYS" />
 
     <!-- Button Container -->
-    <HBox alignment="CENTER" spacing="30.0" style="-fx-pref-width: 500;">
+    <HBox alignment="CENTER" spacing="30.0">
         <!-- Student Button -->
-        <Button fx:id="studentButton" mnemonicParsing="false" onAction="#handleStudentButton" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #ff6b6b; -fx-text-fill: white; -fx-background-radius: 30; -fx-cursor: hand; -fx-font-size: 16; -fx-padding: 15;" text="Student">
-            <font>
-                <Font name="Segoe UI Bold" size="18.0" />
-            </font>
-        </Button>
+        <Button fx:id="studentButton" mnemonicParsing="false" onAction="#handleStudentButton" prefHeight="60.0" prefWidth="200.0" styleClass="action-button" text="Student" />
 
         <!-- Proctor Button -->
-        <Button fx:id="proctorButton" mnemonicParsing="false" onAction="#handleProctorButton" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #4ecdc4; -fx-text-fill: white; -fx-background-radius: 30; -fx-cursor: hand; -fx-font-size: 16; -fx-padding: 15;" text="Proctor">
-            <font>
-                <Font name="Segoe UI Bold" size="18.0" />
-            </font>
-        </Button>
+        <Button fx:id="proctorButton" mnemonicParsing="false" onAction="#handleProctorButton" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to right, #2b5876, #4e4376);" styleClass="action-button" text="Proctor" />
     </HBox>
 
     <!-- Spacer to push content to center -->

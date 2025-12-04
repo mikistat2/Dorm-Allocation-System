@@ -8,37 +8,41 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProctorSettingsController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProctorSettingsController">
    <children>
-      <Button layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleBack" style="-fx-background-color: #2b5876; -fx-text-fill: white; -fx-background-radius: 5;" text="&lt; Back to Dashboard" />
-      <VBox alignment="CENTER" layoutX="200.0" layoutY="100.0" prefHeight="400.0" prefWidth="400.0" spacing="20.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);">
+      <VBox prefHeight="600.0" prefWidth="800.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <padding>
-            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
          <children>
-            <Label text="Dorm Configuration" textFill="#2b5876">
-               <font>
-                  <Font name="Segoe UI Bold" size="24.0" />
-               </font>
-            </Label>
-            <VBox spacing="5.0">
+            <Button mnemonicParsing="false" onAction="#handleBack" styleClass="secondary-button" text="&lt; Back to Dashboard" />
+            
+            <VBox alignment="CENTER" VBox.vgrow="ALWAYS">
                <children>
-                  <Label text="Number of Buildings/Blocks" textFill="#888888" />
-                  <TextField fx:id="numBuildingsField" promptText="e.g., 3" style="-fx-background-radius: 5; -fx-padding: 10;" />
+                  <VBox alignment="CENTER" maxWidth="400.0" spacing="20.0" styleClass="card">
+                     <padding>
+                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                     </padding>
+                     <children>
+                        <Label styleClass="header-label" text="Dorm Configuration" />
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label style="-fx-text-fill: #a0c4ff;" text="Number of Buildings/Blocks" />
+                              <TextField fx:id="numBuildingsField" promptText="e.g., 3" />
+                           </children>
+                        </VBox>
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label style="-fx-text-fill: #a0c4ff;" text="Number of Rooms per Block" />
+                              <TextField fx:id="numRoomsField" promptText="e.g., 20" />
+                           </children>
+                        </VBox>
+                        <Button mnemonicParsing="false" onAction="#handleSaveSettings" prefWidth="200.0" styleClass="action-button" text="Save &amp; Initialize" />
+                        <Label fx:id="messageLabel" textFill="#4ecdc4" />
+                     </children>
+                  </VBox>
                </children>
             </VBox>
-            <VBox spacing="5.0">
-               <children>
-                  <Label text="Number of Rooms per Block" textFill="#888888" />
-                  <TextField fx:id="numRoomsField" promptText="e.g., 20" style="-fx-background-radius: 5; -fx-padding: 10;" />
-               </children>
-            </VBox>
-            <Button mnemonicParsing="false" onAction="#handleSaveSettings" prefWidth="200.0" style="-fx-background-color: #4ecdc4; -fx-text-fill: white; -fx-background-radius: 20;" text="Save &amp; Initialize">
-               <font>
-                  <Font name="Segoe UI Bold" size="14.0" />
-               </font>
-            </Button>
-            <Label fx:id="messageLabel" textFill="#2b5876" />
          </children>
       </VBox>
    </children>

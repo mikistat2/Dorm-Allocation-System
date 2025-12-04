@@ -1,118 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(to bottom right, #2b5876, #4e4376);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StudentAuthController">
-   <children>
-      <VBox alignment="CENTER" layoutX="150.0" layoutY="50.0" prefHeight="500.0" prefWidth="500.0" spacing="20.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="50.0">
-         <children>
-            <Label text="Student Portal" textFill="WHITE">
-               <font>
-                  <Font name="Segoe UI Bold" size="36.0" />
-               </font>
-            </Label>
-            <TabPane fx:id="authTabPane" prefHeight="400.0" prefWidth="500.0" style="-fx-background-color: white; -fx-background-radius: 10;" tabClosingPolicy="UNAVAILABLE">
-              <tabs>
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@style.css"
+            xmlns="http://javafx.com/javafx/21" 
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.StudentAuthController">
+
+    <children>
+
+        <VBox alignment="CENTER" spacing="30"
+              AnchorPane.topAnchor="40" AnchorPane.bottomAnchor="40"
+              AnchorPane.leftAnchor="100" AnchorPane.rightAnchor="100"
+              styleClass="main-container">
+
+            <!-- Title -->
+            <Label text="Student Portal" styleClass="title"/>
+
+            <!-- Auth Tabs -->
+            <TabPane fx:id="authTabPane" tabClosingPolicy="UNAVAILABLE" 
+                     prefWidth="520" styleClass="tab-pane">
+
+                <!-- LOGIN TAB -->
                 <Tab text="Login">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <VBox alignment="CENTER" layoutX="50.0" layoutY="30.0" prefHeight="300.0" prefWidth="400.0" spacing="15.0">
-                                 <children>
-                                    <Label text="Welcome Back" textFill="#2b5876">
-                                       <font>
-                                          <Font name="Segoe UI Bold" size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="loginIdField" promptText="Student ID" style="-fx-background-radius: 5; -fx-padding: 10;">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </TextField>
-                                    <PasswordField fx:id="loginPasswordField" promptText="Password" style="-fx-background-radius: 5; -fx-padding: 10;">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </PasswordField>
-                                    <Label fx:id="loginMessageLabel" textFill="#ff6b6b" />
-                                    <Button mnemonicParsing="false" onAction="#handleLogin" prefWidth="200.0" style="-fx-background-color: #4ecdc4; -fx-text-fill: white; -fx-background-radius: 20; -fx-cursor: hand;" text="Login">
-                                       <font>
-                                          <Font name="Segoe UI Bold" size="14.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets bottom="10.0" top="10.0" />
-                                       </padding>
-                                    </Button>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </AnchorPane>
-                  </content>
+                    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED">
+                        <content>
+                            <VBox alignment="CENTER" spacing="14" style="-fx-padding: 20;">
+                                <Label text="Welcome Back" styleClass="header-label accent"/>
+                                <TextField fx:id="loginIdField" promptText="Student ID" maxWidth="380" />
+                                <PasswordField fx:id="loginPasswordField" promptText="Password" maxWidth="380" />
+                                <Label fx:id="loginMessageLabel" styleClass="danger"/>
+                                <Button text="Login" onAction="#handleLogin" prefWidth="240" styleClass="action-button"/>
+                            </VBox>
+                        </content>
+                    </ScrollPane>
                 </Tab>
+
+                <!-- REGISTER TAB -->
                 <Tab text="Register">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <VBox alignment="CENTER" layoutX="50.0" layoutY="10.0" prefHeight="340.0" prefWidth="400.0" spacing="10.0">
-                                 <children>
-                                    <Label text="Create Account" textFill="#2b5876">
-                                       <font>
-                                          <Font name="Segoe UI Bold" size="20.0" />
-                                       </font>
-                                    </Label>
-                                    <HBox spacing="10.0">
-                                       <children>
-                                          <TextField fx:id="regNameField" promptText="Full Name" style="-fx-background-radius: 5;" HBox.hgrow="ALWAYS" />
-                                          <TextField fx:id="regIdField" promptText="Student ID" style="-fx-background-radius: 5;" HBox.hgrow="ALWAYS" />
-                                       </children>
-                                    </HBox>
-                                    <PasswordField fx:id="regPasswordField" promptText="Password" style="-fx-background-radius: 5;" />
-                                    <HBox spacing="10.0">
-                                       <children>
-                                          <TextField fx:id="regPhoneField" promptText="Phone" style="-fx-background-radius: 5;" HBox.hgrow="ALWAYS" />
-                                          <ComboBox fx:id="regGenderCombo" prefWidth="150.0" promptText="Gender" style="-fx-background-radius: 5;" />
-                                       </children>
-                                    </HBox>
-                                    <HBox spacing="10.0">
-                                       <children>
-                                          <TextField fx:id="regDeptField" promptText="Department" style="-fx-background-radius: 5;" HBox.hgrow="ALWAYS" />
-                                          <TextField fx:id="regYearField" promptText="Year" style="-fx-background-radius: 5;" HBox.hgrow="ALWAYS" />
-                                       </children>
-                                    </HBox>
-                                    <Label fx:id="regMessageLabel" textFill="#ff6b6b" />
-                                    <Button mnemonicParsing="false" onAction="#handleRegister" prefWidth="200.0" style="-fx-background-color: #ff6b6b; -fx-text-fill: white; -fx-background-radius: 20; -fx-cursor: hand;" text="Register">
-                                       <font>
-                                          <Font name="Segoe UI Bold" size="14.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets bottom="10.0" top="10.0" />
-                                       </padding>
-                                    </Button>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </AnchorPane>
-                  </content>
+                    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED">
+                        <content>
+                            <VBox alignment="CENTER" spacing="12" style="-fx-padding: 20;">
+                                <Label text="Create Account" styleClass="header-label accent"/>
+                                <TextField fx:id="regNameField" promptText="Full Name" maxWidth="380" styleClass="input-contrast"/>
+                                <TextField fx:id="regIdField" promptText="Student ID" maxWidth="380" styleClass="input-contrast"/>
+                                <PasswordField fx:id="regPasswordField" promptText="Password" maxWidth="380" styleClass="input-contrast"/>
+                                <TextField fx:id="regPhoneField" promptText="Phone" maxWidth="380" styleClass="input-contrast"/>
+                                <TextField fx:id="regDeptField" promptText="Department" maxWidth="380" styleClass="input-contrast"/>
+                                <!-- Place Gender and Year at the bottom, centered -->
+                                <HBox spacing="10" alignment="CENTER">
+                                    <ComboBox fx:id="regGenderCombo" promptText="Gender" prefWidth="180" styleClass="combo-box"/>
+                                    <TextField fx:id="regYearField" promptText="Year" maxWidth="180" styleClass="input-contrast"/>
+                                </HBox>
+                                <Label fx:id="regMessageLabel" styleClass="danger"/>
+                                <Button text="Register" onAction="#handleRegister" prefWidth="240" styleClass="action-button"/>
+                            </VBox>
+                        </content>
+                    </ScrollPane>
                 </Tab>
-              </tabs>
+
             </TabPane>
-            <Button mnemonicParsing="false" onAction="#handleBack" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-underline: true; -fx-cursor: hand;" text="Back to Home">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-         </children>
-      </VBox>
-   </children>
+
+            <Button text="Back to Home" onAction="#handleBack" 
+                    styleClass="secondary-btn"/>
+
+        </VBox>
+    </children>
 </AnchorPane>

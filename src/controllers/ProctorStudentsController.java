@@ -86,15 +86,8 @@ public class ProctorStudentsController {
 
     @FXML
     void handleBack(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/resources/ProctorDashboard.fxml"));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // Use NavigationUtils to preserve current scene and window size
+        utils.NavigationUtils.navigateTo(event, "/resources/ProctorDashboard.fxml");
     }
 
     @FXML

@@ -21,9 +21,17 @@ public class NavigationUtils {
             Scene currentScene = stage.getScene();
             if (currentScene != null) {
                 currentScene.setRoot(root);
+                // Keep a consistent baseline size (optional)
+                stage.setMinWidth(800);
+                stage.setMinHeight(600);
+                stage.setWidth(Math.max(stage.getWidth(), 800));
+                stage.setHeight(Math.max(stage.getHeight(), 600));
             } else {
                 // Fallback if no scene exists (unlikely in this flow)
-                stage.setScene(new Scene(root));
+                Scene scene = new Scene(root, 800, 600);
+                stage.setScene(scene);
+                stage.setMinWidth(800);
+                stage.setMinHeight(600);
             }
             stage.show();
         } catch (IOException e) {
