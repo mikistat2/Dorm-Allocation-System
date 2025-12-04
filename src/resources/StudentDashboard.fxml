@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(to bottom right, #e9f3f7, #ffffff);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StudentDashboardController">
+   <children>
+      <!-- Sidebar -->
+      <VBox prefHeight="600.0" prefWidth="250.0" spacing="20.0" style="-fx-background-color: rgba(43,88,118,0.95); -fx-padding: 30;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label text="Student Dashboard" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="Segoe UI Bold" size="24.0" />
+               </font>
+            </Label>
+            <VBox spacing="10.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <Label text="My Profile" textFill="#a0c4ff">
+                     <font>
+                        <Font name="Segoe UI Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="studentNameLabel" text="Student Name" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="studentIdLabel" text="ID: 12345" textFill="#e0e0e0" />
+                  <Label fx:id="studentDeptLabel" text="Dept: CS" textFill="#e0e0e0" />
+               </children>
+            </VBox>
+            <Button mnemonicParsing="false" onAction="#handleLogout" prefWidth="200.0" style="-fx-background-color: #ff6b6b; -fx-text-fill: white; -fx-background-radius: 10; -fx-cursor: hand;" text="Logout">
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+            </Button>
+         </children>
+      </VBox>
+
+      <!-- Content Area -->
+      <VBox layoutX="250.0" prefHeight="600.0" prefWidth="550.0" spacing="30.0" style="-fx-padding: 40;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label text="My Accommodation" textFill="#2b5876">
+               <font>
+                  <Font name="Segoe UI Bold" size="28.0" />
+               </font>
+            </Label>
+            
+            <!-- Assignment Card -->
+            <HBox spacing="20.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5);">
+               <children>
+                  <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="Assigned Building" textFill="#6f7f89" />
+                        <Label fx:id="buildingLabel" text="Not Assigned" textFill="#2b5876">
+                           <font>
+                              <Font name="Segoe UI Bold" size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="Room Number" textFill="#6f7f89" />
+                        <Label fx:id="roomLabel" text="--" textFill="#4ecdc4">
+                           <font>
+                              <Font name="Segoe UI Bold" size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+
+            <!-- Roommates Section -->
+            <VBox spacing="15.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <Label text="My Roommates" textFill="#2b5876">
+                     <font>
+                        <Font name="Segoe UI Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <ListView fx:id="roommatesListView" style="-fx-background-color: transparent; -fx-background-radius: 10; -fx-border-color: #e0e0e0; -fx-border-radius: 10;" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
