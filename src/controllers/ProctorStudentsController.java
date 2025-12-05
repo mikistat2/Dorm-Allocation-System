@@ -62,18 +62,73 @@ public class ProctorStudentsController {
         colBuilding.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("assignedBuilding"));
         colRoom.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("assignedRoom"));
 
-        // Add Edit and Delete buttons to Actions column
+        // Add Edit, Save, and Delete buttons to Actions column with enhanced styling
         colActions.setCellFactory(param -> new javafx.scene.control.TableCell<>() {
-            private final javafx.scene.control.Button editBtn = new javafx.scene.control.Button("✏");
+            private final javafx.scene.control.Button editBtn = new javafx.scene.control.Button("✎");
             private final javafx.scene.control.Button saveBtn = new javafx.scene.control.Button("✓");
+            private final javafx.scene.control.Button cancelBtn = new javafx.scene.control.Button("✗");
             private final javafx.scene.control.Button deleteBtn = new javafx.scene.control.Button("🗑");
-            private final javafx.scene.layout.HBox buttonBox = new javafx.scene.layout.HBox(5);
+            private final javafx.scene.layout.HBox buttonBox = new javafx.scene.layout.HBox(8);
 
             {
-                // Use CSS classes for consistent icon buttons
-                editBtn.getStyleClass().addAll("icon-btn", "edit-button");
-                saveBtn.getStyleClass().addAll("icon-btn", "save-button");
-                deleteBtn.getStyleClass().addAll("icon-btn", "delete-button");
+                // Modern smooth styling for buttons with gradients and shadows
+                String editStyle = "-fx-background-color: linear-gradient(to bottom, #00d4ff, #00b4d8); " +
+                                  "-fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; " +
+                                  "-fx-padding: 6 12; -fx-background-radius: 8; -fx-cursor: hand; " +
+                                  "-fx-effect: dropshadow(gaussian, rgba(0, 180, 216, 0.4), 8, 0.3, 0, 2);";
+                
+                String editHoverStyle = "-fx-background-color: linear-gradient(to bottom, #00b4d8, #0096c7); " +
+                                       "-fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; " +
+                                       "-fx-padding: 6 12; -fx-background-radius: 8; -fx-cursor: hand; " +
+                                       "-fx-effect: dropshadow(gaussian, rgba(0, 180, 216, 0.6), 10, 0.4, 0, 3);";
+                
+                String saveStyle = "-fx-background-color: linear-gradient(to bottom, #5fdc73, #4cd964); " +
+                                  "-fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; " +
+                                  "-fx-padding: 6 12; -fx-background-radius: 8; -fx-cursor: hand; " +
+                                  "-fx-effect: dropshadow(gaussian, rgba(76, 217, 100, 0.4), 8, 0.3, 0, 2);";
+                
+                String saveHoverStyle = "-fx-background-color: linear-gradient(to bottom, #4cd964, #3db54a); " +
+                                       "-fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; " +
+                                       "-fx-padding: 6 12; -fx-background-radius: 8; -fx-cursor: hand; " +
+                                       "-fx-effect: dropshadow(gaussian, rgba(76, 217, 100, 0.6), 10, 0.4, 0, 3);";
+                
+                String cancelStyle = "-fx-background-color: linear-gradient(to bottom, #ffad33, #ff9500); " +
+                                    "-fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; " +
+                                    "-fx-padding: 6 12; -fx-background-radius: 8; -fx-cursor: hand; " +
+                                    "-fx-effect: dropshadow(gaussian, rgba(255, 149, 0, 0.4), 8, 0.3, 0, 2);";
+                
+                String cancelHoverStyle = "-fx-background-color: linear-gradient(to bottom, #ff9500, #e68600); " +
+                                         "-fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; " +
+                                         "-fx-padding: 6 12; -fx-background-radius: 8; -fx-cursor: hand; " +
+                                         "-fx-effect: dropshadow(gaussian, rgba(255, 149, 0, 0.6), 10, 0.4, 0, 3);";
+                
+                String deleteStyle = "-fx-background-color: linear-gradient(to bottom, #ff8585, #ff6b6b); " +
+                                    "-fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; " +
+                                    "-fx-padding: 6 12; -fx-background-radius: 8; -fx-cursor: hand; " +
+                                    "-fx-effect: dropshadow(gaussian, rgba(255, 107, 107, 0.4), 8, 0.3, 0, 2);";
+                
+                String deleteHoverStyle = "-fx-background-color: linear-gradient(to bottom, #ff6b6b, #ff4757); " +
+                                         "-fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; " +
+                                         "-fx-padding: 6 12; -fx-background-radius: 8; -fx-cursor: hand; " +
+                                         "-fx-effect: dropshadow(gaussian, rgba(255, 107, 107, 0.6), 10, 0.4, 0, 3);";
+                
+                editBtn.setStyle(editStyle);
+                saveBtn.setStyle(saveStyle);
+                cancelBtn.setStyle(cancelStyle);
+                deleteBtn.setStyle(deleteStyle);
+                
+                // Smooth hover effects with enhanced shadows
+                editBtn.setOnMouseEntered(e -> editBtn.setStyle(editHoverStyle));
+                editBtn.setOnMouseExited(e -> editBtn.setStyle(editStyle));
+                
+                saveBtn.setOnMouseEntered(e -> saveBtn.setStyle(saveHoverStyle));
+                saveBtn.setOnMouseExited(e -> saveBtn.setStyle(saveStyle));
+                
+                cancelBtn.setOnMouseEntered(e -> cancelBtn.setStyle(cancelHoverStyle));
+                cancelBtn.setOnMouseExited(e -> cancelBtn.setStyle(cancelStyle));
+                
+                deleteBtn.setOnMouseEntered(e -> deleteBtn.setStyle(deleteHoverStyle));
+                deleteBtn.setOnMouseExited(e -> deleteBtn.setStyle(deleteStyle));
                 
                 editBtn.setOnAction(event -> {
                     int index = getIndex();
@@ -85,21 +140,77 @@ public class ProctorStudentsController {
                     editingRowIndex = -1;
                     data.DataManager.getInstance().saveStudents();
                     studentsTable.refresh();
+                    
+                    // Show success message
+                    javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
+                    alert.setTitle("Success");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Student information updated successfully!");
+                    alert.getDialogPane().setStyle("-fx-background-color: #0A1A2F;");
+                    alert.showAndWait();
+                });
+                
+                cancelBtn.setOnAction(event -> {
+                    editingRowIndex = -1;
+                    loadStudents(); // Reload to discard changes
+                    studentsTable.refresh();
                 });
                 
                 deleteBtn.setOnAction(event -> {
                     models.Student student = getTableView().getItems().get(getIndex());
                     
-                    // Confirmation dialog
+                    // Enhanced modern confirmation dialog
                     javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.CONFIRMATION);
                     alert.setTitle("Delete Student");
-                    alert.setHeaderText("Delete " + student.getName() + "?");
-                    alert.setContentText("Are you sure you want to delete this student? This action cannot be undone.");
+                    alert.setHeaderText("⚠️  Confirm Deletion");
+                    alert.setContentText("Are you sure you want to delete " + student.getName() + "?\n\n" +
+                                        "Student ID: " + student.getId() + "\n" +
+                                        "Department: " + student.getDepartment() + "\n\n" +
+                                        "This action cannot be undone.");
                     
-                    // Style the dialog
-                    alert.getDialogPane().setStyle("-fx-background-color: #0A1A2F;");
-                    alert.getDialogPane().lookup(".header-panel").setStyle("-fx-background-color: #0A1A2F;");
-                    alert.getDialogPane().lookup(".content").setStyle("-fx-text-fill: #FFFFFF;");
+                    // Modern dark theme styling
+                    javafx.scene.control.DialogPane dialogPane = alert.getDialogPane();
+                    dialogPane.setStyle(
+                        "-fx-background-color: linear-gradient(to bottom, #0f2744, #0a1929);" +
+                        "-fx-border-color: #ff6b6b;" +
+                        "-fx-border-width: 2;" +
+                        "-fx-border-radius: 10;" +
+                        "-fx-background-radius: 10;" +
+                        "-fx-effect: dropshadow(gaussian, rgba(255, 107, 107, 0.5), 20, 0.3, 0, 0);"
+                    );
+                    
+                    if (dialogPane.lookup(".header-panel") != null) {
+                        dialogPane.lookup(".header-panel").setStyle("-fx-background-color: transparent; -fx-padding: 20 20 10 20;");
+                    }
+                    
+                    javafx.scene.control.Label headerLabel = (javafx.scene.control.Label) dialogPane.lookup(".header .label");
+                    if (headerLabel != null) {
+                        headerLabel.setStyle("-fx-text-fill: #ff6b6b; -fx-font-size: 18px; -fx-font-weight: bold;");
+                    }
+                    
+                    if (dialogPane.lookup(".content") != null) {
+                        dialogPane.lookup(".content").setStyle("-fx-text-fill: #e0e0e0; -fx-font-size: 14px; -fx-padding: 10 20 20 20;");
+                    }
+                    
+                    dialogPane.lookupButton(javafx.scene.control.ButtonType.OK).setStyle(
+                        "-fx-background-color: linear-gradient(to bottom, #ff8585, #ff6b6b);" +
+                        "-fx-text-fill: white;" +
+                        "-fx-font-weight: bold;" +
+                        "-fx-padding: 8 20;" +
+                        "-fx-background-radius: 6;" +
+                        "-fx-cursor: hand;" +
+                        "-fx-effect: dropshadow(gaussian, rgba(255, 107, 107, 0.4), 8, 0.3, 0, 2);"
+                    );
+                    
+                    dialogPane.lookupButton(javafx.scene.control.ButtonType.CANCEL).setStyle(
+                        "-fx-background-color: linear-gradient(to bottom, #4a5568, #2d3748);" +
+                        "-fx-text-fill: white;" +
+                        "-fx-font-weight: bold;" +
+                        "-fx-padding: 8 20;" +
+                        "-fx-background-radius: 6;" +
+                        "-fx-cursor: hand;" +
+                        "-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0.3, 0, 2);"
+                    );
                     
                     java.util.Optional<javafx.scene.control.ButtonType> result = alert.showAndWait();
                     if (result.isPresent() && result.get() == javafx.scene.control.ButtonType.OK) {
@@ -122,6 +233,47 @@ public class ProctorStudentsController {
                         data.DataManager.getInstance().getStudents().remove(student);
                         data.DataManager.getInstance().saveStudents();
                         loadStudents();
+                        
+                        // Show modern success message
+                        javafx.scene.control.Alert successAlert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
+                        successAlert.setTitle("Success");
+                        successAlert.setHeaderText("✓  Student Deleted");
+                        successAlert.setContentText(student.getName() + " has been successfully removed from the system.");
+                        
+                        javafx.scene.control.DialogPane successPane = successAlert.getDialogPane();
+                        successPane.setStyle(
+                            "-fx-background-color: linear-gradient(to bottom, #0f2744, #0a1929);" +
+                            "-fx-border-color: #4cd964;" +
+                            "-fx-border-width: 2;" +
+                            "-fx-border-radius: 10;" +
+                            "-fx-background-radius: 10;" +
+                            "-fx-effect: dropshadow(gaussian, rgba(76, 217, 100, 0.5), 20, 0.3, 0, 0);"
+                        );
+                        
+                        if (successPane.lookup(".header-panel") != null) {
+                            successPane.lookup(".header-panel").setStyle("-fx-background-color: transparent; -fx-padding: 20 20 10 20;");
+                        }
+                        
+                        javafx.scene.control.Label successHeaderLabel = (javafx.scene.control.Label) successPane.lookup(".header .label");
+                        if (successHeaderLabel != null) {
+                            successHeaderLabel.setStyle("-fx-text-fill: #4cd964; -fx-font-size: 18px; -fx-font-weight: bold;");
+                        }
+                        
+                        if (successPane.lookup(".content") != null) {
+                            successPane.lookup(".content").setStyle("-fx-text-fill: #e0e0e0; -fx-font-size: 14px; -fx-padding: 10 20 20 20;");
+                        }
+                        
+                        successPane.lookupButton(javafx.scene.control.ButtonType.OK).setStyle(
+                            "-fx-background-color: linear-gradient(to bottom, #5fdc73, #4cd964);" +
+                            "-fx-text-fill: white;" +
+                            "-fx-font-weight: bold;" +
+                            "-fx-padding: 8 20;" +
+                            "-fx-background-radius: 6;" +
+                            "-fx-cursor: hand;" +
+                            "-fx-effect: dropshadow(gaussian, rgba(76, 217, 100, 0.4), 8, 0.3, 0, 2);"
+                        );
+                        
+                        successAlert.showAndWait();
                     }
                 });
                 
@@ -137,7 +289,7 @@ public class ProctorStudentsController {
                     int index = getIndex();
                     buttonBox.getChildren().clear();
                     if (index == editingRowIndex) {
-                        buttonBox.getChildren().add(saveBtn);
+                        buttonBox.getChildren().addAll(saveBtn, cancelBtn);
                     } else {
                         buttonBox.getChildren().addAll(editBtn, deleteBtn);
                     }

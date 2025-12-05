@@ -42,6 +42,16 @@ public class ProctorLoginController {
         String id = proctorIdField.getText();
         String password = proctorPasswordField.getText();
 
+        // Clear previous message
+        messageLabel.setText("");
+        
+        // Validate empty fields
+        if (id.isEmpty() || password.isEmpty()) {
+            messageLabel.setStyle("-fx-text-fill: #ff6b6b; -fx-font-weight: bold;"); // Red for error
+            messageLabel.setText("Please fill in all fields.");
+            return;
+        }
+
         boolean loginSuccess = false;
         for (models.Proctor p : data.DataManager.getInstance().getProctors()) {
             if (p.getId().equals(id) && p.getPassword().equals(password)) {
@@ -51,9 +61,12 @@ public class ProctorLoginController {
         }
 
         if (loginSuccess) {
+            messageLabel.setStyle("-fx-text-fill: #4cd964; -fx-font-weight: bold;"); // Green for success
+            messageLabel.setText("✓ Login Successful!");
             navigateToDashboard(event);
         } else {
-            messageLabel.setText("Invalid Proctor Credentials.");
+            messageLabel.setStyle("-fx-text-fill: #ff6b6b; -fx-font-weight: bold;"); // Red for error
+            messageLabel.setText("✗ Invalid Proctor Credentials.");
         }
     }
     
