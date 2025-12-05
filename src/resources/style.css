@@ -1,466 +1,736 @@
-/* Neon Blue + White — Clean & Modern */
-.root {
-    -fx-background-color: #0A1A2F; /* very dark navy-blue */
-    -fx-font-family: 'Segoe UI', sans-serif;
+/* =============================================
+   Dorm Management System - Premium Dark Theme
+   Modern, Sleek & Professional UI
+   ============================================= */
+
+* {
+    -fx-font-family: "Segoe UI", "Inter", "Roboto", sans-serif;
 }
 
-/* Typography */
+/* ============ ROOT & BACKGROUND ============ */
+.root {
+    -fx-background-color: linear-gradient(to bottom right, #0a1929, #0f1f38);
+    -fx-accent: #00b4d8;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+/* ============ TYPOGRAPHY ============ */
 .label {
-    -fx-text-fill: #FFFFFF; /* pure white */
+    -fx-text-fill: #e0f7fa;
 }
 
 .title-label {
-    -fx-font-size: 34px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #FFFFFF;
-    -fx-effect: dropshadow(three-pass-box, rgba(76, 201, 240, 0.25), 12, 0, 0, 0);
+    -fx-font-size: 42px;
+    -fx-font-weight: 800;
+    -fx-text-fill: linear-gradient(to right, #00b4d8, #0096c7);
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 180, 216, 0.3), 15, 0, 0, 5);
+    -fx-letter-spacing: 1px;
 }
 
 .subtitle-label {
     -fx-font-size: 18px;
-    -fx-text-fill: #FFFFFF;
-    -fx-opacity: 0.8;
+    -fx-text-fill: #90e0ef;
+    -fx-opacity: 0.9;
+    -fx-font-weight: 300;
 }
 
 .header-label {
-    -fx-font-size: 22px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 26px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #caf0f8;
+    -fx-effect: dropshadow(three-pass-box, rgba(202, 240, 248, 0.1), 5, 0, 0, 2);
 }
 
-/* Semantic accents */
-.accent { -fx-text-fill: #4CC9F0; }
-.success { -fx-text-fill: #2ECC71; } /* green for positive numbers */
-.danger  { -fx-text-fill: #FF6B6B; } /* red for alerts */
+.card-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #ffffff;
+}
 
-/* Buttons */
+.card-subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: #90e0ef;
+    -fx-opacity: 0.8;
+}
+
+/* ============ BUTTONS ============ */
 .button {
-    -fx-background-color: rgba(255, 255, 255, 0.12);
-    -fx-text-fill: #FFFFFF;
-    -fx-background-radius: 16;
+    -fx-background-color: rgba(144, 224, 239, 0.08);
+    -fx-text-fill: #caf0f8;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: rgba(144, 224, 239, 0.2);
+    -fx-border-width: 1px;
     -fx-cursor: hand;
     -fx-font-size: 14px;
-    -fx-padding: 10 18;
-    -fx-border-color: rgba(76, 201, 240, 0.35);
-    -fx-border-radius: 16;
-    -fx-border-width: 1;
+    -fx-font-weight: 500;
+    -fx-padding: 12px 24px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 4, 0, 0, 2);
+    -fx-transition: all 0.3s ease;
 }
 
 .button:hover {
-    -fx-background-color: rgba(255, 255, 255, 0.2);
-    -fx-effect: dropshadow(three-pass-box, rgba(76, 201, 240, 0.25), 10, 0, 0, 0);
+    -fx-background-color: rgba(144, 224, 239, 0.15);
+    -fx-border-color: rgba(144, 224, 239, 0.4);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+    -fx-effect: dropshadow(gaussian, rgba(0, 180, 216, 0.3), 8, 0, 0, 3);
 }
 
 .button:pressed {
-    -fx-background-color: rgba(255, 255, 255, 0.18);
+    -fx-background-color: rgba(144, 224, 239, 0.25);
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
 }
 
+/* Primary Action Button */
 .action-button {
-    -fx-background-color: linear-gradient(to right, #4CC9F0, #34B6E6);
-    -fx-text-fill: #0A1A2F;
-    -fx-font-weight: bold;
-    -fx-font-size: 16px;
-    -fx-background-radius: 24;
+    -fx-background-color: linear-gradient(to right, #00b4d8, #0096c7);
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: 600;
+    -fx-font-size: 15px;
+    -fx-background-radius: 10px;
     -fx-border-width: 0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 180, 216, 0.4), 8, 0, 0, 3);
+    -fx-padding: 14px 28px;
+    -fx-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .action-button:hover {
-    -fx-background-color: linear-gradient(to right, #34B6E6, #4CC9F0);
-    -fx-scale-x: 1.03;
-    -fx-scale-y: 1.03;
+    -fx-background-color: linear-gradient(to right, #0096c7, #0077b6);
+    -fx-effect: dropshadow(gaussian, rgba(0, 180, 216, 0.6), 12, 0, 0, 5);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
 }
 
+.action-button:pressed {
+    -fx-effect: dropshadow(gaussian, rgba(0, 180, 216, 0.3), 4, 0, 0, 2);
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+}
+
+/* Secondary Button */
 .secondary-button {
     -fx-background-color: transparent;
-    -fx-text-fill: #4CC9F0;
-    -fx-underline: true;
-    -fx-border-width: 0;
+    -fx-text-fill: #90e0ef;
+    -fx-border-color: rgba(144, 224, 239, 0.3);
+    -fx-border-width: 1.5px;
+    -fx-background-radius: 10px;
+    -fx-font-weight: 500;
 }
 
 .secondary-button:hover {
-    -fx-text-fill: #A5E8FA;
+    -fx-background-color: rgba(144, 224, 239, 0.1);
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #90e0ef;
 }
 
+/* Danger Button */
 .danger-button {
-    -fx-background-color: rgba(255, 107, 107, 0.18);
-    -fx-text-fill: #FFFFFF;
-    -fx-border-color: rgba(255, 107, 107, 0.5);
+    -fx-background-color: linear-gradient(to right, #ff6b6b, #ff5252);
+    -fx-text-fill: #ffffff;
+    -fx-border-width: 0;
+    -fx-font-weight: 600;
+    -fx-effect: dropshadow(gaussian, rgba(255, 107, 107, 0.4), 8, 0, 0, 3);
 }
 
 .danger-button:hover {
-    -fx-background-color: #ff6b6b;
-    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(to right, #ff5252, #ff3838);
+    -fx-effect: dropshadow(gaussian, rgba(255, 107, 107, 0.6), 12, 0, 0, 5);
 }
 
-/* Inputs */
+/* Success Button */
+.success-button {
+    -fx-background-color: linear-gradient(to right, #4cd964, #2ecc71);
+    -fx-text-fill: #ffffff;
+    -fx-border-width: 0;
+    -fx-font-weight: 600;
+}
+
+.success-button:hover {
+    -fx-background-color: linear-gradient(to right, #2ecc71, #27ae60);
+}
+
+/* ============ INPUT FIELDS ============ */
 .text-field,
 .password-field,
-.combo-box {
-    -fx-background-color: rgba(255, 255, 255, 0.1);
-    -fx-text-fill: #FFFFFF;
-    -fx-prompt-text-fill: rgba(255, 255, 255, 0.55);
-    -fx-background-radius: 12;
-    -fx-border-color: rgba(76, 201, 240, 0.35);
-    -fx-border-radius: 12;
-    -fx-padding: 10;
+.combo-box-base,
+.text-area {
+    -fx-background-color: rgba(144, 224, 239, 0.05);
+    -fx-text-fill: #ffffff;
+    -fx-prompt-text-fill: rgba(144, 224, 239, 0.6);
+    -fx-background-radius: 8px;
+    -fx-border-color: rgba(144, 224, 239, 0.2);
+    -fx-border-radius: 8px;
+    -fx-border-width: 1.5px;
+    -fx-padding: 12px 16px;
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 2, 0, 0, 1);
+    -fx-transition: all 0.3s ease;
 }
 
 .text-field:focused,
 .password-field:focused,
-.combo-box:focused {
-    -fx-border-color: #4CC9F0;
-    -fx-border-width: 1.5;
-    -fx-background-color: rgba(255, 255, 255, 0.15);
+.combo-box-base:focused,
+.text-area:focused {
+    -fx-border-color: #00b4d8;
+    -fx-border-width: 2px;
+    -fx-background-color: rgba(144, 224, 239, 0.08);
+    -fx-effect: dropshadow(gaussian, rgba(0, 180, 216, 0.2), 4, 0, 0, 2);
 }
 
-/* Stronger input background for register tab */
-.input-contrast {
-    -fx-background-color: rgba(76, 201, 240, 0.18);
-    -fx-text-fill: #FFFFFF;
-}
-
-.input-contrast:focused {
-    -fx-background-color: rgba(76, 201, 240, 0.25);
-}
-
-/* ComboBox specific styling */
-.combo-box .arrow-button {
-    -fx-background-color: rgba(76, 201, 240, 0.25);
-    -fx-background-radius: 0 12 12 0;
-}
-
-.combo-box .arrow {
-    -fx-background-color: #0A1A2F; /* dark icon for contrast on neon */
+/* ComboBox Styling */
+.combo-box .list-cell {
+    -fx-text-fill: #ffffff;
+    -fx-background-color: transparent;
 }
 
 .combo-box-popup .list-view {
-    -fx-background-color: rgba(0, 0, 0, 0.35);
+    -fx-background-color: #1a2d42;
+    -fx-background-radius: 8px;
+    -fx-border-color: rgba(144, 224, 239, 0.2);
+    -fx-border-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 3);
 }
 
 .combo-box-popup .list-view .list-cell {
-    -fx-text-fill: #FFFFFF;
+    -fx-text-fill: #e0f7fa;
+    -fx-padding: 10px 16px;
     -fx-background-color: transparent;
 }
 
 .combo-box-popup .list-view .list-cell:hover {
-    -fx-background-color: rgba(76, 201, 240, 0.2);
+    -fx-background-color: rgba(0, 180, 216, 0.2);
+    -fx-text-fill: #ffffff;
 }
 
-.combo-box-base:showing {
-    -fx-border-color: #4CC9F0;
+.combo-box-popup .list-view .list-cell:filled:selected {
+    -fx-background-color: rgba(0, 180, 216, 0.3);
+    -fx-text-fill: #ffffff;
 }
 
-/* Compact ComboBox height globally */
-.combo-box,
-.combo-box-base {
-    -fx-pref-height: 32px;
-    -fx-min-height: 32px;
-}
-
-/* Containers & Cards */
+/* ============ CARDS & CONTAINERS ============ */
 .card {
-    -fx-background-color: rgba(255, 255, 255, 0.08);
-    -fx-background-radius: 18;
-    -fx-effect: dropshadow(three-pass-box, rgba(76, 201, 240, 0.15), 12, 0, 0, 6);
-    -fx-padding: 20;
+    -fx-background-color: linear-gradient(to bottom right, rgba(26, 45, 66, 0.8), rgba(15, 31, 56, 0.9));
+    -fx-background-radius: 16px;
+    -fx-border-color: rgba(144, 224, 239, 0.15);
+    -fx-border-radius: 16px;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 15, 0, 0, 5);
+    -fx-padding: 20px;
+    -fx-transition: all 0.3s ease;
 }
 
 .card:hover {
-    -fx-background-color: rgba(255, 255, 255, 0.12);
-    -fx-effect: dropshadow(three-pass-box, rgba(76, 201, 240, 0.25), 16, 0, 0, 6);
+    -fx-effect: dropshadow(gaussian, rgba(0, 180, 216, 0.2), 20, 0, 0, 8);
+    -fx-border-color: rgba(144, 224, 239, 0.3);
+    -fx-scale-x: 1.01;
+    -fx-scale-y: 1.01;
 }
 
+.stat-card {
+    -fx-background-color: linear-gradient(135deg, rgba(26, 45, 66, 0.9), rgba(15, 31, 56, 0.95));
+    -fx-background-radius: 14px;
+    -fx-border-color: rgba(144, 224, 239, 0.1);
+    -fx-border-radius: 14px;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 0, 3);
+    -fx-padding: 25px;
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.stat-card:hover {
+    -fx-border-color: rgba(144, 224, 239, 0.3);
+    -fx-effect: dropshadow(gaussian, rgba(0, 180, 216, 0.25), 15, 0, 0, 6);
+    -fx-translate-y: -5px;
+}
+
+/* ============ SIDEBAR ============ */
 .sidebar {
-    -fx-background-color: rgba(255, 255, 255, 0.06);
-    -fx-padding: 20;
-    -fx-effect: dropshadow(three-pass-box, rgba(76, 201, 240, 0.15), 10, 0, 5, 0);
+    -fx-background-color: linear-gradient(to bottom, #0d1b2a, #1b263b);
+    -fx-background-radius: 0 20px 20px 0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 0);
+    -fx-padding: 30px 20px;
+    -fx-border-color: rgba(144, 224, 239, 0.1);
+    -fx-border-width: 0 1px 0 0;
 }
 
-/* ScrollPane */
-.scroll-pane {
+.sidebar .button {
     -fx-background-color: transparent;
+    -fx-text-fill: #caf0f8;
+    -fx-border-width: 0;
+    -fx-background-radius: 8px;
+    -fx-font-size: 15px;
+    -fx-font-weight: 500;
+    -fx-padding: 12px 20px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-transition: all 0.3s ease;
 }
 
-.scroll-pane>.viewport {
-    -fx-background-color: transparent;
+.sidebar .button:hover {
+    -fx-background-color: rgba(0, 180, 216, 0.15);
+    -fx-text-fill: #ffffff;
+    -fx-translate-x: 5px;
 }
 
-.scroll-bar:vertical,
-.scroll-bar:horizontal {
-    -fx-background-color: transparent;
+.sidebar .button:focused,
+.sidebar .button:selected {
+    -fx-background-color: linear-gradient(to right, rgba(0, 180, 216, 0.3), rgba(0, 180, 216, 0.1));
+    -fx-text-fill: #00b4d8;
+    -fx-border-width: 0 0 0 3px;
+    -fx-border-color: #00b4d8;
 }
 
-.scroll-bar:vertical .thumb,
-.scroll-bar:horizontal .thumb {
-    -fx-background-color: rgba(76, 201, 240, 0.35);
-    -fx-background-radius: 6;
-}
-
-/* TableView */
+/* ============ TABLEVIEW ============ */
 .table-view {
-    -fx-background-color: rgba(255, 255, 255, 0.06);
-    -fx-background-insets: 0;
-    -fx-padding: 10;
-    -fx-border-color: rgba(76, 201, 240, 0.35);
-    -fx-border-radius: 12;
-    -fx-table-cell-border-color: rgba(255, 255, 255, 0.08);
-    -fx-control-inner-background: transparent;
-    -fx-cell-size: 36px; /* uniform row height */
+    -fx-background-color: transparent;
+    -fx-background-radius: 12px;
+    -fx-border-color: rgba(144, 224, 239, 0.2);
+    -fx-border-radius: 12px;
+    -fx-border-width: 1.5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 10, 0, 0, 3);
+    -fx-padding: 0;
 }
 
 .table-view .column-header-background {
-    -fx-background-color: linear-gradient(to bottom, rgba(76,201,240,0.35), rgba(76,201,240,0.2));
+    -fx-background-color: linear-gradient(to bottom, rgba(0, 180, 216, 0.25), rgba(0, 150, 199, 0.15));
+    -fx-background-radius: 12px 12px 0 0;
+    -fx-padding: 0;
 }
 
-.table-view .column-header,
-.table-view .filler {
+.table-view .column-header {
     -fx-background-color: transparent;
-    -fx-border-color: transparent;
+    -fx-border-color: rgba(144, 224, 239, 0.1);
+    -fx-border-width: 0 1px 0 0;
+    -fx-padding: 12px 15px;
+    -fx-size: 45px;
 }
 
 .table-view .column-header .label {
-    -fx-text-fill: #FFFFFF;
-    -fx-font-weight: bold;
-    -fx-padding: 8 6 8 6;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: 600;
+    -fx-font-size: 14px;
+    -fx-alignment: CENTER_LEFT;
 }
 
-/* Ensure table cells have high-contrast text */
-.table-view .cell,
-.table-view .table-cell,
-.table-view .cell .text,
-.table-view .table-cell .text,
-.table-view .cell .label,
-.table-view .table-cell .label {
-    -fx-text-fill: #FFFFFF;
-    -fx-padding: 8 10 8 10;
+.table-view .table-cell {
+    -fx-text-fill: #e0f7fa;
+    -fx-border-color: rgba(144, 224, 239, 0.05);
+    -fx-padding: 12px 15px;
+    -fx-font-size: 14px;
+    -fx-alignment: CENTER_LEFT;
 }
 
-.table-row-cell {
+.table-view .table-row-cell {
     -fx-background-color: transparent;
-    -fx-text-fill: #FFFFFF;
-    -fx-background-insets: 0;
+    -fx-border-color: transparent;
+    -fx-table-cell-border-color: transparent;
 }
 
-.table-row-cell:odd {
-    -fx-background-color: rgba(255, 255, 255, 0.04);
+.table-view .table-row-cell:odd {
+    -fx-background-color: rgba(144, 224, 239, 0.03);
 }
 
-.table-row-cell:selected {
-    -fx-background-color: rgba(76, 201, 240, 0.22);
-    -fx-background-insets: 0;
-    -fx-border-color: rgba(76, 201, 240, 0.45);
-    -fx-border-width: 0 0 0 3;
+.table-view .table-row-cell:even {
+    -fx-background-color: rgba(144, 224, 239, 0.01);
 }
 
-/* Hover highlight for better focus */
-.table-row-cell:hover {
-    -fx-background-color: rgba(76, 201, 240, 0.14);
-}
-
-/* Editable cell focus smoothing */
-.table-view .table-cell:focused {
-    -fx-background-color: rgba(76, 201, 240, 0.18);
-    -fx-background-insets: 0;
-}
-
-.table-view .text-field {
-    -fx-background-color: rgba(255, 255, 255, 0.12);
-    -fx-text-fill: #FFFFFF;
-    -fx-border-color: rgba(76, 201, 240, 0.45);
-    -fx-background-radius: 8;
-    -fx-border-radius: 8;
-    -fx-padding: 6 8 6 8;
-}
-
-.table-view .text-field:focused {
-    -fx-background-color: rgba(255, 255, 255, 0.18);
-}
-
-/* Compact density option for large tables */
-.table-view.compact .table-cell {
-    -fx-padding: 6 8 6 8;
-}
-
-/* Edit/Delete/Save icon buttons for action columns */
-.icon-btn {
-    -fx-background-color: transparent;
-    -fx-text-fill: #FFFFFF;
+.table-view .table-row-cell:hover {
+    -fx-background-color: rgba(0, 180, 216, 0.1);
     -fx-cursor: hand;
-    -fx-background-radius: 8;
-    -fx-padding: 0;
-    -fx-min-width: 28px; -fx-pref-width: 28px; -fx-max-width: 28px;
-    -fx-min-height: 28px; -fx-pref-height: 28px; -fx-max-height: 28px;
-    -fx-alignment: center;
 }
 
-.edit-button { -fx-background-color: rgba(76, 201, 240, 0.18); -fx-text-fill: #4CC9F0; }
-.edit-button:hover { -fx-background-color: rgba(76, 201, 240, 0.28); }
-
-.save-button { -fx-background-color: rgba(46, 204, 113, 0.25); -fx-text-fill: #FFFFFF; }
-.save-button:hover { -fx-background-color: rgba(39, 174, 96, 0.35); }
-
-.delete-button { -fx-background-color: rgba(255, 107, 107, 0.18); -fx-text-fill: #FF6B6B; }
-.delete-button:hover { -fx-background-color: rgba(255, 107, 107, 0.28); }
-
-/* Fix alternating row colors for visibility */
-.table-row-cell:odd {
-    -fx-background-color: rgba(255, 255, 255, 0.06);
+.table-view .table-row-cell:selected {
+    -fx-background-color: rgba(0, 180, 216, 0.2);
+    -fx-text-fill: #ffffff;
 }
 
-/* Table placeholder text color (when empty) */
-.table-view .placeholder .label { -fx-text-fill: rgba(255, 255, 255, 0.7); }
+.table-view .table-row-cell:filled:selected:hover {
+    -fx-background-color: rgba(0, 180, 216, 0.25);
+}
 
-/* ListView */
+/* Scrollbar Styling */
+.table-view .scroll-bar:vertical,
+.table-view .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+.table-view .scroll-bar:vertical .thumb,
+.table-view .scroll-bar:horizontal .thumb {
+    -fx-background-color: rgba(144, 224, 239, 0.3);
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+}
+
+.table-view .scroll-bar:vertical .thumb:hover,
+.table-view .scroll-bar:horizontal .thumb:hover {
+    -fx-background-color: rgba(144, 224, 239, 0.5);
+}
+
+/* ============ LISTVIEW ============ */
 .list-view {
     -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+    -fx-border-color: rgba(144, 224, 239, 0.15);
+    -fx-border-radius: 10px;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0, 0, 2);
 }
 
 .list-cell {
     -fx-background-color: transparent;
-    -fx-text-fill: #FFFFFF; /* consistent with navy background */
-    -fx-padding: 10;
+    -fx-text-fill: #e0f7fa;
+    -fx-padding: 12px 16px;
+    -fx-border-color: rgba(144, 224, 239, 0.05);
+    -fx-border-width: 0 0 1px 0;
 }
 
-.list-cell:even {
-    -fx-background-color: rgba(255, 255, 255, 0.06);
+.list-cell:odd {
+    -fx-background-color: rgba(144, 224, 239, 0.02);
+}
+
+.list-cell:hover {
+    -fx-background-color: rgba(0, 180, 216, 0.1);
+    -fx-cursor: hand;
 }
 
 .list-cell:selected {
-    -fx-background-color: rgba(76, 201, 240, 0.25);
+    -fx-background-color: rgba(0, 180, 216, 0.2);
+    -fx-text-fill: #ffffff;
 }
 
-/* Utility spacing for responsiveness */
-.gap-sm { -fx-padding: 6; }
-.gap-md { -fx-padding: 12; }
-.gap-lg { -fx-padding: 20; }
+/* ============ SCROLLPANE ============ */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+}
 
-/* TabPane styling for Login/Register */
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar:vertical,
+.scroll-pane .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-pref-width: 12px;
+    -fx-pref-height: 12px;
+}
+
+.scroll-pane .scroll-bar:vertical .thumb,
+.scroll-pane .scroll-bar:horizontal .thumb {
+    -fx-background-color: rgba(144, 224, 239, 0.25);
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+}
+
+.scroll-pane .scroll-bar:vertical .thumb:hover,
+.scroll-pane .scroll-bar:horizontal .thumb:hover {
+    -fx-background-color: rgba(144, 224, 239, 0.4);
+}
+
+/* ============ TABS ============ */
 .tab-pane {
     -fx-background-color: transparent;
+    -fx-tab-min-width: 120px;
+    -fx-tab-min-height: 45px;
 }
 
-.tab-pane > .tab-header-area {
-    -fx-background-color: rgba(255, 255, 255, 0.06);
-}
-
-.tab-pane > .tab-header-area > .headers-region > .tab {
+.tab-pane .tab-header-area {
     -fx-background-color: transparent;
-    -fx-padding: 8 16 8 16;
+    -fx-padding: 10px 0 0 0;
 }
 
-.tab-pane > .tab-header-area > .headers-region > .tab:selected {
-    -fx-background-color: rgba(76, 201, 240, 0.25);
+.tab-pane .tab-header-background {
+    -fx-background-color: transparent;
 }
 
-.tab-pane > .tab-header-area > .headers-region > .tab .tab-label {
-    -fx-text-fill: #FFFFFF;
-    -fx-font-weight: bold;
+.tab-pane .tab {
+    -fx-background-color: rgba(144, 224, 239, 0.05);
+    -fx-background-radius: 8px 8px 0 0;
+    -fx-border-color: rgba(144, 224, 239, 0.1);
+    -fx-border-width: 1px;
+    -fx-padding: 10px 25px;
+    -fx-margin: 0 5px;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: linear-gradient(to bottom, rgba(0, 180, 216, 0.2), rgba(0, 180, 216, 0.1));
+    -fx-border-color: #00b4d8;
+    -fx-border-width: 1px 1px 0 1px;
+    -fx-text-fill: #00b4d8;
+}
+
+.tab-pane .tab .tab-label {
+    -fx-text-fill: #90e0ef;
+    -fx-font-weight: 500;
+    -fx-font-size: 14px;
+}
+
+.tab-pane .tab:selected .tab-label {
+    -fx-text-fill: #00b4d8;
+    -fx-font-weight: 600;
 }
 
 .tab-pane .tab-content-area {
-    -fx-background-color: rgba(255, 255, 255, 0.06);
-    -fx-background-radius: 12;
-    -fx-padding: 20;
+    -fx-background-color: rgba(144, 224, 239, 0.02);
+    -fx-background-radius: 0 8px 8px 8px;
+    -fx-border-color: rgba(144, 224, 239, 0.1);
+    -fx-border-radius: 0 8px 8px 8px;
+    -fx-border-width: 1px;
+    -fx-padding: 25px;
 }
 
-/* -------------------- GLOBAL COLORS ----------------------- */
-* {
-    -fx-font-family: "Segoe UI", "Inter", sans-serif;
+/* ============ BUILDING CARDS ============ */
+.building-card {
+    -fx-background-color: linear-gradient(135deg, rgba(26, 45, 66, 0.9), rgba(15, 31, 56, 0.95));
+    -fx-background-radius: 14px;
+    -fx-border-color: rgba(144, 224, 239, 0.15);
+    -fx-border-radius: 14px;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 0, 3);
+    -fx-padding: 20px;
+    -fx-min-width: 280px;
+    -fx-min-height: 180px;
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.root, .main-container {
-    -fx-background-color: #0D1B2A; /* deep modern navy */
+.building-card:hover {
+    -fx-border-color: rgba(144, 224, 239, 0.3);
+    -fx-effect: dropshadow(gaussian, rgba(0, 180, 216, 0.25), 15, 0, 0, 6);
+    -fx-translate-y: -5px;
 }
 
-/* -------------------- TITLE STYLING ------------------------ */
-.title {
-    -fx-text-fill: #E0E1DD;
-    -fx-font-size: 36px;
-    -fx-font-weight: bold;
+.building-card-male {
+    -fx-border-left: 4px solid #0096c7;
 }
 
-.section-title {
-    -fx-text-fill: #4CC9F0;
-    -fx-font-size: 22px;
-    -fx-font-weight: bold;
+.building-card-female {
+    -fx-border-left: 4px solid #ff6b6b;
 }
 
-/* -------------------- TABS ------------------------ */
-.tab-pane, .auth-tabs {
+/* ============ FILTER BUTTONS ============ */
+.filter-button {
+    -fx-background-color: rgba(144, 224, 239, 0.05);
+    -fx-text-fill: #90e0ef;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: rgba(144, 224, 239, 0.2);
+    -fx-border-width: 1px;
+    -fx-padding: 10px 20px;
+    -fx-font-size: 13px;
+    -fx-font-weight: 500;
+}
+
+.filter-button:hover {
+    -fx-background-color: rgba(144, 224, 239, 0.1);
+    -fx-border-color: rgba(144, 224, 239, 0.4);
+}
+
+.filter-button:selected {
+    -fx-background-color: linear-gradient(to right, rgba(0, 180, 216, 0.2), rgba(0, 180, 216, 0.1));
+    -fx-text-fill: #00b4d8;
+    -fx-border-color: #00b4d8;
+    -fx-font-weight: 600;
+}
+
+/* ============ ANIMATIONS ============ */
+@keyframes fadeIn {
+    from {
+        -fx-opacity: 0;
+        -fx-translate-y: 20px;
+    }
+
+    to {
+        -fx-opacity: 1;
+        -fx-translate-y: 0;
+    }
+}
+
+.fade-in {
+    -fx-animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        -fx-scale-x: 1;
+        -fx-scale-y: 1;
+    }
+
+    50% {
+        -fx-scale-x: 1.05;
+        -fx-scale-y: 1.05;
+    }
+}
+
+.pulse {
+    -fx-animation: pulse 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        -fx-background-position: -200% center;
+    }
+
+    100% {
+        -fx-background-position: 200% center;
+    }
+}
+
+.shimmer-effect {
+    -fx-background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.1) 50%,
+            transparent 100%);
+    -fx-background-size: 200% 100%;
+    -fx-animation: shimmer 3s infinite;
+}
+
+/* ============ GLASS MORPHISM EFFECT ============ */
+.glass-pane {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+    -fx-background-radius: 20px;
+    -fx-border-color: rgba(255, 255, 255, 0.1);
+    -fx-border-radius: 20px;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 20, 0, 0, 5);
+    -fx-backdrop-filter: blur(10px);
+}
+
+/* ============ STATUS INDICATORS ============ */
+.status-indicator {
+    -fx-background-radius: 100px;
+    -fx-min-width: 10px;
+    -fx-min-height: 10px;
+    -fx-pref-width: 10px;
+    -fx-pref-height: 10px;
+}
+
+.status-online {
+    -fx-background-color: #4cd964;
+    -fx-effect: dropshadow(gaussian, rgba(76, 217, 100, 0.5), 5, 0, 0, 2);
+}
+
+.status-offline {
+    -fx-background-color: #ff6b6b;
+    -fx-effect: dropshadow(gaussian, rgba(255, 107, 107, 0.5), 5, 0, 0, 2);
+}
+
+.status-warning {
+    -fx-background-color: #ffd166;
+    -fx-effect: dropshadow(gaussian, rgba(255, 209, 102, 0.5), 5, 0, 0, 2);
+}
+
+/* ============ PROGRESS BARS ============ */
+.progress-bar {
+    -fx-background-color: rgba(144, 224, 239, 0.1);
+    -fx-background-radius: 100px;
+    -fx-padding: 2px;
+}
+
+.progress-bar .track {
+    -fx-background-color: rgba(144, 224, 239, 0.05);
+    -fx-background-radius: 100px;
+}
+
+.progress-bar .bar {
+    -fx-background-color: linear-gradient(to right, #00b4d8, #0096c7);
+    -fx-background-radius: 100px;
+    -fx-padding: 2px;
+}
+
+/* ============ ICON BUTTONS ============ */
+.icon-button {
     -fx-background-color: transparent;
+    -fx-text-fill: #90e0ef;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: rgba(144, 224, 239, 0.2);
+    -fx-border-width: 1px;
+    -fx-padding: 8px;
+    -fx-min-width: 36px;
+    -fx-min-height: 36px;
+    -fx-cursor: hand;
+    -fx-transition: all 0.2s ease;
 }
 
-.tab {
-    -fx-background-insets: 0;
+.icon-button:hover {
+    -fx-background-color: rgba(144, 224, 239, 0.1);
+    -fx-border-color: rgba(144, 224, 239, 0.4);
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
 }
 
-.tab-label {
-    -fx-text-fill: #E0E1DD;
+.icon-button:pressed {
+    -fx-scale-x: 0.9;
+    -fx-scale-y: 0.9;
 }
 
-.tab-pane .tab-header-area .tab:selected {
-    -fx-background-color: #1B263B;
+/* ============ TOOLTIPS ============ */
+.tooltip {
+    -fx-background-color: rgba(26, 45, 66, 0.95);
+    -fx-text-fill: #e0f7fa;
+    -fx-background-radius: 6px;
+    -fx-border-color: rgba(144, 224, 239, 0.2);
+    -fx-border-radius: 6px;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 3);
+    -fx-padding: 8px 12px;
+    -fx-font-size: 12px;
 }
 
-.tab-pane .tab-header-area .tab-label {
-    -fx-text-fill: #A9BCD0;
-}
-.tab-pane .tab-header-area .tab:selected .tab-label {
-    -fx-text-fill: #4CC9F0;
-    -fx-font-weight: bold;
+/* ============ SEPARATORS ============ */
+.separator .line {
+    -fx-border-color: rgba(144, 224, 239, 0.1);
+    -fx-border-width: 0.5px;
 }
 
-/* ---------------- INPUT FIELDS -------------------- */
-.input {
-    -fx-background-radius: 8;
-    -fx-background-color: #1B263B;
-    -fx-text-fill: #E0E1DD;
-    -fx-prompt-text-fill: #778DA9;
-    -fx-padding: 10;
-    -fx-font-size: 14px;
-    -fx-border-color: transparent;
-    -fx-border-radius: 8;
+/* ============ GRADIENTS ============ */
+.gradient-primary {
+    -fx-background-color: linear-gradient(135deg, #00b4d8, #0096c7);
 }
 
-.input:focused {
-    -fx-border-color: #4CC9F0;
-    -fx-border-width: 2px;
+.gradient-success {
+    -fx-background-color: linear-gradient(135deg, #4cd964, #2ecc71);
 }
 
-/* ComboBox fix */
-.combo .list-cell {
-    -fx-text-fill: #E0E1DD;
-    -fx-background-color: #1B263B;
+.gradient-warning {
+    -fx-background-color: linear-gradient(to bottom right, #ffd166, #ffb347);
 }
 
-/* ---------------- BUTTONS -------------------- */
-.primary-btn {
-    -fx-background-color: #4CC9F0;
-    -fx-text-fill: #0D1B2A;
+.gradient-danger {
+    -fx-background-color: linear-gradient(to bottom right, #ff6b6b, #ff5252);
+}
+
+/* ============ RESPONSIVE UTILITIES ============ */
+.spacer {
+    -fx-hgrow: ALWAYS;
+    -fx-vgrow: ALWAYS;
+}
+
+.divider {
+    -fx-background-color: rgba(144, 224, 239, 0.1);
+    -fx-min-height: 1px;
+    -fx-max-height: 1px;
+}
+
+/* ============ PRINT/EXPORT STYLES ============ */
+.print-header {
+    -fx-font-size: 24px;
+    -fx-font-weight: 800;
+    -fx-text-fill: #00b4d8;
+}
+
+.print-subheader {
     -fx-font-size: 16px;
-    -fx-font-weight: bold;
-    -fx-background-radius: 10;
-    -fx-padding: 12;
-}
-.primary-btn:hover {
-    -fx-background-color: #72E5FF;
+    -fx-font-weight: 600;
+    -fx-text-fill: #90e0ef;
 }
 
-.secondary-btn {
-    -fx-background-color: transparent;
-    -fx-border-color: #4CC9F0;
-    -fx-border-radius: 8;
-    -fx-text-fill: #4CC9F0;
-    -fx-font-size: 15px;
-    -fx-padding: 10;
-}
-.secondary-btn:hover {
-    -fx-background-color: #1B263B;
-}
-
-/* ---------------- ERROR TEXT -------------------- */
-.error-label {
-    -fx-text-fill: #FF6B6B;
-    -fx-font-size: 14px;
-    -fx-font-weight: bold;
-}
+/* Note: JavaFX CSS does not support @media queries. 
+   Responsive design must be handled via FXML layout constraints and Java code listeners. */
