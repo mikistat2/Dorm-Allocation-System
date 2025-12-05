@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -27,6 +28,15 @@
                         <Button mnemonicParsing="false" onAction="#handleAutoAssign" styleClass="action-button" text="Auto Assign All" />
                      </children>
                   </HBox>
+               </children>
+            </HBox>
+            
+            <!-- Search Bar -->
+            <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="card" style="-fx-padding: 15;">
+               <children>
+                  <Label text="🔍 Search:" style="-fx-text-fill: #a0c4ff; -fx-font-size: 14px; -fx-font-weight: bold;" />
+                  <TextField fx:id="searchField" promptText="Search by name, ID, department, or building..." prefWidth="400.0" style="-fx-background-color: rgba(255, 255, 255, 0.1); -fx-text-fill: white; -fx-prompt-text-fill: #90e0ef; -fx-background-radius: 8; -fx-padding: 8 12; -fx-font-size: 14px;" />
+                  <Label fx:id="searchResultLabel" text="" style="-fx-text-fill: #4cd964; -fx-font-size: 12px;" />
                </children>
             </HBox>
                   <TableView fx:id="studentsTable" minHeight="400.0" prefHeight="500.0" prefWidth="760.0" styleClass="table-view" VBox.vgrow="ALWAYS" editable="true">

@@ -40,6 +40,12 @@ public class ProctorStudentsController {
 
     @FXML
     private TableColumn<models.Student, Void> colActions;
+    
+    @FXML
+    private javafx.scene.control.TextField searchField;
+    
+    @FXML
+    private javafx.scene.control.Label searchResultLabel;
 
     // Filter State
     public static String filterType = "ALL"; // ALL, ASSIGNED, UNASSIGNED, BUILDING
@@ -47,6 +53,9 @@ public class ProctorStudentsController {
 
     // Track which row is being edited
     private int editingRowIndex = -1;
+    
+    // Store all students for filtering
+    private java.util.List<models.Student> allStudents = new java.util.ArrayList<>();
 
     @FXML
     public void initialize() {
@@ -305,8 +314,71 @@ public class ProctorStudentsController {
         setupGenderColumn();
         setupBuildingColumn();
         setupRoomColumn();
+        
+        // Setup search functionality
+        setupSearchFilter();
 
         loadStudents();
+    }
+    
+    private void setupSearchFilter() {
+        if (searchField != null) {
+            searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+                filterStudents(newValue);
+            });
+        }
+    }
+    
+    private void filterStudents(String searchText) {
+        if (searchText == null || searchText.trim().isEmpty()) {
+            // Show all students when search is empty
+            studentsTable.setItems(javafx.collections.FXCollections.observableArrayList(allStudents));
+            if (searchResultLabel != null) {
+                searchResultLabel.setText("");
+            }
+            return;
+        }
+        
+        String search = searchText.toLowerCase().trim();
+        java.util.List<models.Student> filtered = new java.util.ArrayList<>();
+        
+        for (models.Student student : allStudents) {
+            // Search in multiple fields
+            boolean matches = false;
+            
+            if (student.getName() != null && student.getName().toLowerCase().contains(search)) {
+                matches = true;
+            } else if (student.getId() != null && student.getId().toLowerCase().contains(search)) {
+                matches = true;
+            } else if (student.getDepartment() != null && student.getDepartment().toLowerCase().contains(search)) {
+                matches = true;
+            } else if (student.getGender() != null && student.getGender().toLowerCase().contains(search)) {
+                matches = true;
+            } else if (student.getAssignedBuilding() != null && student.getAssignedBuilding().toLowerCase().contains(search)) {
+                matches = true;
+            } else if (student.getAssignedRoom() != null && student.getAssignedRoom().toLowerCase().contains(search)) {
+                matches = true;
+            } else if (student.getYear() != null && student.getYear().toLowerCase().contains(search)) {
+                matches = true;
+            }
+            
+            if (matches) {
+                filtered.add(student);
+            }
+        }
+        
+        studentsTable.setItems(javafx.collections.FXCollections.observableArrayList(filtered));
+        
+        // Update result label with null check
+        if (searchResultLabel != null) {
+            if (filtered.isEmpty()) {
+                searchResultLabel.setStyle("-fx-text-fill: #ff6b6b;");
+                searchResultLabel.setText("No results found");
+            } else {
+                searchResultLabel.setStyle("-fx-text-fill: #4cd964;");
+                searchResultLabel.setText("Found " + filtered.size() + " student" + (filtered.size() == 1 ? "" : "s"));
+            }
+        }
     }
     
     private void setupEditableColumn(TableColumn<models.Student, String> column, String property) {
@@ -481,10 +553,10 @@ public class ProctorStudentsController {
     }
 
     private void loadStudents() {
-        java.util.List<models.Student> allStudents = data.DataManager.getInstance().getStudents();
+        java.util.List<models.Student> allStudentsFromDB = data.DataManager.getInstance().getStudents();
         java.util.List<models.Student> filteredList = new java.util.ArrayList<>();
 
-        for (models.Student s : allStudents) {
+        for (models.Student s : allStudentsFromDB) {
             boolean matches = false;
             switch (filterType) {
                 case "ASSIGNED":
@@ -505,8 +577,19 @@ public class ProctorStudentsController {
                 filteredList.add(s);
             }
         }
-
-        studentsTable.setItems(javafx.collections.FXCollections.observableArrayList(filteredList));
+        
+        // Store filtered students for search
+        allStudents = filteredList;
+        
+        // Apply current search filter if any
+        if (searchField != null && !searchField.getText().trim().isEmpty()) {
+            filterStudents(searchField.getText());
+        } else {
+            studentsTable.setItems(javafx.collections.FXCollections.observableArrayList(filteredList));
+            if (searchResultLabel != null) {
+                searchResultLabel.setText("");
+            }
+        }
     }
     
     private void updateStudentBuilding(models.Student student, String newBuilding) {
