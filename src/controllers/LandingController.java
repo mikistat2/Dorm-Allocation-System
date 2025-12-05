@@ -14,12 +14,12 @@ public class LandingController {
     private Button proctorButton;
 
     @FXML
-    void handleStudentButton(ActionEvent event) {
+    public void handleStudentButton(ActionEvent event) {
         NavigationUtils.navigateTo(event, "/resources/StudentAuth.fxml");
     }
 
     @FXML
-    void handleProctorButton(ActionEvent event) {
+    public void handleProctorButton(ActionEvent event) {
         NavigationUtils.navigateTo(event, "/resources/ProctorLogin.fxml");
     }
 }

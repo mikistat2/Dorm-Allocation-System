@@ -18,7 +18,7 @@
               styleClass="main-container">
 
             <!-- Title -->
-            <Label text="Student Portal" styleClass="title"/>
+            <Label text="Student Portal" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #00b4d8;"/>
 
             <!-- Auth Tabs -->
             <TabPane fx:id="authTabPane" tabClosingPolicy="UNAVAILABLE" 
@@ -29,7 +29,7 @@
                     <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED">
                         <content>
                             <VBox alignment="CENTER" spacing="14" style="-fx-padding: 20;">
-                                <Label text="Welcome Back" styleClass="header-label accent"/>
+                                <Label text="Welcome Back" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #4ecdc4;"/>
                                 <TextField fx:id="loginIdField" promptText="Student ID" maxWidth="380" />
                                 <PasswordField fx:id="loginPasswordField" promptText="Password" maxWidth="380" />
                                 <Label fx:id="loginMessageLabel" styleClass="danger"/>
