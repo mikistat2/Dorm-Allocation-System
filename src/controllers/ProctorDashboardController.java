@@ -161,12 +161,54 @@ public class ProctorDashboardController {
         int nextBlockNumber = data.DataManager.getInstance().getBuildings().size() + 1;
         String blockName = "Block-" + nextBlockNumber;
         
-        // Create a simple dialog for room count
+        // Create modern styled dialog for room count
         javafx.scene.control.TextInputDialog roomDialog = new javafx.scene.control.TextInputDialog("10");
-        roomDialog.setTitle("Add New Block");
-        roomDialog.setHeaderText("Creating: " + blockName);
+        roomDialog.setTitle("Add New Building");
+        roomDialog.setHeaderText("🏢  Creating: " + blockName);
         roomDialog.setContentText("Number of Rooms:");
-        roomDialog.getDialogPane().setStyle("-fx-font-family: 'Segoe UI';");
+        
+        // Apply modern dark theme styling
+        javafx.scene.control.DialogPane roomPane = roomDialog.getDialogPane();
+        roomPane.setStyle(
+            "-fx-background-color: linear-gradient(to bottom, #0f2744, #0a1929);" +
+            "-fx-border-color: #00b4d8;" +
+            "-fx-border-width: 2;" +
+            "-fx-border-radius: 10;" +
+            "-fx-background-radius: 10;" +
+            "-fx-effect: dropshadow(gaussian, rgba(0, 180, 216, 0.5), 20, 0.3, 0, 0);"
+        );
+        
+        if (roomPane.lookup(".header-panel") != null) {
+            roomPane.lookup(".header-panel").setStyle("-fx-background-color: transparent; -fx-padding: 20 20 10 20;");
+        }
+        
+        javafx.scene.control.Label roomHeaderLabel = (javafx.scene.control.Label) roomPane.lookup(".header .label");
+        if (roomHeaderLabel != null) {
+            roomHeaderLabel.setStyle("-fx-text-fill: #00b4d8; -fx-font-size: 18px; -fx-font-weight: bold;");
+        }
+        
+        if (roomPane.lookup(".content") != null) {
+            roomPane.lookup(".content").setStyle("-fx-text-fill: #e0e0e0; -fx-font-size: 14px; -fx-padding: 10 20 20 20;");
+        }
+        
+        // Style buttons
+        roomPane.lookupButton(javafx.scene.control.ButtonType.OK).setStyle(
+            "-fx-background-color: linear-gradient(to bottom, #00d4ff, #00b4d8);" +
+            "-fx-text-fill: white;" +
+            "-fx-font-weight: bold;" +
+            "-fx-padding: 8 20;" +
+            "-fx-background-radius: 6;" +
+            "-fx-cursor: hand;"
+        );
+        
+        roomPane.lookupButton(javafx.scene.control.ButtonType.CANCEL).setStyle(
+            "-fx-background-color: linear-gradient(to bottom, #4a5568, #2d3748);" +
+            "-fx-text-fill: white;" +
+            "-fx-font-weight: bold;" +
+            "-fx-padding: 8 20;" +
+            "-fx-background-radius: 6;" +
+            "-fx-cursor: hand;"
+        );
         
         java.util.Optional<String> roomResult = roomDialog.showAndWait();
         
@@ -180,12 +222,54 @@ public class ProctorDashboardController {
                 return;
             }
             
-            // Ask for gender
+            // Ask for gender with modern styling
             javafx.scene.control.ChoiceDialog<String> genderDialog = new javafx.scene.control.ChoiceDialog<>("Male", "Male", "Female");
-            genderDialog.setTitle("Add New Block");
-            genderDialog.setHeaderText("Select Gender for " + blockName);
-            genderDialog.setContentText("Gender:");
-            genderDialog.getDialogPane().setStyle("-fx-font-family: 'Segoe UI';");
+            genderDialog.setTitle("Add New Building");
+            genderDialog.setHeaderText("👥  Select Gender for " + blockName);
+            genderDialog.setContentText("Building Gender:");
+            
+            // Apply modern dark theme styling
+            javafx.scene.control.DialogPane genderPane = genderDialog.getDialogPane();
+            genderPane.setStyle(
+                "-fx-background-color: linear-gradient(to bottom, #0f2744, #0a1929);" +
+                "-fx-border-color: #4ecdc4;" +
+                "-fx-border-width: 2;" +
+                "-fx-border-radius: 10;" +
+                "-fx-background-radius: 10;" +
+                "-fx-effect: dropshadow(gaussian, rgba(78, 205, 196, 0.5), 20, 0.3, 0, 0);"
+            );
+            
+            if (genderPane.lookup(".header-panel") != null) {
+                genderPane.lookup(".header-panel").setStyle("-fx-background-color: transparent; -fx-padding: 20 20 10 20;");
+            }
+            
+            javafx.scene.control.Label genderHeaderLabel = (javafx.scene.control.Label) genderPane.lookup(".header .label");
+            if (genderHeaderLabel != null) {
+                genderHeaderLabel.setStyle("-fx-text-fill: #4ecdc4; -fx-font-size: 18px; -fx-font-weight: bold;");
+            }
+            
+            if (genderPane.lookup(".content") != null) {
+                genderPane.lookup(".content").setStyle("-fx-text-fill: #e0e0e0; -fx-font-size: 14px; -fx-padding: 10 20 20 20;");
+            }
+            
+            // Style buttons
+            genderPane.lookupButton(javafx.scene.control.ButtonType.OK).setStyle(
+                "-fx-background-color: linear-gradient(to bottom, #5fdc73, #4cd964);" +
+                "-fx-text-fill: white;" +
+                "-fx-font-weight: bold;" +
+                "-fx-padding: 8 20;" +
+                "-fx-background-radius: 6;" +
+                "-fx-cursor: hand;"
+            );
+            
+            genderPane.lookupButton(javafx.scene.control.ButtonType.CANCEL).setStyle(
+                "-fx-background-color: linear-gradient(to bottom, #4a5568, #2d3748);" +
+                "-fx-text-fill: white;" +
+                "-fx-font-weight: bold;" +
+                "-fx-padding: 8 20;" +
+                "-fx-background-radius: 6;" +
+                "-fx-cursor: hand;"
+            );
             
             java.util.Optional<String> genderResult = genderDialog.showAndWait();
             
@@ -198,6 +282,46 @@ public class ProctorDashboardController {
             currentBuildings.add(newBuilding);
             data.DataManager.getInstance().setBuildings(currentBuildings);
             
+            // Show success message
+            javafx.scene.control.Alert successAlert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
+            successAlert.setTitle("Success");
+            successAlert.setHeaderText("✓  Building Added");
+            successAlert.setContentText(blockName + " has been successfully created with " + rooms + " rooms for " + gender + " students.");
+            
+            javafx.scene.control.DialogPane successPane = successAlert.getDialogPane();
+            successPane.setStyle(
+                "-fx-background-color: linear-gradient(to bottom, #0f2744, #0a1929);" +
+                "-fx-border-color: #4cd964;" +
+                "-fx-border-width: 2;" +
+                "-fx-border-radius: 10;" +
+                "-fx-background-radius: 10;" +
+                "-fx-effect: dropshadow(gaussian, rgba(76, 217, 100, 0.5), 20, 0.3, 0, 0);"
+            );
+            
+            if (successPane.lookup(".header-panel") != null) {
+                successPane.lookup(".header-panel").setStyle("-fx-background-color: transparent; -fx-padding: 20 20 10 20;");
+            }
+            
+            javafx.scene.control.Label successHeaderLabel = (javafx.scene.control.Label) successPane.lookup(".header .label");
+            if (successHeaderLabel != null) {
+                successHeaderLabel.setStyle("-fx-text-fill: #4cd964; -fx-font-size: 18px; -fx-font-weight: bold;");
+            }
+            
+            if (successPane.lookup(".content") != null) {
+                successPane.lookup(".content").setStyle("-fx-text-fill: #e0e0e0; -fx-font-size: 14px; -fx-padding: 10 20 20 20;");
+            }
+            
+            successPane.lookupButton(javafx.scene.control.ButtonType.OK).setStyle(
+                "-fx-background-color: linear-gradient(to bottom, #5fdc73, #4cd964);" +
+                "-fx-text-fill: white;" +
+                "-fx-font-weight: bold;" +
+                "-fx-padding: 8 20;" +
+                "-fx-background-radius: 6;" +
+                "-fx-cursor: hand;"
+            );
+            
+            successAlert.showAndWait();
+            
             // Refresh Dashboard
             initialize();
             
@@ -209,9 +333,42 @@ public class ProctorDashboardController {
     private void showError(String message) {
         javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
         alert.setTitle("Error");
-        alert.setHeaderText("Invalid Input");
+        alert.setHeaderText("⚠️  Invalid Input");
         alert.setContentText(message);
-        alert.getDialogPane().setStyle("-fx-font-family: 'Segoe UI';");
+        
+        // Apply modern dark theme styling
+        javafx.scene.control.DialogPane errorPane = alert.getDialogPane();
+        errorPane.setStyle(
+            "-fx-background-color: linear-gradient(to bottom, #0f2744, #0a1929);" +
+            "-fx-border-color: #ff6b6b;" +
+            "-fx-border-width: 2;" +
+            "-fx-border-radius: 10;" +
+            "-fx-background-radius: 10;" +
+            "-fx-effect: dropshadow(gaussian, rgba(255, 107, 107, 0.5), 20, 0.3, 0, 0);"
+        );
+        
+        if (errorPane.lookup(".header-panel") != null) {
+            errorPane.lookup(".header-panel").setStyle("-fx-background-color: transparent; -fx-padding: 20 20 10 20;");
+        }
+        
+        javafx.scene.control.Label errorHeaderLabel = (javafx.scene.control.Label) errorPane.lookup(".header .label");
+        if (errorHeaderLabel != null) {
+            errorHeaderLabel.setStyle("-fx-text-fill: #ff6b6b; -fx-font-size: 18px; -fx-font-weight: bold;");
+        }
+        
+        if (errorPane.lookup(".content") != null) {
+            errorPane.lookup(".content").setStyle("-fx-text-fill: #e0e0e0; -fx-font-size: 14px; -fx-padding: 10 20 20 20;");
+        }
+        
+        errorPane.lookupButton(javafx.scene.control.ButtonType.OK).setStyle(
+            "-fx-background-color: linear-gradient(to bottom, #ff8585, #ff6b6b);" +
+            "-fx-text-fill: white;" +
+            "-fx-font-weight: bold;" +
+            "-fx-padding: 8 20;" +
+            "-fx-background-radius: 6;" +
+            "-fx-cursor: hand;"
+        );
+        
         alert.showAndWait();
     }
 

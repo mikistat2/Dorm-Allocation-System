@@ -1,150 +1,299 @@
 Name,ID,Password,Phone,Department,Year,Gender,Building,Room
-Rediet Mulugeta,0053,pw0053,0912340053,Software Engineering,3,Female,Block-2,R1
-Yonatan Fikre,0054,pw0054,0912340054,Computer Science,2,Male,Block 1,R1
-Meron Tsegaye,0055,pw0055,0912340055,Mechanical Engineering,4,Female,Block-2,R1
-Abel Hailemariam,0056,pw0056,0912340056,Architecture,1,Male,Block 1,R1
-Hawi Solomon,0057,pw0057,0912340057,Information Systems,3,Female,Block-2,R1
-Biniam Yared,0058,pw0058,0912340058,Electrical Engineering,2,Male,Block 1,R1
-Ruth Alemu,0059,pw0059,0912340059,Chemical Engineering,1,Female,Block-2,R1
-Samuel Girma,0060,pw0060,0912340060,Computer Science,4,Male,Block 1,R1
-Elshadai Fisseha,0061,pw0061,0912340061,Software Engineering,2,Female,Block-2,R2
-Bereket Asfaw,0062,pw0062,0912340062,Civil Engineering,3,Male,Block 1,R2
-Martha Getachew,0063,pw0063,0912340063,Information Systems,1,Female,Block-2,R2
-Henok Mekonnen,0064,pw0064,0912340064,Mechanical Engineering,2,Male,Block 1,R2
-Eden Kassa,0065,pw0065,0912340065,Architecture,4,Female,Block-2,R2
-Kaleb Dagne,0066,pw0066,0912340066,Computer Science,3,Male,Block 1,R2
-Selamawit Shiferaw,0067,pw0067,0912340067,Electrical Engineering,1,Female,Block-2,R2
-Natnael Zewdu,0068,pw0068,0912340068,Chemical Engineering,2,Male,Block 1,R2
-Meselech Belay,0069,pw0069,0912340069,Software Engineering,4,Female,Block-2,R3
-Dawit Kassaye,0070,pw0070,0912340070,Civil Engineering,2,Male,Block 1,R3
-Lidiya Daniel,0071,pw0071,0912340071,Information Systems,3,Female,Block-2,R3
-Hana Abate,0072,pw0072,0912340072,Computer Science,1,Female,Block-2,Block-2 - R1
-Mikias Tadele,0073,pw0073,0912340073,Software Engineering,2,Male,Block 1,Block 1 - R1
-Rahel Tinsae,0074,pw0074,0912340074,Architecture,3,Female,Block-2,Block-2 - R1
-Brook Tesfaw,0075,pw0075,0912340075,Electrical Engineering,4,Male,Block 1,Block 1 - R1
-Luel Hailu,0076,pw0076,0912340076,Mechanical Engineering,1,Male,Block 1,Block 1 - R1
-Yohana Merid,0077,pw0077,0912340077,Civil Engineering,3,Female,Block-2,Block-2 - R1
-Nahom Lemma,0078,pw0078,0912340078,Chemical Engineering,2,Male,Block 1,Block 1 - R1
-Samrawit Aklilu,0079,pw0079,0912340079,Information Systems,4,Female,Block-2,Block-2 - R1
-Ephrem Tsegaw,0080,pw0080,0912340080,Computer Science,2,Male,Block 1,Block 1 - R2
-Bethelhem Endale,0081,pw0081,0912340081,Software Engineering,1,Female,Block-2,Block-2 - R2
-Adonay Mebratu,0082,pw0082,0912340082,Mechanical Engineering,3,Male,Block 1,Block 1 - R2
-Tiruye Asmamaw,0083,pw0083,0912340083,Civil Engineering,2,Female,Block-2,Block-2 - R2
-Natnael Assefa,0084,pw0084,0912340084,Architecture,4,Male,Block 1,Block 1 - R2
-Yeshiwork Girma,0085,pw0085,0912340085,Electrical Engineering,1,Female,Block-2,Block-2 - R2
-Mahlet Seyoum,0086,pw0086,0912340086,Information Systems,2,Female,Block-2,Block-2 - R2
-Ermias Tadesse,0087,pw0087,0912340087,Software Engineering,4,Male,Block 1,Block 1 - R2
-Blen Habtom,0088,pw0088,0912340088,Civil Engineering,1,Female,Block-2,Block-2 - R3
-Abraham Moges,0089,pw0089,0912340089,Computer Science,3,Male,Block 1,Block 1 - R3
-Selam Esubalew,0090,pw0090,0912340090,Architecture,2,Female,Block-2,Block-2 - R3
-Daniel Worku,0091,pw0091,0912340091,Mechanical Engineering,4,Male,Block 1,Block 1 - R3
-Feven Chernet,0092,pw0092,0912340092,Information Systems,1,Female,Block-2,Block-2 - R3
-Amanuel Fekadu,0093,pw0093,0912340093,Electrical Engineering,3,Male,Block 1,Block 1 - R3
-Rahela Dinku,0094,pw0094,0912340094,Software Engineering,2,Female,Block-2,Block-2 - R3
-Yoseph Teshome,0095,pw0095,0912340095,Chemical Engineering,4,Male,Block 1,Block 1 - R3
-Sosina Belachew,0096,pw0096,0912340096,Computer Science,1,Female,Block-2,Block-2 - R4
-Henok Kiros,0097,pw0097,0912340097,Civil Engineering,2,Male,Block 1,Block 1 - R4
-Lily Yirga,0098,pw0098,0912340098,Information Systems,3,Female,Block-2,Block-2 - R4
-Bamlak Gashaw,0099,pw0099,0912340099,Architecture,1,Male,Block 1,Block 1 - R4
-Saron Desta,0100,pw0100,0912340100,Mechanical Engineering,3,Female,Block-2,Block-2 - R4
-Tewodros Haile,0101,pw0101,0912340101,Electrical Engineering,2,Male,Block 1,Block 1 - R4
-Liya Getachew,0100,pw0100,0912340100,Software Engineering,1,Female,Block-2,Block-2 - R4
-Abel Mekonnen,0101,pw0101,0912340101,Computer Science,2,Male,Block 1,Block 1 - R4
-Ruth Alemu,0102,pw0102,0912340102,Architecture,3,Female,Block-2,Block-2 - R5
-Nahom Tesfaye,0103,pw0103,0912340103,Mechanical Engineering,1,Male,Block 1,Block 1 - R5
-Hanna Birhanu,0104,pw0104,0912340104,Civil Engineering,2,Female,Block-2,Block-2 - R5
-Samuel Hagos,0105,pw0105,0912340105,Information Systems,3,Male,Block 1,Block 1 - R5
-Meron Assefa,0106,pw0106,0912340106,Accounting,1,Female,Block-2,Block-2 - R5
-Yosef Endale,0107,pw0107,0912340107,Electrical Engineering,2,Male,Block 1,Block 1 - R5
-Helina Fikadu,0108,pw0108,0912340108,Nursing,1,Female,Block-2,Block-2 - R5
-Brook Lemma,0109,pw0109,0912340109,Software Engineering,3,Male,Block 1,Block 1 - R5
-Sosina Abrha,0110,pw0110,0912340110,Marketing Management,1,Female,Block-2,Block-2 - R6
-Miki Debebe,0111,pw0111,0912340111,Computer Science,3,Male,Block 1,Block 1 - R6
-Bethelhem Daniel,0112,pw0112,0912340112,Information Systems,2,Female,Block-2,Block-2 - R6
-Eyob Tola,0113,pw0113,0912340113,Chemical Engineering,1,Male,Block 1,Block 1 - R6
-Selamawit Mulu,0114,pw0114,0912340114,Software Engineering,2,Female,Block-2,Block-2 - R6
-Dawit Bogale,0115,pw0115,0912340115,Mechanical Engineering,3,Male,Block 1,Block 1 - R6
-Kidist Mersha,0116,pw0116,0912340116,Public Health,1,Female,Block-2,Block-2 - R6
-Henok Woldu,0117,pw0117,0912340117,Accounting,2,Male,Block 1,Block 1 - R6
-Sifan Tarekegn,0118,pw0118,0912340118,Biomedical Engineering,3,Female,Block-2,Block-2 - R7
-Yared Mulatu,0119,pw0119,0912340119,Computer Science,1,Male,Block 1,Block 1 - R7
-Bruktawit Eshete,0120,pw0120,0912340120,Management,1,Female,Block-2,Block-2 - R7
-Kaleb Mamo,0121,pw0121,0912340121,Software Engineering,2,Male,Block 1,Block 1 - R7
-Melat Abate,0122,pw0122,0912340122,Economics,3,Female,Block-2,Block-2 - R7
-Eden Tsegaye,0123,pw0123,0912340123,Nursing,1,Female,Block-2,Block-2 - R7
-Fikremariam Mola,0124,pw0124,0912340124,Civil Engineering,2,Male,Block 1,Block 1 - R7
-Sena Tesemma,0125,pw0125,0912340125,Law,3,Female,Block-2,Block-2 - R8
-Natnael Yonas,0126,pw0126,0912340126,Construction Technology,1,Male,Block 1,Block 1 - R7
-Tsion Worku,0127,pw0127,0912340127,Marketing,2,Female,Block-2,Block-2 - R8
-Amanuel Girma,0128,pw0128,0912340128,Biomedical Engineering,1,Male,Block 1,Block 1 - R8
-Rahel Kidane,0129,pw0129,0912340129,Architecture,3,Female,Block-2,Block-2 - R8
-Jonathan Yirga,0130,pw0130,0912340130,Computer Science,2,Male,Block 1,Block 1 - R8
-Samrawit Belete,0131,pw0131,0912340131,Software Engineering,1,Female,Block-2,Block-2 - R8
-Mikias Tilahun,0132,pw0132,0912340132,Mechanical Engineering,3,Male,Block 1,Block 1 - R8
-Martha Tadesse,0133,pw0133,0912340133,Public Health,1,Female,Block-2,Block-2 - R9
-Abraham Wossen,0134,pw0134,0912340134,Electrical Engineering,3,Male,Block 1,Block 1 - R8
-Selam Haftu,0135,pw0135,0912340135,Information Systems,2,Female,Block-2,Block-2 - R9
-Yonatan Abera,0136,pw0136,0912340136,Civil Engineering,1,Male,Block 1,Block 1 - R9
-Enatnesh Alemayehu,0137,pw0137,0912340137,Law,2,Female,Block-2,Block-2 - R9
-Biniam Fisseha,0138,pw0138,0912340138,Nursing,3,Male,Block 1,Block 1 - R9
-Mahlet Tesfahun,0139,pw0139,0912340139,Economics,1,Female,Block-2,Block-2 - R9
-Samrawit Kassa,0140,pw0140,0912340140,Software Engineering,1,Female,Block-2,Block-2 - R10
-Bereket Fikadu,0141,pw0141,0912340141,Computer Science,2,Male,Block 1,Block 1 - R9
-Mesenbet Alemu,0142,pw0142,0912340142,Information Systems,3,Female,Block-2,Block-2 - R10
-Yonas Tesfaye,0143,pw0143,0912340143,Civil Engineering,1,Male,Block 1,Block 1 - R9
-Helen Asfaw,0144,pw0144,0912340144,Electrical Engineering,2,Female,Block-2,Block-2 - R10
-Getachew Abebe,0145,pw0145,0912340145,Mechanical Engineering,3,Male,Block 1,Block 1 - R10
-Marta Mulu,0146,pw0146,0912340146,Architecture,1,Female,Block-2,Block-2 - R10
-Daniel Tadesse,0147,pw0147,0912340147,Accounting,2,Male,Block 1,Block 1 - R10
-Eyerus Hailu,0148,pw0148,0912340148,Law,3,Female,Block-2,Block-2 - R11
-Samuel Teklu,0149,pw0149,0912340149,Public Health,1,Male,Block 1,Block 1 - R10
-Tsion Fikremariam,0150,pw0150,0912340150,Nursing,2,Female,Block-2,Block-2 - R11
-Yared Alemayehu,0151,pw0151,0912340151,Economics,3,Male,Block 1,Block 1 - R10
-Meron Bekele,0152,pw0152,0912340152,Software Engineering,1,Female,Block-2,Block-2 - R11
-Henok Teshome,0153,pw0153,0912340153,Computer Science,2,Male,Block 1,Block 1 - R11
-Selamawit Gebremedhin,0154,pw0154,0912340154,Information Systems,3,Female,Block-2,Block-2 - R11
-Abel Meles,0155,pw0155,0912340155,Mechanical Engineering,1,Male,Block 1,Block 1 - R11
-Lidya Mengistu,0156,pw0156,0912340156,Marketing Management,2,Female,Block-2,Block-2 - R12
-Eyob Wolde,0157,pw0157,0912340157,Chemical Engineering,3,Male,Block 1,Block 1 - R11
-Saba Tadesse,0158,pw0158,0912340158,Architecture,1,Female,Block-2,Block-2 - R12
-Nathaniel Solomon,0159,pw0159,0912340159,Electrical Engineering,2,Male,Block 1,Block 1 - R11
-Rahel Alemu,0160,pw0160,0912340160,Software Engineering,1,Female,Block-2,Block-2 - R12
-Mikiyas Bekele,0161,pw0161,0912340161,Computer Science,2,Male,Block 1,Block 1 - R12
-Selamawit Fikadu,0162,pw0162,0912340162,Information Systems,3,Female,Block-2,Block-2 - R12
-Abraham Tesfaye,0163,pw0163,0912340163,Civil Engineering,1,Male,Block 1,Block 1 - R12
-Meron Desta,0164,pw0164,0912340164,Electrical Engineering,2,Female,Block-2,Block-2 - R13
-Yohannes Hailemariam,0165,pw0165,0912340165,Mechanical Engineering,3,Male,Block 1,Block 1 - R12
-Martha Abate,0166,pw0166,0912340166,Architecture,1,Female,Block-2,Block-2 - R13
-Daniel Assefa,0167,pw0167,0912340167,Accounting,2,Male,Block 1,Block 1 - R12
-Selam Tesfaye,0168,pw0168,0912340168,Law,3,Female,Block-2,Block-2 - R13
-Natnael Bekele,0169,pw0169,0912340169,Public Health,1,Male,Block-5,Block-5 - R1
-Hana Meles,0170,pw0170,0912340170,Nursing,2,Female,Block-2,Block-2 - R13
-Eyob Tadesse,0171,pw0171,0912340171,Economics,3,Male,Block-5,Block-5 - R1
-Tsion Kidane,0172,pw0172,0912340172,Software Engineering,1,Female,Block-2,Block-2 - R14
-Samuel Fikre,0173,pw0173,0912340173,Computer Science,2,Male,Block-5,Block-5 - R1
-Bethelhem Alemu,0174,pw0174,0912340174,Information Systems,3,Female,Block-2,Block-2 - R14
-Mikiyas Abate,0175,pw0175,0912340175,Mechanical Engineering,1,Male,Block-5,Block-5 - R1
-Selamawit Teshome,0176,pw0176,0912340176,Marketing Management,2,Female,Block-2,Block-2 - R14
-Henok Mekonnen,0177,pw0177,0912340177,Chemical Engineering,3,Male,Block-5,Block-5 - R2
-Rahel Mulu,0178,pw0178,0912340178,Architecture,1,Female,Block-2,Block-2 - R14
-Yared Tesfaye,0179,pw0179,0912340179,Electrical Engineering,2,Male,Block-5,Block-5 - R2
-Liya Bekele,0180,pw0180,0912340180,Software Engineering,3,Female,Block-2,Block-2 - R15
-Abel Alemayehu,0181,pw0181,0912340181,Computer Science,1,Male,Block-5,Block-5 - R2
-Selam Mersha,0182,pw0182,0912340182,Information Systems,2,Female,Block-2,Block-2 - R15
-Nathaniel Tadesse,0183,pw0183,0912340183,Civil Engineering,3,Male,Block-5,Block-5 - R2
-Meron Wolde,0184,pw0184,0912340184,Electrical Engineering,1,Female,Block-2,Block-2 - R15
-Eyob Getachew,0185,pw0185,0912340185,Mechanical Engineering,2,Male,Block-5,Block-5 - R3
-Hanna Kidane,0186,pw0186,0912340186,Architecture,3,Female,Block-2,Block-2 - R15
-Daniel Mulu,0187,pw0187,0912340187,Accounting,1,Male,Block-5,Block-5 - R3
-Sifan Alemayehu,0188,pw0188,0912340188,Law,2,Female,Block-2,Block-2 - R16
-Yohannes Abate,0189,pw0189,0912340189,Public Health,3,Male,Block-5,Block-5 - R3
-Tsion Gebremedhin,0190,pw0190,0912340190,Nursing,1,Female,Block-2,Block-2 - R16
-Mikiyas Teshome,0191,pw0191,0912340191,Economics,2,Male,Block-5,Block-5 - R3
-Rahel Fikadu,0192,pw0192,0912340192,Software Engineering,3,Female,Block-2,Block-2 - R16
-Abraham Mekonnen,0193,pw0193,0912340193,Computer Science,1,Male,Block-5,Block-5 - R14
-Yohannes Bekele,0195,pw0195,0912340195,Mechanical Engineering,3,Male,Block-5,Block-5 - R4
-Henok Alemayehu,0197,pw0197,0912340197,Chemical Engineering,2,Male,Block-5,Block-5 - R4
-Rahel Kidane,0198,pw0198,0912340198,Architecture,3,Female,Block-2,Block-2 - R17
-Yared Fikre,0199,pw0199,0912340199,Electrical Engineering,1,Male,Block-5,Block-5 - R4
-Anwar,05977,12345,cxvcv,zdvzdv,3,Male,Block-5,Block-5 - R5
-MIKIYAS DAWIT ARAYA,0597,12345,454352354,CS,3,Male,Block-5,Block-5 - R5
+Nahom Tsegaye,0054,pw0054,0912340054,Computer Science,2,Male,Block 1,Block 1 - R1
+Hana Getachew,0055,pw0055,0912340055,Information Systems,1,Female,Block-41,Block-41 - R1
+Samuel Worku,0056,pw0056,0912340056,Electrical Engineering,4,Male,Block 1,Block 1 - R1
+Meron Alemu,0057,pw0057,0912340057,Software Engineering,3,Female,Block-41,Block-41 - R1
+Biniam Haile,0058,pw0058,0912340058,Civil Engineering,2,Male,Block 1,Block 1 - R1
+Selamawit Hailu,0059,pw0059,0912340059,Mechanical Engineering,1,Female,Block-41,Block-41 - R1
+Brook Abate,0060,pw0060,0912340060,Information Technology,3,Male,Block 1,Block 1 - R1
+Rahel Girma,0061,pw0061,0912340061,Software Engineering,4,Female,Block-41,Block-41 - R1
+Yonatan Befekadu,0062,pw0062,0912340062,Computer Science,2,Male,Block 1,Block 1 - R2
+Elshaday Tesfaye,0063,pw0063,0912340063,Electrical Engineering,1,Female,Block-41,Block-41 - R2
+Mekdelawit Molla,0064,pw0064,0912340064,Nursing,2,Female,Block-41,Block-41 - R2
+Kalkidan Yosef,0065,pw0065,0912340065,Software Engineering,3,Female,Block-41,Block-41 - R2
+Fitsum Arega,0066,pw0066,0912340066,Software Engineering,2,Male,Block 1,Block 1 - R2
+Lidia Fikadu,0067,pw0067,0912340067,Computer Science,1,Female,Block-41,Block-41 - R2
+Natnael Sorsa,0068,pw0068,0912340068,Information Systems,2,Male,Block 1,Block 1 - R2
+Blen Shiferaw,0069,pw0069,0912340069,Information Technology,3,Female,Block-41,Block-41 - R3
+Yonadab Tena,0070,pw0070,0912340070,Software Engineering,4,Male,Block 1,Block 1 - R2
+Hermela Tadele,0071,pw0071,0912340071,Civil Engineering,1,Female,Block-41,Block-41 - R3
+Abel Kassahun,0072,pw0072,0912340072,Computer Science,3,Male,Block 1,Block 1 - R3
+Selam Neway,0073,pw0073,0912340073,Software Engineering,2,Female,Block-41,Block-41 - R3
+Abraham Nigussie,0074,pw0074,0912340074,Mechanical Engineering,4,Male,Block 1,Block 1 - R3
+Ruth Asfaw,0075,pw0075,0912340075,Computer Science,1,Female,Block-41,Block-41 - R3
+Solomon Dinku,0076,pw0076,0912340076,Information Systems,2,Male,Block 1,Block 1 - R3
+Sosina Yared,0077,pw0077,0912340077,Information Technology,1,Female,Block-41,Block-41 - R4
+Bereket Girum,0078,pw0078,0912340078,Electrical Engineering,3,Male,Block 1,Block 1 - R3
+Mahider Endeshaw,0079,pw0079,0912340079,Software Engineering,2,Female,Block-41,Block-41 - R4
+Hewan Tilahun,0080,pw0080,0912340080,Nursing,1,Female,Block-41,Block-41 - R4
+Kaleb Fenta,0081,pw0081,0912340081,Software Engineering,4,Male,Block 1,Block 1 - R4
+Bethel Getu,0082,pw0082,0912340082,Computer Science,2,Female,Block-41,Block-41 - R4
+Mikias Gashaw,0083,pw0083,0912340083,Software Engineering,3,Male,Block 1,Block 1 - R4
+Belayneh Desta,0084,pw0084,0912340084,Mechanical Engineering,1,Male,Block 1,Block 1 - R4
+Hannet Tesema,0085,pw0085,0912340085,Information Technology,4,Female,Block-41,Block-41 - R5
+Nathnael Wudu,0086,pw0086,0912340086,Electrical Engineering,3,Male,Block 1,Block 1 - R4
+Saron Yonas,0087,pw0087,0912340087,Software Engineering,1,Female,Block-41,Block-41 - R5
+Brook Tsegaw,0088,pw0088,0912340088,Civil Engineering,2,Male,Block 1,Block 1 - R5
+Ruth Kebede,0089,pw0089,0912340089,Information Systems,4,Female,Block-41,Block-41 - R5
+Addis Fikremariam,0090,pw0090,0912340090,Computer Science,1,Male,Block 1,Block 1 - R5
+Selam Zewdu,0091,pw0091,0912340091,Nursing,2,Female,Block-41,Block-41 - R5
+Natinael Abay,0092,pw0092,0912340092,Software Engineering,4,Male,Block 1,Block 1 - R5
+Bethelhiwot Dereje,0093,pw0093,0912340093,Electrical Engineering,3,Female,Block-41,Block-41 - R6
+Samuel Merid,0094,pw0094,0912340094,Mechanical Engineering,1,Male,Block 1,Block 1 - R5
+Helina Shume,0095,pw0095,0912340095,Software Engineering,2,Female,Block-41,Block-41 - R6
+Yonathan Mersha,0096,pw0096,0912340096,Computer Science,3,Male,Block 1,Block 1 - R6
+Fanuel Bayisa,0097,pw0097,0912340097,Information Technology,2,Male,Block 1,Block 1 - R6
+Mahlet Esubalew,0098,pw0098,0912340098,Software Engineering,3,Female,Block-41,Block-41 - R6
+Dawit Mulatu,0099,pw0099,0912340099,Civil Engineering,4,Male,Block 1,Block 1 - R6
+Tigist Amare,0100,pw0100,0912340100,Information Systems,1,Female,Block-41,Block-41 - R6
+Naod Terefe,0101,pw0101,0912340101,Computer Science,2,Male,Block 1,Block 1 - R6
+Lily Abreham,0102,pw0102,0912340102,Nursing,3,Female,Block-41,Block-41 - R7
+Henok Daniel,0103,pw0103,0912340103,Software Engineering,4,Male,Block 1,Block 1 - R7
+Yeshiwork Ayalew,0104,pw0104,0912340104,Information Systems,2,Female,Block-41,Block-41 - R7
+Abreham Endale,0105,pw0105,0912340105,Information Technology,1,Male,Block 1,Block 1 - R7
+Frehiwot Belay,0106,pw0106,0912340106,Software Engineering,3,Female,Block-41,Block-41 - R7
+Kaleb Yirdaw,0107,pw0107,0912340107,Computer Science,4,Male,Block 1,Block 1 - R7
+Mahider Samuel,0108,pw0108,0912340108,Civil Engineering,2,Female,Block-41,Block-41 - R7
+Surafel Gossa,0109,pw0109,0912340109,Electrical Engineering,3,Male,Block 1,Block 1 - R7
+Sosina Tesfaw,0110,pw0110,0912340110,Mechanical Engineering,1,Female,Block-41,Block-41 - R8
+Biruk Fikremariam,0111,pw0111,0912340111,Software Engineering,2,Male,Block 1,Block 1 - R8
+Eden Tekabe,0112,pw0112,0912340112,Computer Science,3,Female,Block-41,Block-41 - R8
+Yonatan Alemayehu,0113,pw0113,0912340113,Information Technology,4,Male,Block 1,Block 1 - R8
+Selamawit Birhanu,0114,pw0114,0912340114,Software Engineering,1,Female,Block-41,Block-41 - R8
+Natnael Adamu,0115,pw0115,0912340115,Electrical Engineering,3,Male,Block 1,Block 1 - R8
+Mehret Tarekegn,0116,pw0116,0912340116,Nursing,2,Female,Block-41,Block-41 - R8
+Million Getnet,0117,pw0117,0912340117,Computer Science,3,Male,Block 1,Block 1 - R8
+Sofanit Gossa,0118,pw0118,0912340118,Information Systems,1,Female,Block-41,Block-41 - R9
+Yared Kibret,0119,pw0119,0912340119,Software Engineering,4,Male,Block 1,Block 1 - R9
+Mahiya Gebru,0120,pw0120,0912340120,Civil Engineering,3,Female,Block-41,Block-41 - R9
+Kaleb Eshete,0121,pw0121,0912340121,Mechanical Engineering,2,Male,Block 1,Block 1 - R9
+Aster Tigu,0122,pw0122,0912340122,Software Engineering,1,Female,Block-41,Block-41 - R9
+Broni Tadesse,0123,pw0123,0912340123,Computer Science,2,Male,Block 1,Block 1 - R9
+Hana Wondimu,0124,pw0124,0912340124,Information Technology,3,Female,Block-41,Block-41 - R9
+Bereket Tekola,0125,pw0125,0912340125,Electrical Engineering,4,Male,Block 1,Block 1 - R9
+Selam Simon,0126,pw0126,0912340126,Nursing,1,Female,Block-41,Block-41 - R10
+Biniam Adisu,0127,pw0127,0912340127,Information Systems,4,Male,Block 1,Block 1 - R10
+Rahel Misgana,0128,pw0128,0912340128,Software Engineering,2,Female,Block-41,Block-41 - R10
+Nahom Tazebew,0129,pw0129,0912340129,Computer Science,3,Male,Block 1,Block 1 - R10
+Lidya Yohannes,0130,pw0130,0912340130,Civil Engineering,1,Female,Block-41,Block-41 - R10
+Ephrem Kebede,0131,pw0131,0912340131,Mechanical Engineering,4,Male,Block 1,Block 1 - R10
+Bethany Tsegaye,0132,pw0132,0912340132,Software Engineering,3,Female,Block-41,Block-41 - R10
+Henok Mezgebu,0133,pw0133,0912340133,Information Technology,1,Male,Block 1,Block 1 - R10
+Meklit Tesfahun,0134,pw0134,0912340134,Computer Science,2,Female,Block-41,Block-41 - R11
+Robel Alemayehu,0135,pw0135,0912340135,Electrical Engineering,3,Male,Block 1,Block 1 - R11
+Martha Amdu,0136,pw0136,0912340136,Software Engineering,4,Female,Block-41,Block-41 - R11
+Natnael Kemal,0137,pw0137,0912340137,Nursing,2,Male,Block 1,Block 1 - R11
+Selam Wedajo,0138,pw0138,0912340138,Information Systems,3,Female,Block-41,Block-41 - R11
+Yonatan Tamiru,0139,pw0139,0912340139,Civil Engineering,4,Male,Block 1,Block 1 - R11
+Tsion Cheru,0140,pw0140,0912340140,Software Engineering,1,Female,Block-41,Block-41 - R11
+Dagi Alemu,0141,pw0141,0912340141,Computer Science,3,Male,Block 1,Block 1 - R11
+Hawi Meles,0142,pw0142,0912340142,Mechanical Engineering,2,Female,Block-41,Block-41 - R12
+Brook Asnake,0143,pw0143,0912340143,Electrical Engineering,1,Male,Block 1,Block 1 - R12
+Mahi Kebede,0144,pw0144,0912340144,Software Engineering,3,Female,Block-41,Block-41 - R12
+Abel Tamene,0145,pw0145,0912340145,Computer Science,4,Male,Block 1,Block 1 - R12
+Selam Feker,0146,pw0146,0912340146,Civil Engineering,1,Female,Block-41,Block-41 - R12
+Natinael Fisseha,0147,pw0147,0912340147,Information Systems,2,Male,Block 1,Block 1 - R12
+Meaza Gemechu,0148,pw0148,0912340148,Information Technology,3,Female,Block-41,Block-41 - R12
+Dani Asfaw,0149,pw0149,0912340149,Software Engineering,2,Male,Block 1,Block 1 - R12
+Elsa Cherinet,0150,pw0150,0912340150,Nursing,1,Female,Block-41,Block-41 - R13
+Rediet Mulugeta,0053,pw0053,0912340053,Software Engineering,3,Female,Not Assigned,--
+Nahom Tsegaye,0054,pw0054,0912340054,Computer Science,2,Male,Not Assigned,--
+Hana Getachew,0055,pw0055,0912340055,Information Systems,1,Female,Not Assigned,--
+Samuel Worku,0056,pw0056,0912340056,Electrical Engineering,4,Male,Not Assigned,--
+Meron Alemu,0057,pw0057,0912340057,Software Engineering,3,Female,Not Assigned,--
+Biniam Haile,0058,pw0058,0912340058,Civil Engineering,2,Male,Not Assigned,--
+Selamawit Hailu,0059,pw0059,0912340059,Mechanical Engineering,1,Female,Not Assigned,--
+Brook Abate,0060,pw0060,0912340060,Information Technology,3,Male,Not Assigned,--
+Rahel Girma,0061,pw0061,0912340061,Software Engineering,4,Female,Not Assigned,--
+Yonatan Befekadu,0062,pw0062,0912340062,Computer Science,2,Male,Not Assigned,--
+Elshaday Tesfaye,0063,pw0063,0912340063,Electrical Engineering,1,Female,Not Assigned,--
+Mekdelawit Molla,0064,pw0064,0912340064,Nursing,2,Female,Not Assigned,--
+Kalkidan Yosef,0065,pw0065,0912340065,Software Engineering,3,Female,Not Assigned,--
+Fitsum Arega,0066,pw0066,0912340066,Software Engineering,2,Male,Not Assigned,--
+Lidia Fikadu,0067,pw0067,0912340067,Computer Science,1,Female,Not Assigned,--
+Natnael Sorsa,0068,pw0068,0912340068,Information Systems,2,Male,Not Assigned,--
+Blen Shiferaw,0069,pw0069,0912340069,Information Technology,3,Female,Not Assigned,--
+Yonadab Tena,0070,pw0070,0912340070,Software Engineering,4,Male,Not Assigned,--
+Hermela Tadele,0071,pw0071,0912340071,Civil Engineering,1,Female,Not Assigned,--
+Abel Kassahun,0072,pw0072,0912340072,Computer Science,3,Male,Not Assigned,--
+Selam Neway,0073,pw0073,0912340073,Software Engineering,2,Female,Not Assigned,--
+Abraham Nigussie,0074,pw0074,0912340074,Mechanical Engineering,4,Male,Not Assigned,--
+Ruth Asfaw,0075,pw0075,0912340075,Computer Science,1,Female,Not Assigned,--
+Solomon Dinku,0076,pw0076,0912340076,Information Systems,2,Male,Not Assigned,--
+Sosina Yared,0077,pw0077,0912340077,Information Technology,1,Female,Not Assigned,--
+Bereket Girum,0078,pw0078,0912340078,Electrical Engineering,3,Male,Not Assigned,--
+Mahider Endeshaw,0079,pw0079,0912340079,Software Engineering,2,Female,Not Assigned,--
+Hewan Tilahun,0080,pw0080,0912340080,Nursing,1,Female,Not Assigned,--
+Kaleb Fenta,0081,pw0081,0912340081,Software Engineering,4,Male,Not Assigned,--
+Bethel Getu,0082,pw0082,0912340082,Computer Science,2,Female,Not Assigned,--
+Mikias Gashaw,0083,pw0083,0912340083,Software Engineering,3,Male,Not Assigned,--
+Belayneh Desta,0084,pw0084,0912340084,Mechanical Engineering,1,Male,Not Assigned,--
+Hannet Tesema,0085,pw0085,0912340085,Information Technology,4,Female,Not Assigned,--
+Nathnael Wudu,0086,pw0086,0912340086,Electrical Engineering,3,Male,Not Assigned,--
+Saron Yonas,0087,pw0087,0912340087,Software Engineering,1,Female,Not Assigned,--
+Brook Tsegaw,0088,pw0088,0912340088,Civil Engineering,2,Male,Not Assigned,--
+Ruth Kebede,0089,pw0089,0912340089,Information Systems,4,Female,Not Assigned,--
+Addis Fikremariam,0090,pw0090,0912340090,Computer Science,1,Male,Not Assigned,--
+Selam Zewdu,0091,pw0091,0912340091,Nursing,2,Female,Not Assigned,--
+Natinael Abay,0092,pw0092,0912340092,Software Engineering,4,Male,Not Assigned,--
+Bethelhiwot Dereje,0093,pw0093,0912340093,Electrical Engineering,3,Female,Not Assigned,--
+Samuel Merid,0094,pw0094,0912340094,Mechanical Engineering,1,Male,Not Assigned,--
+Helina Shume,0095,pw0095,0912340095,Software Engineering,2,Female,Not Assigned,--
+Yonathan Mersha,0096,pw0096,0912340096,Computer Science,3,Male,Not Assigned,--
+Fanuel Bayisa,0097,pw0097,0912340097,Information Technology,2,Male,Not Assigned,--
+Mahlet Esubalew,0098,pw0098,0912340098,Software Engineering,3,Female,Not Assigned,--
+Dawit Mulatu,0099,pw0099,0912340099,Civil Engineering,4,Male,Not Assigned,--
+Tigist Amare,0100,pw0100,0912340100,Information Systems,1,Female,Not Assigned,--
+Naod Terefe,0101,pw0101,0912340101,Computer Science,2,Male,Not Assigned,--
+Lily Abreham,0102,pw0102,0912340102,Nursing,3,Female,Not Assigned,--
+Henok Daniel,0103,pw0103,0912340103,Software Engineering,4,Male,Not Assigned,--
+Yeshiwork Ayalew,0104,pw0104,0912340104,Information Systems,2,Female,Not Assigned,--
+Abreham Endale,0105,pw0105,0912340105,Information Technology,1,Male,Not Assigned,--
+Frehiwot Belay,0106,pw0106,0912340106,Software Engineering,3,Female,Not Assigned,--
+Kaleb Yirdaw,0107,pw0107,0912340107,Computer Science,4,Male,Not Assigned,--
+Mahider Samuel,0108,pw0108,0912340108,Civil Engineering,2,Female,Not Assigned,--
+Surafel Gossa,0109,pw0109,0912340109,Electrical Engineering,3,Male,Not Assigned,--
+Sosina Tesfaw,0110,pw0110,0912340110,Mechanical Engineering,1,Female,Not Assigned,--
+Biruk Fikremariam,0111,pw0111,0912340111,Software Engineering,2,Male,Not Assigned,--
+Eden Tekabe,0112,pw0112,0912340112,Computer Science,3,Female,Not Assigned,--
+Yonatan Alemayehu,0113,pw0113,0912340113,Information Technology,4,Male,Not Assigned,--
+Selamawit Birhanu,0114,pw0114,0912340114,Software Engineering,1,Female,Not Assigned,--
+Natnael Adamu,0115,pw0115,0912340115,Electrical Engineering,3,Male,Not Assigned,--
+Mehret Tarekegn,0116,pw0116,0912340116,Nursing,2,Female,Not Assigned,--
+Million Getnet,0117,pw0117,0912340117,Computer Science,3,Male,Not Assigned,--
+Sofanit Gossa,0118,pw0118,0912340118,Information Systems,1,Female,Not Assigned,--
+Yared Kibret,0119,pw0119,0912340119,Software Engineering,4,Male,Not Assigned,--
+Mahiya Gebru,0120,pw0120,0912340120,Civil Engineering,3,Female,Not Assigned,--
+Kaleb Eshete,0121,pw0121,0912340121,Mechanical Engineering,2,Male,Not Assigned,--
+Aster Tigu,0122,pw0122,0912340122,Software Engineering,1,Female,Not Assigned,--
+Broni Tadesse,0123,pw0123,0912340123,Computer Science,2,Male,Not Assigned,--
+Hana Wondimu,0124,pw0124,0912340124,Information Technology,3,Female,Not Assigned,--
+Bereket Tekola,0125,pw0125,0912340125,Electrical Engineering,4,Male,Not Assigned,--
+Selam Simon,0126,pw0126,0912340126,Nursing,1,Female,Not Assigned,--
+Biniam Adisu,0127,pw0127,0912340127,Information Systems,4,Male,Not Assigned,--
+Rahel Misgana,0128,pw0128,0912340128,Software Engineering,2,Female,Not Assigned,--
+Nahom Tazebew,0129,pw0129,0912340129,Computer Science,3,Male,Not Assigned,--
+Lidya Yohannes,0130,pw0130,0912340130,Civil Engineering,1,Female,Not Assigned,--
+Ephrem Kebede,0131,pw0131,0912340131,Mechanical Engineering,4,Male,Not Assigned,--
+Bethany Tsegaye,0132,pw0132,0912340132,Software Engineering,3,Female,Not Assigned,--
+Henok Mezgebu,0133,pw0133,0912340133,Information Technology,1,Male,Not Assigned,--
+Meklit Tesfahun,0134,pw0134,0912340134,Computer Science,2,Female,Not Assigned,--
+Robel Alemayehu,0135,pw0135,0912340135,Electrical Engineering,3,Male,Not Assigned,--
+Martha Amdu,0136,pw0136,0912340136,Software Engineering,4,Female,Not Assigned,--
+Natnael Kemal,0137,pw0137,0912340137,Nursing,2,Male,Not Assigned,--
+Selam Wedajo,0138,pw0138,0912340138,Information Systems,3,Female,Not Assigned,--
+Yonatan Tamiru,0139,pw0139,0912340139,Civil Engineering,4,Male,Not Assigned,--
+Tsion Cheru,0140,pw0140,0912340140,Software Engineering,1,Female,Not Assigned,--
+Dagi Alemu,0141,pw0141,0912340141,Computer Science,3,Male,Not Assigned,--
+Hawi Meles,0142,pw0142,0912340142,Mechanical Engineering,2,Female,Not Assigned,--
+Brook Asnake,0143,pw0143,0912340143,Electrical Engineering,1,Male,Not Assigned,--
+Mahi Kebede,0144,pw0144,0912340144,Software Engineering,3,Female,Not Assigned,--
+Abel Tamene,0145,pw0145,0912340145,Computer Science,4,Male,Not Assigned,--
+Selam Feker,0146,pw0146,0912340146,Civil Engineering,1,Female,Not Assigned,--
+Natinael Fisseha,0147,pw0147,0912340147,Information Systems,2,Male,Not Assigned,--
+Meaza Gemechu,0148,pw0148,0912340148,Information Technology,3,Female,Not Assigned,--
+Dani Asfaw,0149,pw0149,0912340149,Software Engineering,2,Male,Not Assigned,--
+Elsa Cherinet,0150,pw0150,0912340150,Nursing,1,Female,Not Assigned,--
+Henok Alemnew,0151,pw0151,0912340151,Electrical Engineering,3,Male,Not Assigned,--
+Sosina Meshesha,0152,pw0152,0912340152,Information Systems,1,Female,Not Assigned,--
+Fisum Debela,0153,pw0153,0912340153,Software Engineering,4,Male,Not Assigned,--
+Medhanit Adugna,0154,pw0154,0912340154,Computer Science,3,Female,Not Assigned,--
+Natnael Gizachew,0155,pw0155,0912340155,Civil Engineering,2,Male,Not Assigned,--
+Ayda Endale,0156,pw0156,0912340156,Information Technology,4,Female,Not Assigned,--
+Mebratu Wondie,0157,pw0157,0912340157,Mechanical Engineering,1,Male,Not Assigned,--
+Kidist Yimam,0158,pw0158,0912340158,Software Engineering,2,Female,Not Assigned,--
+Hiyaw Belete,0159,pw0159,0912340159,Computer Science,3,Male,Not Assigned,--
+Yohanna Samuel,0160,pw0160,0912340160,Nursing,1,Female,Not Assigned,--
+Elsabet Abate,0161,pw0161,0912340161,Software Engineering,3,Female,Not Assigned,--
+Brook Wondwossen,0162,pw0162,0912340162,Mechanical Engineering,4,Male,Not Assigned,--
+Misti Tarekegn,0163,pw0163,0912340163,Information Systems,2,Female,Not Assigned,--
+Selam Getachew,0164,pw0164,0912340164,Electrical Engineering,3,Female,Not Assigned,--
+Yosef Girma,0165,pw0165,0912340165,Information Technology,1,Male,Not Assigned,--
+Melat Tsegaye,0166,pw0166,0912340166,Computer Science,2,Female,Not Assigned,--
+Nathnael Mihret,0167,pw0167,0912340167,Civil Engineering,3,Male,Not Assigned,--
+Hana Woubishet,0168,pw0168,0912340168,Nursing,4,Female,Not Assigned,--
+Robel Gezahegn,0169,pw0169,0912340169,Software Engineering,1,Male,Not Assigned,--
+Sehin Amanuel,0170,pw0170,0912340170,Computer Science,4,Female,Not Assigned,--
+Kal Kidan,0171,pw0171,0912340171,Information Systems,3,Male,Not Assigned,--
+Bethelhem Tafese,0172,pw0172,0912340172,Electrical Engineering,2,Female,Not Assigned,--
+Natnael Seifu,0173,pw0173,0912340173,Software Engineering,4,Male,Not Assigned,--
+Eden Azeref,0174,pw0174,0912340174,Mechanical Engineering,1,Female,Not Assigned,--
+Samuel Abera,0175,pw0175,0912340175,Information Technology,3,Male,Not Assigned,--
+Mahider Berihu,0176,pw0176,0912340176,Civil Engineering,2,Female,Not Assigned,--
+Yesuf Kedir,0177,pw0177,0912340177,Computer Science,1,Male,Not Assigned,--
+Ruth Abera,0178,pw0178,0912340178,Nursing,3,Female,Not Assigned,--
+Lemlem Ashenafi,0179,pw0179,0912340179,Software Engineering,2,Female,Not Assigned,--
+Yonathan Tezera,0180,pw0180,0912340180,Information Systems,4,Male,Not Assigned,--
+Dawit Solomon,0181,pw0181,0912340181,Mechanical Engineering,2,Male,Not Assigned,--
+Mahlet Hiwot,0182,pw0182,0912340182,Computer Science,3,Female,Not Assigned,--
+Robel Tadele,0183,pw0183,0912340183,Information Technology,4,Male,Not Assigned,--
+Sosina Yirga,0184,pw0184,0912340184,Civil Engineering,1,Female,Not Assigned,--
+Abreham Lemma,0185,pw0185,0912340185,Electrical Engineering,3,Male,Not Assigned,--
+Mekdelawit Yilma,0186,pw0186,0912340186,Software Engineering,2,Female,Not Assigned,--
+Seblework Girma,0187,pw0187,0912340187,Nursing,1,Female,Not Assigned,--
+Kaleb Asfaw,0188,pw0188,0912340188,Computer Science,4,Male,Not Assigned,--
+Luwam Hagos,0189,pw0189,0912340189,Software Engineering,3,Female,Not Assigned,--
+Nathan Moges,0190,pw0190,0912340190,Mechanical Engineering,2,Male,Not Assigned,--
+Efrata Markos,0191,pw0191,0912340191,Information Systems,3,Female,Not Assigned,--
+Hanan Tola,0192,pw0192,0912340192,Information Technology,1,Female,Not Assigned,--
+Melkamu Tareke,0193,pw0193,0912340193,Computer Science,2,Male,Not Assigned,--
+Abel Kiros,0194,pw0194,0912340194,Civil Engineering,4,Male,Not Assigned,--
+Sosina Gobeze,0195,pw0195,0912340195,Software Engineering,1,Female,Not Assigned,--
+Natnael Moti,0196,pw0196,0912340196,Electrical Engineering,3,Male,Not Assigned,--
+Enatnesh Alemayehu,0197,pw0197,0912340197,Mechanical Engineering,1,Female,Not Assigned,--
+Bekalu Yonas,0198,pw0198,0912340198,Software Engineering,2,Male,Not Assigned,--
+Hawi Germew,0199,pw0199,0912340199,Nursing,3,Female,Not Assigned,--
+Robel Gebrewold,0200,pw0200,0912340200,Computer Science,4,Male,Not Assigned,--
+Betelhem Desta,0201,pw0201,0912340201,Information Systems,1,Female,Not Assigned,--
+Yonatan Abay,0202,pw0202,0912340202,Software Engineering,3,Male,Not Assigned,--
+Mahider Esayas,0203,pw0203,0912340203,Electrical Engineering,2,Female,Not Assigned,--
+Bereket Ayenew,0204,pw0204,0912340204,Information Technology,4,Male,Not Assigned,--
+Samrawit Asaminew,0205,pw0205,0912340205,Software Engineering,2,Female,Not Assigned,--
+Eshetu Elias,0206,pw0206,0912340206,Mechanical Engineering,1,Male,Not Assigned,--
+Hamelmal Genet,0207,pw0207,0912340207,Computer Science,3,Female,Not Assigned,--
+Natinael Shumiye,0208,pw0208,0912340208,Civil Engineering,2,Male,Not Assigned,--
+Mekdes Daniel,0209,pw0209,0912340209,Information Systems,4,Female,Not Assigned,--
+Merhawit Tesfom,0210,pw0210,0912340210,Nursing,1,Female,Not Assigned,--
+Yohannes Lakew,0211,pw0211,0912340211,Software Engineering,4,Male,Not Assigned,--
+Saron Hiwot,0212,pw0212,0912340212,Computer Science,3,Female,Not Assigned,--
+Hewan Getachew,0213,pw0213,0912340213,Information Technology,1,Female,Not Assigned,--
+Brook Amanuel,0214,pw0214,0912340214,Electrical Engineering,3,Male,Not Assigned,--
+Kidist Alem,0215,pw0215,0912340215,Software Engineering,2,Female,Not Assigned,--
+Abel Fufa,0216,pw0216,0912340216,Mechanical Engineering,4,Male,Not Assigned,--
+Mikiya Efrem,0217,pw0217,0912340217,Information Systems,2,Female,Not Assigned,--
+Yonatan Dawit,0218,pw0218,0912340218,Computer Science,1,Male,Not Assigned,--
+Seblewongel Merid,0219,pw0219,0912340219,Software Engineering,3,Female,Not Assigned,--
+Biniam Kebede,0220,pw0220,0912340220,Civil Engineering,2,Male,Not Assigned,--
+Rutha Habte,0221,pw0221,0912340221,Electrical Engineering,1,Female,Not Assigned,--
+Natnael Gobeze,0222,pw0222,0912340222,Software Engineering,4,Male,Not Assigned,--
+Mahilet Yilma,0223,pw0223,0912340223,Nursing,2,Female,Not Assigned,--
+Brook Kassahun,0224,pw0224,0912340224,Computer Science,3,Male,Not Assigned,--
+Eyerusalem Alemu,0225,pw0225,0912340225,Mechanical Engineering,1,Female,Not Assigned,--
+Robel Aman,0226,pw0226,0912340226,Software Engineering,2,Male,Not Assigned,--
+Helina Yami,0227,pw0227,0912340227,Information Systems,4,Female,Not Assigned,--
+Yetagesu Getaneh,0228,pw0228,0912340228,Electrical Engineering,3,Male,Not Assigned,--
+Feven Fekadu,0229,pw0229,0912340229,Information Technology,2,Female,Not Assigned,--
+Tewodros Girma,0230,pw0230,0912340230,Computer Science,3,Male,Not Assigned,--
+Selamawit Tesema,0231,pw0231,0912340231,Nursing,1,Female,Not Assigned,--
+Abel Tsegaye,0232,pw0232,0912340232,Software Engineering,4,Male,Not Assigned,--
+Hawi Abdisa,0233,pw0233,0912340233,Mechanical Engineering,2,Female,Not Assigned,--
+Niguse Addis,0234,pw0234,0912340234,Information Systems,1,Male,Not Assigned,--
+Sofanit Tilahun,0235,pw0235,0912340235,Computer Science,2,Female,Not Assigned,--
+Mebratu Alem,0236,pw0236,0912340236,Civil Engineering,3,Male,Not Assigned,--
+Tsion Fisseha,0237,pw0237,0912340237,Software Engineering,3,Female,Not Assigned,--
+Natty Yared,0238,pw0238,0912340238,Electrical Engineering,4,Male,Not Assigned,--
+Rahel Merga,0239,pw0239,0912340239,Information Technology,1,Female,Not Assigned,--
+Henok Tesema,0240,pw0240,0912340240,Software Engineering,2,Male,Not Assigned,--
+Selam Kibru,0241,pw0241,0912340241,Nursing,3,Female,Not Assigned,--
+Mikias Lisanework,0242,pw0242,0912340242,Computer Science,4,Male,Not Assigned,--
+Sosina Hiwot,0243,pw0243,0912340243,Mechanical Engineering,1,Female,Not Assigned,--
+Abel Wudu,0244,pw0244,0912340244,Software Engineering,3,Male,Not Assigned,--
+Ruth Ketema,0245,pw0245,0912340245,Information Systems,4,Female,Not Assigned,--
+Naod Jember,0246,pw0246,0912340246,Civil Engineering,2,Male,Not Assigned,--
+Tinsae Merhawit,0247,pw0247,0912340247,Electrical Engineering,3,Female,Not Assigned,--
+Kaleab Assefa,0248,pw0248,0912340248,Information Technology,4,Male,Not Assigned,--
+Selam Meles,0249,pw0249,0912340249,Computer Science,1,Female,Not Assigned,--
+Eskedar Amanuel,0250,pw0250,0912340250,Software Engineering,2,Female,Not Assigned,--
+Daniel Berhe,0251,pw0251,0912340251,0912340251,Civil Engineering,3,Male,--
+Eden Mulu,0252,pw0252,0912340252,Nursing,4,Female,Not Assigned,--
+MOhammed,00945,12345,094567,CS,3,Female,Not Assigned,--

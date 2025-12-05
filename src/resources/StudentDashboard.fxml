@@ -54,7 +54,7 @@
             <VBox spacing="15.0" VBox.vgrow="ALWAYS">
                <children>
                   <Label styleClass="header-label accent" text="My Roommates" style="-fx-font-size: 20px;" />
-                  <ListView fx:id="roommatesListView" styleClass="list-view" fixedCellSize="40.0" prefHeight="180.0" maxHeight="180.0" />
+                  <ListView fx:id="roommatesListView" styleClass="list-view" fixedCellSize="50.0" prefHeight="200.0" maxHeight="200.0" style="-fx-font-size: 15px; -fx-font-weight: 500;" />
                </children>
             </VBox>
          </children>

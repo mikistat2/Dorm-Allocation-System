@@ -48,15 +48,33 @@ public class StudentDashboardController {
 
     private void loadRoommates(models.Student current) {
         roommatesListView.getItems().clear();
-        if ("Not Assigned".equals(current.getAssignedBuilding())) return;
+        if ("Not Assigned".equals(current.getAssignedBuilding())) {
+            roommatesListView.getItems().add("No roommates - Not assigned to a room yet");
+            return;
+        }
 
+        int roommateCount = 0;
         for (models.Student s : data.DataManager.getInstance().getStudents()) {
             if (s.getAssignedBuilding().equals(current.getAssignedBuilding()) &&
                 s.getAssignedRoom().equals(current.getAssignedRoom()) &&
                 !s.getId().equals(current.getId())) {
                 
-                roommatesListView.getItems().add(s.getName() + " - " + s.getDepartment() + " - " + s.getPhone());
+                // Format: Name | ID: xxx | Dept: xxx | Year: x | Phone: xxx
+                String roommateInfo = String.format("👤 %s  |  ID: %s  |  %s  |  Year %s  |  📞 %s",
+                    s.getName(),
+                    s.getId(),
+                    s.getDepartment(),
+                    s.getYear(),
+                    s.getPhone()
+                );
+                
+                roommatesListView.getItems().add(roommateInfo);
+                roommateCount++;
             }
+        }
+        
+        if (roommateCount == 0) {
+            roommatesListView.getItems().add("No roommates - You have this room to yourself");
         }
     }
 
