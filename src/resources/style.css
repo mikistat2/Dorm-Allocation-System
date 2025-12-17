@@ -734,3 +734,508 @@
 
 /* Note: JavaFX CSS does not support @media queries. 
    Responsive design must be handled via FXML layout constraints and Java code listeners. */
+
+/* ============ CHART STYLES ============ */
+.chart {
+    -fx-background-color: transparent;
+    -fx-padding: 10px;
+}
+
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+.chart-title {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-font-weight: 600;
+}
+
+.chart-legend {
+    -fx-background-color: transparent;
+}
+
+.chart-legend-item {
+    -fx-text-fill: #e0f7fa;
+}
+
+/* Bar Chart Styling */
+.bar-chart .chart-bar {
+    -fx-bar-fill: linear-gradient(to bottom, #00b4d8, #0096c7);
+    -fx-background-radius: 5 5 0 0;
+    -fx-border-color: transparent;
+    -fx-effect: dropshadow(gaussian, rgba(0, 180, 216, 0.3), 5, 0, 0, 2);
+}
+
+.bar-chart .chart-bar:hover {
+    -fx-bar-fill: linear-gradient(to bottom, #0096c7, #0077b6);
+    -fx-effect: dropshadow(gaussian, rgba(0, 180, 216, 0.5), 8, 0, 0, 3);
+}
+
+.bar-chart .chart-bar.default-color0.chart-bar {
+    -fx-bar-fill: linear-gradient(to bottom, #00b4d8, #0096c7);
+}
+
+.bar-chart .chart-bar.default-color1.chart-bar {
+    -fx-bar-fill: linear-gradient(to bottom, #4cd964, #2ecc71);
+}
+
+.bar-chart .chart-bar.default-color2.chart-bar {
+    -fx-bar-fill: linear-gradient(to bottom, #ffd166, #ffb347);
+}
+
+.bar-chart .chart-bar.default-color3.chart-bar {
+    -fx-bar-fill: linear-gradient(to bottom, #ff6b6b, #ff5252);
+}
+
+/* Line Chart Styling */
+.chart-line-symbol {
+    -fx-background-color: #00b4d8, white;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 180, 216, 0.5), 5, 0, 0, 2);
+}
+
+.chart-series-line {
+    -fx-stroke: #00b4d8;
+    -fx-stroke-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 180, 216, 0.3), 5, 0, 0, 0);
+}
+
+/* Pie Chart Styling */
+/* Pie Chart Styling */
+/* .chart-pie removed to allow default coloring */
+
+.chart-pie-label {
+    -fx-fill: #e0f7fa;
+    -fx-font-size: 12px;
+}
+
+/* Axis Styling */
+.axis {
+    -fx-tick-label-fill: #90e0ef;
+    -fx-font-size: 12px;
+    -fx-tick-length: 5;
+    -fx-minor-tick-length: 3;
+}
+
+.axis-tick-mark {
+    -fx-stroke: rgba(144, 224, 239, 0.3);
+    -fx-stroke-width: 1;
+}
+
+.axis-minor-tick-mark {
+    -fx-stroke: rgba(144, 224, 239, 0.1);
+    -fx-stroke-width: 0.5;
+}
+
+.axis-label {
+    -fx-text-fill: #caf0f8;
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+}
+
+.chart-vertical-grid-lines {
+    -fx-stroke: rgba(144, 224, 239, 0.1);
+    -fx-stroke-dash-array: 5 5;
+}
+
+.chart-horizontal-grid-lines {
+    -fx-stroke: rgba(144, 224, 239, 0.1);
+    -fx-stroke-dash-array: 5 5;
+}
+
+/* ============ ENHANCED TABLE STYLING ============ */
+/* Status Pills in Table */
+.status-pill {
+    -fx-background-color: rgba(76, 217, 100, 0.2);
+    -fx-text-fill: #4cd964;
+    -fx-background-radius: 100px;
+    -fx-padding: 4px 12px;
+    -fx-font-size: 12px;
+    -fx-font-weight: 600;
+}
+
+.status-pill.pending {
+    -fx-background-color: rgba(255, 209, 102, 0.2);
+    -fx-text-fill: #ffd166;
+}
+
+.status-pill.inactive {
+    -fx-background-color: rgba(255, 107, 107, 0.2);
+    -fx-text-fill: #ff6b6b;
+}
+
+/* Action Buttons in Table */
+.table-action-button {
+    -fx-background-color: rgba(144, 224, 239, 0.1);
+    -fx-text-fill: #90e0ef;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    -fx-border-color: rgba(144, 224, 239, 0.2);
+    -fx-border-width: 1px;
+    -fx-padding: 4px 8px;
+    -fx-font-size: 12px;
+    -fx-cursor: hand;
+}
+
+.table-action-button:hover {
+    -fx-background-color: rgba(0, 180, 216, 0.2);
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #00b4d8;
+}
+
+/* ============ SEARCH FIELD ENHANCEMENT ============ */
+.search-field {
+    -fx-background-color: rgba(144, 224, 239, 0.08);
+    -fx-text-fill: #ffffff;
+    -fx-prompt-text-fill: rgba(144, 224, 239, 0.6);
+    -fx-background-radius: 8px;
+    -fx-border-color: rgba(144, 224, 239, 0.2);
+    -fx-border-radius: 8px;
+    -fx-border-width: 1.5px;
+    -fx-padding: 10px 16px;
+    -fx-font-size: 14px;
+}
+
+.search-field:focused {
+    -fx-border-color: #00b4d8;
+    -fx-border-width: 2px;
+    -fx-background-color: rgba(144, 224, 239, 0.12);
+}
+
+/* ============ PAGINATION STYLING ============ */
+.pagination {
+    -fx-page-information-visible: false;
+    -fx-background-color: transparent;
+}
+
+.pagination .pagination-control {
+    -fx-background-color: transparent;
+}
+
+.pagination .number-button {
+    -fx-background-color: rgba(144, 224, 239, 0.05);
+    -fx-text-fill: #90e0ef;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: rgba(144, 224, 239, 0.2);
+    -fx-border-width: 1px;
+    -fx-padding: 8px 16px;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+}
+
+.pagination .number-button:hover {
+    -fx-background-color: rgba(144, 224, 239, 0.1);
+    -fx-border-color: rgba(144, 224, 239, 0.4);
+}
+
+.pagination .number-button.selected {
+    -fx-background-color: linear-gradient(to right, rgba(0, 180, 216, 0.2), rgba(0, 180, 216, 0.1));
+    -fx-text-fill: #00b4d8;
+    -fx-border-color: #00b4d8;
+    -fx-font-weight: 600;
+}
+
+/* ============ ACCENT BARS ============ */
+.accent-bar {
+    -fx-background-radius: 2px;
+}
+
+.accent-bar-primary {
+    -fx-background-color: #00b4d8;
+}
+
+.accent-bar-success {
+    -fx-background-color: #4cd964;
+}
+
+.accent-bar-warning {
+    -fx-background-color: #ffd166;
+}
+
+.accent-bar-danger {
+    -fx-background-color: #ff6b6b;
+}
+
+/* ========================================
+   ENHANCED ANIMATIONS & HOVER EFFECTS
+   ======================================== */
+
+/* Button Hover Animations with Subtle Scale and Soft Shadow */
+.button {
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0.3, 0, 2);
+}
+
+.button:hover {
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+    -fx-effect: dropshadow(gaussian, rgba(76, 201, 240, 0.4), 12, 0.4, 0, 3);
+}
+
+.button:pressed {
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+    -fx-effect: dropshadow(gaussian, rgba(76, 201, 240, 0.3), 6, 0.3, 0, 1);
+}
+
+.action-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #5DD9FF, #4CC9F0);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(76, 201, 240, 0.5), 15, 0.4, 0, 4);
+}
+
+.secondary-button:hover {
+    -fx-background-color: rgba(76, 201, 240, 0.2);
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+    -fx-effect: dropshadow(gaussian, rgba(76, 201, 240, 0.3), 10, 0.3, 0, 2);
+}
+
+.danger-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #ff8585, #ff6b6b);
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+    -fx-effect: dropshadow(gaussian, rgba(255, 107, 107, 0.4), 12, 0.4, 0, 3);
+}
+
+/* Card Hover Effects with Lift Animation */
+.card {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 12, 0.2, 0, 4);
+}
+
+.card:hover {
+    -fx-translate-y: -5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(76, 201, 240, 0.4), 20, 0.4, 0, 8);
+}
+
+.stat-card {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 12, 0.2, 0, 4);
+}
+
+.stat-card:hover {
+    -fx-translate-y: -3px;
+    -fx-effect: dropshadow(three-pass-box, rgba(76, 201, 240, 0.35), 18, 0.35, 0, 6);
+}
+
+/* Pie Chart Enhancements */
+.chart-pie {
+    -fx-pie-label-visible: true;
+    -fx-label-line-length: 10;
+    -fx-start-angle: 90;
+    -fx-clockwise: true;
+}
+
+.chart-pie-label {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-fill: #ffffff;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 3, 0.5, 0, 1);
+}
+
+.chart-pie-label-line {
+    -fx-stroke: rgba(255, 255, 255, 0.7);
+    -fx-stroke-width: 2;
+}
+
+/* Vibrant Pie Chart Slice Colors - Modern Gradient Palette */
+.default-color0.chart-pie {
+    -fx-pie-color: #00D9FF;
+}
+
+/* Bright Cyan */
+.default-color1.chart-pie {
+    -fx-pie-color: #FF006E;
+}
+
+/* Hot Pink */
+.default-color2.chart-pie {
+    -fx-pie-color: #8338EC;
+}
+
+/* Vivid Purple */
+.default-color3.chart-pie {
+    -fx-pie-color: #3A86FF;
+}
+
+/* Electric Blue */
+.default-color4.chart-pie {
+    -fx-pie-color: #FFBE0B;
+}
+
+/* Golden Yellow */
+.default-color5.chart-pie {
+    -fx-pie-color: #FB5607;
+}
+
+/* Bright Orange */
+.default-color6.chart-pie {
+    -fx-pie-color: #06FFA5;
+}
+
+/* Neon Green */
+.default-color7.chart-pie {
+    -fx-pie-color: #FF4D6D;
+}
+
+/* Coral Red */
+
+/* Pie Chart Slice Classes (fallback/explicit) */
+.pie-chart-blue {
+    -fx-pie-color: #00D9FF;
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-width: 1px;
+}
+
+.pie-chart-green {
+    -fx-pie-color: #06FFA5;
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-width: 1px;
+}
+
+.pie-chart-yellow {
+    -fx-pie-color: #FFBE0B;
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-width: 1px;
+}
+
+.pie-chart-red {
+    -fx-pie-color: #FF4D6D;
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-width: 1px;
+}
+
+.pie-chart-purple {
+    -fx-pie-color: #8338EC;
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-width: 1px;
+}
+
+.pie-chart-orange {
+    -fx-pie-color: #FB5607;
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-width: 1px;
+}
+
+.pie-chart-pink {
+    -fx-pie-color: #FF006E;
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-width: 1px;
+}
+
+.pie-chart-blue-2 {
+    -fx-pie-color: #3A86FF;
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-width: 1px;
+}
+
+/* Pie Chart Hover Effects */
+.chart-pie-label:hover {
+    -fx-font-size: 13px;
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.8), 5, 0.7, 0, 2);
+}
+
+/* Filter Button Active State */
+.filter-button {
+    -fx-background-color: rgba(255, 255, 255, 0.08);
+    -fx-text-fill: rgba(255, 255, 255, 0.7);
+}
+
+.filter-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.12);
+    -fx-text-fill: #ffffff;
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+}
+
+/* Table Row Hover Effect */
+.table-row-cell:hover {
+    -fx-background-color: rgba(76, 201, 240, 0.15);
+    -fx-cursor: hand;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: rgba(76, 201, 240, 0.25);
+}
+
+/* Progress Bar Animation */
+.progress-bar .bar {
+    -fx-background-color: linear-gradient(to right, #4CC9F0, #F72585);
+    -fx-background-radius: 10px;
+}
+
+.progress-bar .track {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-background-radius: 10px;
+}
+
+/* Search Field Focus Effect */
+.search-field:focused {
+    -fx-border-color: #4CC9F0;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(76, 201, 240, 0.5), 10, 0.4, 0, 0);
+}
+
+/* Chart Animation */
+.chart {
+    -fx-animation-duration: 0.5s;
+}
+
+.chart-bar {
+    -fx-bar-fill: linear-gradient(to top, #4CC9F0, #5DD9FF);
+}
+
+.chart-bar:hover {
+    -fx-bar-fill: linear-gradient(to top, #5DD9FF, #6EE9FF);
+    -fx-effect: dropshadow(gaussian, rgba(76, 201, 240, 0.6), 12, 0.5, 0, 3);
+}
+
+/* Smooth Transitions for All Elements */
+* {
+    -fx-transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Fade In Animation for Root */
+.root {
+    -fx-opacity: 1.0;
+}
+
+/* Tooltip Styling */
+.tooltip {
+    -fx-background-color: rgba(15, 31, 56, 0.95);
+    -fx-text-fill: white;
+    -fx-background-radius: 8px;
+    -fx-padding: 8px 12px;
+    -fx-font-size: 12px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.3, 0, 2);
+}
+
+/* Scroll Bar Styling */
+.scroll-bar:vertical .thumb {
+    -fx-background-color: rgba(76, 201, 240, 0.5);
+    -fx-background-radius: 10px;
+}
+
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color: rgba(76, 201, 240, 0.7);
+}
+
+.scroll-bar:vertical .track {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+}
+
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: rgba(76, 201, 240, 0.5);
+    -fx-background-radius: 10px;
+}
+
+.scroll-bar:horizontal .thumb:hover {
+    -fx-background-color: rgba(76, 201, 240, 0.7);
+}
+
+.scroll-bar:horizontal .track {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+}
