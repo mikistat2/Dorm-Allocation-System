@@ -11,7 +11,8 @@ A modern, feature-rich desktop application for managing student dormitory alloca
 
 ### Landing Page
 
-<img width="960" height="600" alt="Screenshot 2025-12-07 172702" src="https://github.com/user-attachments/assets/46d2200b-0fdb-4a7c-8453-3bd3cc1965d8" />
+<img width="960" height="600" alt="image" src="https://github.com/user-attachments/assets/3d620bf2-6567-4513-9b12-cb9b81c0e49d" />
+
 
 
 ### Student Portal
