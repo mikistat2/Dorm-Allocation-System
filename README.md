@@ -31,7 +31,11 @@ A modern, feature-rich desktop application for managing student dormitory alloca
 
 #### Proctor Dashboard
 
-<img width="960" height="600" alt="Screenshot 2025-12-07 172806" src="https://github.com/user-attachments/assets/f805bcd6-f234-401b-a4af-c187a9fea560" />
+<img width="960" height="600" alt="image" src="https://github.com/user-attachments/assets/adfb8b7a-3f1a-48b2-9008-1c8607188349" />
+
+<img width="960" height="600" alt="image" src="https://github.com/user-attachments/assets/65d28903-845f-47ab-ad1f-e6d9b34cdf6f" />
+
+
 
 
 #### Student Management View
