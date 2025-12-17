@@ -485,23 +485,71 @@
 
 /* ============ BUILDING CARDS ============ */
 .building-card {
-    -fx-background-color: linear-gradient(135deg, rgba(26, 45, 66, 0.9), rgba(15, 31, 56, 0.95));
-    -fx-background-radius: 14px;
-    -fx-border-color: rgba(144, 224, 239, 0.15);
-    -fx-border-radius: 14px;
+    -fx-background-color: #102a43;
+    /* Deep navy blue */
+    -fx-background-radius: 20px;
+    -fx-border-color: rgba(255, 255, 255, 0.05);
+    -fx-border-radius: 20px;
     -fx-border-width: 1px;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 0, 3);
+    /* -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 15, 0, 0, 4); */
     -fx-padding: 20px;
-    -fx-min-width: 280px;
-    -fx-min-height: 180px;
+    -fx-min-width: 140px;
+    -fx-min-height: 160px;
     -fx-cursor: hand;
-    -fx-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -fx-transition: all 0.2s ease;
 }
 
 .building-card:hover {
-    -fx-border-color: rgba(144, 224, 239, 0.3);
-    -fx-effect: dropshadow(gaussian, rgba(0, 180, 216, 0.25), 15, 0, 0, 6);
-    -fx-translate-y: -5px;
+    -fx-background-color: #153654;
+    -fx-border-color: rgba(76, 201, 240, 0.3);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+/* ============ ADD BUILDING CARD ============ */
+.add-building-card {
+    -fx-background-color: rgba(16, 42, 67, 0.4);
+    /* Transparent/Darker version of card */
+    -fx-background-radius: 20px;
+    -fx-border-color: rgba(76, 201, 240, 0.4);
+    -fx-border-radius: 20px;
+    -fx-border-width: 2px;
+    -fx-border-style: segments(10, 10);
+    /* Dashed border */
+    -fx-padding: 20px;
+    -fx-min-width: 140px;
+    -fx-min-height: 160px;
+    -fx-cursor: hand;
+    -fx-transition: all 0.2s ease;
+    -fx-opacity: 0.7;
+}
+
+.add-building-card:hover {
+    -fx-background-color: rgba(16, 42, 67, 0.8);
+    -fx-border-color: #4CC9F0;
+    -fx-opacity: 1.0;
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+/* Card Text Styles */
+.card-title-large {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: 800;
+}
+
+.card-text-highlight {
+    -fx-text-fill: #3ABFF8;
+    /* Cyan/Light Blue */
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+}
+
+.card-text-muted {
+    -fx-text-fill: rgba(255, 255, 255, 0.6);
+    -fx-font-size: 13px;
+    -fx-font-weight: 500;
 }
 
 .building-card-male {

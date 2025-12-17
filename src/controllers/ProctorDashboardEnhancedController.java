@@ -50,8 +50,6 @@ public class ProctorDashboardEnhancedController {
     private ProgressBar occupancyProgress;
 
     @FXML
-    private BarChart<String, Number> studentGenderChart;
-    @FXML
     private javafx.scene.chart.PieChart studentPieChart;
     @FXML
     private TableView<Student> recentStudentsTable;
@@ -59,7 +57,7 @@ public class ProctorDashboardEnhancedController {
     private TextField searchField;
 
     @FXML
-    private FlowPane buildingsFlowPane;
+    private TilePane buildingsFlowPane;
     @FXML
     private Button allBlocksBtn;
     @FXML
@@ -74,7 +72,7 @@ public class ProctorDashboardEnhancedController {
     @FXML
     private Button deptPieBtn;
     @FXML
-    private TilePane customLegend;
+    private FlowPane customLegend;
 
     private static final String[] PIE_COLORS = {
             "#00D9FF", // Bright Cyan
@@ -105,7 +103,7 @@ public class ProctorDashboardEnhancedController {
     @FXML
     public void initialize() {
         loadStatistics();
-        loadGenderChart();
+
         loadPieChartData("GENDER");
         loadBuildingCards();
         loadRecentStudents();
@@ -114,17 +112,11 @@ public class ProctorDashboardEnhancedController {
         updatePieFilterButtons();
 
         if (buildingsFlowPane != null) {
-            double cardWidth = 140;
-            double gap = 12;
-            double padding = 8; // tighter padding to fit three cards per row
-
-            buildingsFlowPane.setHgap(gap);
-            buildingsFlowPane.setVgap(gap);
-            buildingsFlowPane.setPadding(new javafx.geometry.Insets(padding));
-
-            // Target three cards per row: total = padding*2 + 3*cardWidth + 2*gap
-            double wrapLength = padding * 2 + (cardWidth * 3) + (gap * 2);
-            buildingsFlowPane.setPrefWrapLength(wrapLength);
+            // Bind tile width to container width to ensure exactly 3 columns with gaps
+            buildingsFlowPane.prefTileWidthProperty().bind(
+                    buildingsFlowPane.widthProperty().divide(3).subtract(15) // Subtracting gap/padding approximation
+            );
+            buildingsFlowPane.setPrefColumns(3);
         }
 
         if (studentPieChart != null) {
@@ -182,45 +174,6 @@ public class ProctorDashboardEnhancedController {
         double occupancy = totalCapacity > 0 ? (double) assigned / totalCapacity : 0;
         occupancyProgress.setProgress(occupancy);
         occupancyLabel.setText(String.format("%.0f%% Occupancy", occupancy * 100));
-    }
-
-    private void loadGenderChart() {
-        if (studentGenderChart == null)
-            return;
-
-        List<Student> students = DataManager.getInstance().getStudents();
-
-        int maleCount = 0;
-        int femaleCount = 0;
-        int maleAssigned = 0;
-        int femaleAssigned = 0;
-
-        for (Student student : students) {
-            if ("Male".equalsIgnoreCase(student.getGender())) {
-                maleCount++;
-                if (!"Not Assigned".equals(student.getAssignedBuilding())) {
-                    maleAssigned++;
-                }
-            } else if ("Female".equalsIgnoreCase(student.getGender())) {
-                femaleCount++;
-                if (!"Not Assigned".equals(student.getAssignedBuilding())) {
-                    femaleAssigned++;
-                }
-            }
-        }
-
-        XYChart.Series<String, Number> totalSeries = new XYChart.Series<>();
-        totalSeries.setName("Total");
-        totalSeries.getData().add(new XYChart.Data<>("Male", maleCount));
-        totalSeries.getData().add(new XYChart.Data<>("Female", femaleCount));
-
-        XYChart.Series<String, Number> assignedSeries = new XYChart.Series<>();
-        assignedSeries.setName("Assigned");
-        assignedSeries.getData().add(new XYChart.Data<>("Male", maleAssigned));
-        assignedSeries.getData().add(new XYChart.Data<>("Female", femaleAssigned));
-
-        studentGenderChart.getData().clear();
-        studentGenderChart.getData().addAll(totalSeries, assignedSeries);
     }
 
     private void loadRecentStudents() {
@@ -321,37 +274,40 @@ public class ProctorDashboardEnhancedController {
 
             buildingsFlowPane.getChildren().add(card);
         }
+
+        // Add the special "Add Building" card at the end
+        buildingsFlowPane.getChildren().add(createAddBuildingCard());
     }
 
     private VBox createBuildingCard(String name, int studentCount, int maxRooms, String gender) {
         VBox card = new VBox();
         card.setAlignment(javafx.geometry.Pos.CENTER);
-        card.setSpacing(6);
-        card.setPadding(new javafx.geometry.Insets(10));
+        card.setSpacing(8);
+        card.setPadding(new javafx.geometry.Insets(15));
         card.getStyleClass().add("building-card");
 
-        if ("Male".equalsIgnoreCase(gender)) {
-            card.getStyleClass().add("building-card-male");
-        } else {
-            card.getStyleClass().add("building-card-female");
-        }
-
-        card.setPrefSize(140, 140);
-
+        // Icon
         Label iconLabel = new Label("🏢");
-        iconLabel.setStyle("-fx-font-size: 28px;");
+        iconLabel.setStyle("-fx-font-size: 32px; -fx-text-fill: linear-gradient(to bottom, #E0F7FA, #B2EBF2);");
+        // Add a subtle glow/shadow to the icon
+        iconLabel.setEffect(
+                new javafx.scene.effect.DropShadow(10, javafx.scene.paint.Color.web("rgba(76, 201, 240, 0.3)")));
 
+        // Building Name
         Label nameLabel = new Label(name);
-        nameLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 13px; -fx-text-fill: #FFFFFF;");
+        nameLabel.getStyleClass().add("card-title-large");
 
+        // Student Count
         Label countLabel = new Label(studentCount + " Students");
-        countLabel.setStyle("-fx-text-fill: #4CC9F0; -fx-font-size: 11px;");
+        countLabel.getStyleClass().add("card-text-highlight");
 
+        // Max Rooms (Muted with larger font than before)
         Label roomsLabel = new Label("Max Rooms: " + maxRooms);
-        roomsLabel.setStyle("-fx-text-fill: #FFFFFF; -fx-font-size: 11px; -fx-opacity: 0.8;");
+        roomsLabel.getStyleClass().add("card-text-muted");
 
+        // Gender (Using Highlight color)
         Label genderLabel = new Label("Gender: " + gender);
-        genderLabel.setStyle("-fx-text-fill: #4CC9F0; -fx-font-size: 11px;");
+        genderLabel.getStyleClass().add("card-text-highlight");
 
         card.getChildren().addAll(iconLabel, nameLabel, countLabel, roomsLabel, genderLabel);
 
@@ -360,6 +316,28 @@ public class ProctorDashboardEnhancedController {
             ProctorStudentsController.filterValue = name;
             handleStudentsView(null);
         });
+
+        return card;
+    }
+
+    private VBox createAddBuildingCard() {
+        VBox card = new VBox();
+        card.setAlignment(javafx.geometry.Pos.CENTER);
+        card.setSpacing(10);
+        card.setPadding(new javafx.geometry.Insets(15));
+        card.getStyleClass().add("add-building-card");
+
+        // Icon
+        Label iconLabel = new Label("➕");
+        iconLabel.setStyle("-fx-font-size: 32px; -fx-text-fill: #4CC9F0;");
+
+        // Label
+        Label textLabel = new Label("Add Building");
+        textLabel.setStyle("-fx-text-fill: #4CC9F0; -fx-font-size: 14px; -fx-font-weight: bold;");
+
+        card.getChildren().addAll(iconLabel, textLabel);
+
+        card.setOnMouseClicked(e -> handleSettingsView(null));
 
         return card;
     }
@@ -421,10 +399,10 @@ public class ProctorDashboardEnhancedController {
     }
 
     @FXML
-    void handleTotalClick(javafx.scene.input.MouseEvent event) {
+    void handleTotalClick(ActionEvent event) {
         ProctorStudentsController.filterType = "ALL";
         ProctorStudentsController.filterValue = "";
-        handleStudentsView(null);
+        handleStudentsView(event);
     }
 
     @FXML
@@ -467,6 +445,118 @@ public class ProctorDashboardEnhancedController {
     @FXML
     void handleLogout(ActionEvent event) {
         navigateTo(event, "/resources/LandingPage.fxml");
+    }
+
+    @FXML
+    void handleExportPDF(ActionEvent event) {
+        java.util.List<models.Student> students = data.DataManager.getInstance().getStudents();
+
+        if (students.isEmpty()) {
+            showAlert("No Data", "There are no students to export.", javafx.scene.control.Alert.AlertType.WARNING);
+            return;
+        }
+
+        // Use JavaFX PrinterJob to print/save as PDF
+        javafx.print.PrinterJob printerJob = javafx.print.PrinterJob.createPrinterJob();
+
+        if (printerJob != null) {
+            // Show print dialog (user can select "Print to PDF")
+            boolean proceed = printerJob.showPrintDialog(((Node) event.getSource()).getScene().getWindow());
+
+            if (proceed) {
+                // Create a snapshot of the table for printing
+                javafx.scene.layout.VBox printContent = new javafx.scene.layout.VBox(15);
+                printContent.setPadding(new javafx.geometry.Insets(20));
+
+                // Title
+                javafx.scene.text.Text title = new javafx.scene.text.Text("Student Allocation Report");
+                title.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
+
+                // Timestamp
+                java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                javafx.scene.text.Text timestamp = new javafx.scene.text.Text(
+                        "Generated: " + dateFormat.format(new java.util.Date()));
+                timestamp.setStyle("-fx-font-size: 10px;");
+
+                // Student count
+                javafx.scene.text.Text count = new javafx.scene.text.Text(
+                        "Total Students: " + students.size());
+                count.setStyle("-fx-font-size: 10px;");
+
+                // Create text representation of table
+                javafx.scene.layout.VBox tableText = new javafx.scene.layout.VBox(5);
+
+                // Header
+                String header = String.format("%-20s %-12s %-15s %-6s %-8s %-20s %-20s",
+                        "Name", "ID", "Department", "Year", "Gender", "Building", "Room");
+                javafx.scene.text.Text headerText = new javafx.scene.text.Text(header);
+                headerText.setStyle("-fx-font-family: 'Courier New'; -fx-font-size: 9px; -fx-font-weight: bold;");
+                tableText.getChildren().add(headerText);
+
+                // Separator
+                javafx.scene.text.Text separator = new javafx.scene.text.Text("─".repeat(110));
+                separator.setStyle("-fx-font-family: 'Courier New'; -fx-font-size: 9px;");
+                tableText.getChildren().add(separator);
+
+                // Rows
+                for (models.Student student : students) {
+                    String row = String.format("%-20s %-12s %-15s %-6s %-8s %-20s %-20s",
+                            truncate(student.getName(), 20),
+                            student.getId(),
+                            truncate(student.getDepartment(), 15),
+                            student.getYear(),
+                            student.getGender(),
+                            truncate(student.getAssignedBuilding(), 20),
+                            truncate(student.getAssignedRoom(), 20));
+                    javafx.scene.text.Text rowText = new javafx.scene.text.Text(row);
+                    rowText.setStyle("-fx-font-family: 'Courier New'; -fx-font-size: 8px;");
+                    tableText.getChildren().add(rowText);
+                }
+
+                printContent.getChildren().addAll(title, timestamp, count, new javafx.scene.text.Text(""), tableText);
+
+                // Print
+                boolean printed = printerJob.printPage(printContent);
+
+                if (printed) {
+                    printerJob.endJob();
+                    showAlert("Success", "Document sent to printer/PDF successfully!",
+                            javafx.scene.control.Alert.AlertType.INFORMATION);
+                } else {
+                    showAlert("Error", "Failed to print document.",
+                            javafx.scene.control.Alert.AlertType.ERROR);
+                }
+            }
+        } else {
+            showAlert("Error", "No printer available. Please install a PDF printer (e.g., Microsoft Print to PDF).",
+                    javafx.scene.control.Alert.AlertType.ERROR);
+        }
+    }
+
+    private String truncate(String text, int maxLength) {
+        if (text == null)
+            return "";
+        if (text.length() <= maxLength)
+            return text;
+        return text.substring(0, maxLength - 3) + "...";
+    }
+
+    private void showAlert(String title, String content, javafx.scene.control.Alert.AlertType type) {
+        javafx.scene.control.Alert alert = new javafx.scene.control.Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+
+        // Style the dialog
+        alert.getDialogPane().setStyle("-fx-background-color: #0A1A2F;");
+        if (alert.getDialogPane().lookup(".header-panel") != null) {
+            alert.getDialogPane().lookup(".header-panel").setStyle("-fx-background-color: #0A1A2F;");
+        }
+        if (alert.getDialogPane().lookup(".content") != null) {
+            alert.getDialogPane().lookup(".content").setStyle("-fx-text-fill: #FFFFFF;");
+        }
+
+        alert.showAndWait();
     }
 
     // Pie Chart Event Handlers
@@ -635,12 +725,13 @@ public class ProctorDashboardEnhancedController {
 
         customLegend.getChildren().clear();
         customLegend.setHgap(12);
-        customLegend.setVgap(10);
-        customLegend.setPrefColumns(2);
+        customLegend.setVgap(8);
         customLegend.setAlignment(javafx.geometry.Pos.CENTER);
 
-        // Calculate cleaner width for items
+        // Wrap to two columns based on target item width
         double itemWidth = 160;
+        double hgap = customLegend.getHgap();
+        customLegend.setPrefWrapLength(itemWidth * 2 + hgap);
 
         int colorIndex = 0;
         for (javafx.scene.chart.PieChart.Data data : pieData) {
@@ -704,7 +795,21 @@ public class ProctorDashboardEnhancedController {
     private void navigateTo(ActionEvent event, String fxmlPath) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Stage stage;
+
+            if (event != null && event.getSource() instanceof Node) {
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            } else {
+                // Fallback for calls without event (e.g. from mouse click handlers)
+                // Use a node safely known to be in the scene, like buildingsFlowPane
+                if (buildingsFlowPane != null && buildingsFlowPane.getScene() != null) {
+                    stage = (Stage) buildingsFlowPane.getScene().getWindow();
+                } else {
+                    System.err.println("Navigation Error: Could not resolve Stage from event or fallback node.");
+                    return;
+                }
+            }
+
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();

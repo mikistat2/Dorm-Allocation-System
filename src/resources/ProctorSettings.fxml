@@ -24,20 +24,25 @@
                         <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                      </padding>
                      <children>
-                        <Label styleClass="header-label" text="Dorm Configuration" />
+                        <Label styleClass="header-label" text="Add New Building" />
+                        
+                        <!-- Gender Selection -->
                         <VBox spacing="5.0">
                            <children>
-                              <Label style="-fx-text-fill: #a0c4ff;" text="Number of Buildings/Blocks" />
-                              <TextField fx:id="numBuildingsField" promptText="e.g., 3" />
+                              <Label style="-fx-text-fill: #a0c4ff;" text="Building Gender" />
+                              <javafx.scene.control.ComboBox fx:id="genderComboBox" prefWidth="400.0" promptText="Select Gender" />
                            </children>
                         </VBox>
+                        
+                        <!-- Rooms Configuration -->
                         <VBox spacing="5.0">
                            <children>
-                              <Label style="-fx-text-fill: #a0c4ff;" text="Number of Rooms per Block" />
+                              <Label style="-fx-text-fill: #a0c4ff;" text="Number of Rooms" />
                               <TextField fx:id="numRoomsField" promptText="e.g., 20" />
                            </children>
                         </VBox>
-                        <Button mnemonicParsing="false" onAction="#handleSaveSettings" prefWidth="200.0" styleClass="action-button" text="Save &amp; Initialize" />
+                        
+                        <Button mnemonicParsing="false" onAction="#handleSaveSettings" prefWidth="200.0" styleClass="action-button" text="Add Building" />
                         <Label fx:id="messageLabel" textFill="#4ecdc4" />
                      </children>
                   </VBox>

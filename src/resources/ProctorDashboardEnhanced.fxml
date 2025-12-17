@@ -19,7 +19,6 @@
             <Region HBox.hgrow="ALWAYS" />
             <Button text="Dashboard" styleClass="action-button" />
             <Button text="Students" onAction="#handleStudentsView" styleClass="button" />
-            <Button text="Settings" onAction="#handleSettingsView" styleClass="button" />
             <Button text="Logout" onAction="#handleLogout" styleClass="danger-button" />
         </HBox>
     </top>
@@ -47,6 +46,7 @@
                         </HBox>
                         <ProgressBar fx:id="occupancyProgress" progress="0.0" styleClass="progress-bar" maxWidth="Infinity" />
                         <Label fx:id="occupancyLabel" text="0% Occupancy" styleClass="card-subtitle" />
+                        <Button text="View All" onAction="#handleTotalClick" styleClass="secondary-button" maxWidth="Infinity" />
                     </VBox>
                     
                     <VBox styleClass="stat-card" prefWidth="250" spacing="10">
@@ -87,21 +87,7 @@
                 <HBox spacing="20" VBox.vgrow="ALWAYS">
                     <!-- Left Side: Student Distribution Graph -->
                     <VBox styleClass="card" spacing="15" prefWidth="500" HBox.hgrow="ALWAYS">
-                        <HBox alignment="CENTER_LEFT" spacing="10">
-                            <Rectangle width="4" height="24" styleClass="accent-bar-primary" />
-                            <Label text="Student Distribution by Gender" styleClass="card-title" />
-                            <Region HBox.hgrow="ALWAYS" />
-                        </HBox>
-                        
-                        <!-- Bar Chart -->
-                        <BarChart fx:id="studentGenderChart" legendVisible="true" animated="true" prefHeight="250">
-                            <xAxis>
-                                <CategoryAxis side="BOTTOM" label="Gender" />
-                            </xAxis>
-                            <yAxis>
-                                <NumberAxis side="LEFT" label="Number of Students" />
-                            </yAxis>
-                        </BarChart>
+
                         
                         <!-- Pie Chart Section with Custom Legend -->
                         <VBox spacing="15" style="-fx-padding: 20 0 0 0;">
@@ -124,7 +110,7 @@
                                       clockwise="false" />
                             
                             <!-- Custom Legend -->
-                            <TilePane fx:id="customLegend" hgap="12" vgap="8" alignment="CENTER" prefColumns="2" style="-fx-padding: 10 0 0 0;" />
+                            <FlowPane fx:id="customLegend" hgap="12" vgap="8" alignment="CENTER" style="-fx-padding: 10 0 0 0;" />
                         </VBox>
                     </VBox>
                     
@@ -140,8 +126,8 @@
                         </HBox>
                         
                         <!-- Buildings List -->
-                        <ScrollPane fitToWidth="true" styleClass="scroll-pane" prefHeight="300">
-                            <FlowPane fx:id="buildingsFlowPane" hgap="15" vgap="15" style="-fx-padding: 10;" />
+                        <ScrollPane fitToWidth="true" styleClass="scroll-pane" prefHeight="480">
+                            <TilePane fx:id="buildingsFlowPane" hgap="10" vgap="10" prefColumns="3" style="-fx-padding: 5;" />
                         </ScrollPane>
                     </VBox>
                 </HBox>
@@ -177,9 +163,8 @@
                     </HBox>
                     <HBox spacing="15" alignment="CENTER">
                         <Button text="➕ Add New Student" onAction="#handleStudentsView" styleClass="action-button" prefWidth="200" />
-                        <Button text="📊 Generate Report" styleClass="secondary-button" prefWidth="200" />
+                        <Button mnemonicParsing="false" onAction="#handleExportPDF" text="📊 Generate Report" styleClass="secondary-button" prefWidth="200" />
                         <Button text="🏢 Manage Buildings" onAction="#handleSettingsView" styleClass="secondary-button" prefWidth="200" />
-                        <Button text="⚙️ System Settings" onAction="#handleSettingsView" styleClass="secondary-button" prefWidth="200" />
                     </HBox>
                 </VBox>
                 
