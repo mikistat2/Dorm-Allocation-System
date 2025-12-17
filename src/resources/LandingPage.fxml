@@ -67,7 +67,7 @@
         <!-- Footer -->
         <VBox alignment="CENTER" spacing="5.0">
             <Label text="v2.0 | Secure • Efficient • Modern" style="-fx-text-fill: #90e0ef; -fx-font-size: 12px;" />
-            <Label text="© 2024 DormFlow Management System" style="-fx-text-fill: #90e0ef; -fx-opacity: 0.7; -fx-font-size: 11px;" />
+            <Label text="© 2025 DormFlow Management System" style="-fx-text-fill: #90e0ef; -fx-opacity: 0.7; -fx-font-size: 11px;" />
         </VBox>
     </VBox>
 </VBox>
