@@ -1246,3 +1246,101 @@
 .scroll-bar:horizontal .track {
     -fx-background-color: rgba(255, 255, 255, 0.05);
 }
+
+/* ============ LANDING PAGE ENHANCEMENTS ============ */
+
+/* Enhanced Glass Effect */
+.glass-pane {
+    -fx-background-color: rgba(255, 255, 255, 0.07);
+    -fx-background-radius: 24px;
+    -fx-border-color: rgba(255, 255, 255, 0.12);
+    -fx-border-radius: 24px;
+    -fx-border-width: 1.5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 180, 216, 0.2), 40, 0, 0, 15);
+}
+
+/* Card Enhancement */
+.card {
+    -fx-background-color: linear-gradient(to bottom right, rgba(26, 45, 66, 0.9), rgba(15, 31, 56, 0.95));
+    -fx-background-radius: 20px;
+    -fx-border-color: rgba(144, 224, 239, 0.2);
+    -fx-border-radius: 20px;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 25, 0, 0, 10);
+    -fx-cursor: hand;
+    -fx-transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card:hover {
+    -fx-border-color: rgba(0, 180, 216, 0.5);
+    -fx-effect: dropshadow(gaussian, rgba(0, 180, 216, 0.35), 35, 0, 0, 15);
+    -fx-translate-y: -10px;
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+/* Enhanced Action Button */
+.action-button {
+    -fx-background-color: linear-gradient(to right, #00b4d8, #0096c7);
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: 700;
+    -fx-font-size: 15px;
+    -fx-background-radius: 12px;
+    -fx-border-width: 0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 180, 216, 0.5), 12, 0, 0, 5);
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.action-button:hover {
+    -fx-background-color: linear-gradient(to right, #0096c7, #0077b6);
+    -fx-effect: dropshadow(gaussian, rgba(0, 180, 216, 0.7), 18, 0, 0, 8);
+    -fx-scale-x: 1.08;
+    -fx-scale-y: 1.08;
+}
+
+.action-button:pressed {
+    -fx-effect: dropshadow(gaussian, rgba(0, 180, 216, 0.3), 6, 0, 0, 2);
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+}
+
+/* Title Enhancement */
+.title-label {
+    -fx-font-size: 60px !important;
+    -fx-font-weight: 900 !important;
+    -fx-text-fill: linear-gradient(to bottom, #00b4d8, #0096c7) !important;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 180, 216, 0.5), 25, 0, 0, 10) !important;
+    -fx-letter-spacing: 2px !important;
+}
+
+/* Subtitle Enhancement */
+.subtitle-label {
+    -fx-font-size: 24px !important;
+    -fx-text-fill: #caf0f8 !important;
+    -fx-opacity: 0.95 !important;
+    -fx-font-weight: 300 !important;
+    -fx-letter-spacing: 0.8px !important;
+}
+
+/* Header Label */
+.header-label {
+    -fx-font-size: 32px !important;
+    -fx-font-weight: 800 !important;
+    -fx-text-fill: #ffffff !important;
+    -fx-effect: dropshadow(three-pass-box, rgba(202, 240, 248, 0.2), 10, 0, 0, 3) !important;
+}
+
+/* Card Title */
+.card-title {
+    -fx-font-size: 26px !important;
+    -fx-font-weight: 800 !important;
+    -fx-text-fill: #ffffff !important;
+}
+
+/* Card Subtitle */
+.card-subtitle {
+    -fx-font-size: 14px !important;
+    -fx-text-fill: #90e0ef !important;
+    -fx-opacity: 0.9 !important;
+}

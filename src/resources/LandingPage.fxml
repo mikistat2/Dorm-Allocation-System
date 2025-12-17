@@ -3,71 +3,205 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="30.0" stylesheets="@style.css" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LandingController">
-    <padding>
-        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
-    </padding>
+<StackPane xmlns="http://javafx.com/javafx/21" 
+           xmlns:fx="http://javafx.com/fxml/1" 
+           fx:controller="controllers.LandingController"
+           prefHeight="700.0" prefWidth="1000.0"
+           stylesheets="@style.css">
 
-    <!-- Main Content Container -->
-    <VBox alignment="CENTER" spacing="35.0" styleClass="glass-pane" maxWidth="550" VBox.vgrow="ALWAYS">
+    <!-- Shadowed Background Image -->
+    <ImageView fitWidth="1000" fitHeight="700" preserveRatio="false">
+        <Image url="@./images/background.jpg" />
+        <effect>
+            <GaussianBlur radius="10" />
+        </effect>
+        <opacity>0.65</opacity>
+    </ImageView>
+
+    <!-- Dark Overlay with Gradient -->
+    <Rectangle width="1000" height="700">
+        <fill>
+            <LinearGradient startX="0" startY="0" endX="0" endY="1">
+                <stops>
+                    <Stop offset="0" color="#0a1929cc" />
+                    <Stop offset="0.4" color="#0f1f3899" />
+                    <Stop offset="0.8" color="#0a1929cc" />
+                    <Stop offset="1" color="#0a1929dd" />
+                </stops>
+            </LinearGradient>
+        </fill>
+    </Rectangle>
+
+    <!-- Subtle Particle Effect -->
+    <HBox alignment="CENTER" spacing="15" opacity="0.1">
+        <Circle radius="3" fill="#00b4d8" />
+        <Circle radius="2" fill="#90e0ef" />
+        <Circle radius="4" fill="#0096c7" />
+        <Circle radius="2.5" fill="#00b4d8" />
+        <Circle radius="1.5" fill="#90e0ef" />
+    </HBox>
+
+    <!-- Main Content -->
+    <VBox alignment="CENTER" spacing="40.0" maxWidth="850" styleClass="fade-in">
         <padding>
-            <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
         </padding>
 
-        <!-- Logo/Title Section -->
-        <VBox alignment="CENTER" spacing="12.0">
-            <Label styleClass="title-label" text="DormFlow" textAlignment="CENTER" wrapText="true">
+        <!-- Header Section -->
+        <VBox alignment="CENTER" spacing="20">
+            <Label styleClass="title-label" text="DormFlow" 
+                   style="-fx-font-size: 60px; -fx-letter-spacing: 2px; -fx-font-weight: 900;">
                 <effect>
-                    <DropShadow blurType="GAUSSIAN" color="#00b4d8aa" height="20" width="20" radius="15" spread="0.1" />
+                    <DropShadow blurType="GAUSSIAN" color="#00b4d8cc" 
+                               height="35" width="35" radius="30" 
+                               spread="0.25" />
                 </effect>
             </Label>
             
-            <Label styleClass="subtitle-label" text="Intelligent Dormitory Management System" textAlignment="CENTER" wrapText="true" />
+            <Label styleClass="subtitle-label" 
+                   text="Intelligent Dormitory Management System" 
+                   style="-fx-font-size: 24px; -fx-letter-spacing: 0.8px;" />
             
-            <!-- Decorative Line -->
-            <Rectangle width="200" height="2" fill="linear-gradient(to right, transparent, #00b4d8, transparent)" />
+            <!-- Animated Gradient Line -->
+            <Rectangle width="350" height="4" arcWidth="2" arcHeight="2">
+                <fill>
+                    <LinearGradient startX="0" startY="0" endX="1" endY="0">
+                    <stops>
+                        <Stop offset="0" color="transparent" />
+                        <Stop offset="0.2" color="#00b4d8" />
+                        <Stop offset="0.5" color="#90e0ef" />
+                        <Stop offset="0.8" color="#00b4d8" />
+                        <Stop offset="1" color="transparent" />
+                    </stops>
+                    </LinearGradient>
+                </fill>
+                <effect>
+                    <DropShadow blurType="GAUSSIAN" color="#00b4d8" 
+                               radius="15" spread="0.2" />
+                </effect>
+            </Rectangle>
         </VBox>
 
-        <!-- User Role Selection -->
-        <VBox alignment="CENTER" spacing="15.0">
-            <Label styleClass="header-label" text="Select Your Role" />
+        <!-- Feature Highlights -->
+        <HBox alignment="CENTER" spacing="30" styleClass="fade-in">
+            <VBox alignment="CENTER" spacing="8">
+                <Label text="⚡" style="-fx-font-size: 24px; -fx-text-fill: #00b4d8;" />
+                <Label text="Real-time" styleClass="card-subtitle" 
+                       style="-fx-font-size: 14px;" />
+            </VBox>
             
-            <HBox alignment="CENTER" spacing="25.0">
-                <!-- Student Portal Card -->
-                <VBox alignment="CENTER" spacing="12.0" styleClass="card building-card-male" minWidth="200" minHeight="160" onMouseClicked="#handleStudentButton">
-                    <padding>
-                        <Insets top="18.0" right="18.0" bottom="18.0" left="18.0" />
-                    </padding>
-                    <Label text="👨‍🎓" style="-fx-font-size: 36px;" />
-                    <Label text="Student Portal" styleClass="card-title" />
-                    <Label text="Login | Register" styleClass="card-subtitle" />
-                    <Button fx:id="studentButton" mnemonicParsing="false" onAction="#handleStudentButton" 
-                           styleClass="action-button" text="Enter" prefWidth="110" />
-                </VBox>
+            <VBox alignment="CENTER" spacing="8">
+                <Label text="🔒" style="-fx-font-size: 24px; -fx-text-fill: #4cd964;" />
+                <Label text="Secure" styleClass="card-subtitle" 
+                       style="-fx-font-size: 14px;" />
+            </VBox>
+            
+            <VBox alignment="CENTER" spacing="8">
+                <Label text="📊" style="-fx-font-size: 24px; -fx-text-fill: #ffd166;" />
+                <Label text="Analytics" styleClass="card-subtitle" 
+                       style="-fx-font-size: 14px;" />
+            </VBox>
+            
+            <VBox alignment="CENTER" spacing="8">
+                <Label text="🤖" style="-fx-font-size: 24px; -fx-text-fill: #ff6b6b;" />
+                <Label text="Automated" styleClass="card-subtitle" 
+                       style="-fx-font-size: 14px;" />
+            </VBox>
+        </HBox>
 
-                <!-- Proctor Portal Card -->
-                <VBox alignment="CENTER" spacing="12.0" styleClass="card building-card-female" minWidth="200" minHeight="160" onMouseClicked="#handleProctorButton">
-                    <padding>
-                        <Insets top="18.0" right="18.0" bottom="18.0" left="18.0" />
-                    </padding>
-                    <Label text="👨‍🏫" style="-fx-font-size: 36px;" />
-                    <Label text="Proctor Portal" styleClass="card-title" />
-                    <Label text="Admin Dashboard" styleClass="card-subtitle" />
-                    <Button fx:id="proctorButton" mnemonicParsing="false" onAction="#handleProctorButton" 
-                           styleClass="action-button" text="Enter" prefWidth="110" />
+        <!-- Role Selection Cards -->
+        <HBox alignment="CENTER" spacing="40">
+            <!-- Student Portal Card -->
+            <VBox alignment="CENTER" spacing="18" 
+                  styleClass="card glass-pane" 
+                  minWidth="280" minHeight="220"
+                  onMouseClicked="#handleStudentButton">
+                <padding>
+                    <Insets top="28.0" right="28.0" bottom="28.0" left="28.0" />
+                </padding>
+                
+                <!-- Icon Container -->
+                <StackPane>
+                    <Circle radius="40" fill="radial-gradient(center 50% 50%, radius 50%, #00b4d844, #00b4d822)" />
+                    <Label text="👨‍🎓" style="-fx-font-size: 44px;" />
+                </StackPane>
+                
+                <Label text="Student Portal" 
+                       style="-fx-text-fill: #ffffff; -fx-font-size: 26px; -fx-font-weight: 800;" />
+                
+                <VBox alignment="CENTER" spacing="3">
+                    <Label text="Login • Register • Dashboard" 
+                           style="-fx-text-fill: #90e0ef; -fx-font-size: 14px; -fx-opacity: 0.9;" />
+                     
                 </VBox>
-            </HBox>
-        </VBox>
+                
+                <Button fx:id="studentButton" mnemonicParsing="false" 
+                       onAction="#handleStudentButton" 
+                       styleClass="action-button"
+                       style="-fx-font-size: 16px; -fx-padding: 15px 35px; -fx-background-radius: 12px;"
+                       text="Enter Portal" />
+            </VBox>
+
+            <!-- Proctor Portal Card -->
+            <VBox alignment="CENTER" spacing="18" 
+                  styleClass="card glass-pane" 
+                  minWidth="280" minHeight="220"
+                  onMouseClicked="#handleProctorButton">
+                <padding>
+                    <Insets top="28.0" right="28.0" bottom="28.0" left="28.0" />
+                </padding>
+                
+                <!-- Icon Container -->
+                <StackPane>
+                    <Circle radius="40" fill="radial-gradient(center 50% 50%, radius 50%, #ff6b6b44, #ff525222)" />
+                    <Label text="👨‍🏫" style="-fx-font-size: 44px;" />
+                </StackPane>
+                
+                <Label text="Proctor Portal" 
+                       style="-fx-text-fill: #ffffff; -fx-font-size: 26px; -fx-font-weight: 800;" />
+                
+                <VBox alignment="CENTER" spacing="3">
+                    <Label text="Admin • Monitor • Manage" 
+                           style="-fx-text-fill: #90e0ef; -fx-font-size: 14px; -fx-opacity: 0.9;" />
+                     
+                </VBox>
+                
+                <Button fx:id="proctorButton" mnemonicParsing="false" 
+                       onAction="#handleProctorButton" 
+                       styleClass="action-button"
+                       style="-fx-font-size: 16px; -fx-padding: 15px 35px; -fx-background-radius: 12px;"
+                       text="Enter Portal" />
+            </VBox>
+        </HBox>
+
+         
 
         <!-- Footer -->
-        <VBox alignment="CENTER" spacing="5.0">
-            <Label text="v2.0 | Secure • Efficient • Modern" style="-fx-text-fill: #90e0ef; -fx-font-size: 12px;" />
-            <Label text="© 2025 DormFlow Management System" style="-fx-text-fill: #90e0ef; -fx-opacity: 0.7; -fx-font-size: 11px;" />
+        <VBox alignment="CENTER" spacing="12">
+             
+            
+            <Label text="v2.0 | Secure • Efficient • Modern • Intelligent" 
+                   style="-fx-text-fill: #caf0f8; -fx-font-size: 15px; 
+                          -fx-font-weight: 500; -fx-letter-spacing: 0.5px;" />
+            
+            <Label text="© 2025 DormFlow Management System. All Rights Reserved." 
+                   style="-fx-text-fill: #90e0ef; -fx-opacity: 0.6; 
+                          -fx-font-size: 12px;" />
         </VBox>
     </VBox>
-</VBox>
+</StackPane>

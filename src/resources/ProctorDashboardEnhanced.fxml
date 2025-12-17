@@ -93,7 +93,7 @@
                         <VBox spacing="15" style="-fx-padding: 20 0 0 0;">
                             <HBox alignment="CENTER_LEFT" spacing="10">
                                 <Rectangle width="4" height="24" styleClass="accent-bar-primary" />
-                                <Label text="Data Distribution" styleClass="card-title" />
+                                <Label text="Data" styleClass="card-title" />
                                 <Region HBox.hgrow="ALWAYS" />
                                 <Button fx:id="genderPieBtn" onAction="#handlePieGender" styleClass="action-button" text="Gender" />
                                 <Button fx:id="yearPieBtn" onAction="#handlePieYear" styleClass="filter-button" text="Year" />
