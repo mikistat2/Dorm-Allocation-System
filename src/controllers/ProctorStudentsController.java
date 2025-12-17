@@ -40,10 +40,10 @@ public class ProctorStudentsController {
 
     @FXML
     private TableColumn<models.Student, Void> colActions;
-    
+
     @FXML
     private javafx.scene.control.TextField searchField;
-    
+
     @FXML
     private javafx.scene.control.Label searchResultLabel;
 
@@ -53,7 +53,7 @@ public class ProctorStudentsController {
 
     // Track which row is being edited
     private int editingRowIndex = -1;
-    
+
     // Store all students for filtering
     private java.util.List<models.Student> allStudents = new java.util.ArrayList<>();
 
@@ -61,7 +61,7 @@ public class ProctorStudentsController {
     public void initialize() {
         // Make table editable but cells will control their own edit state
         studentsTable.setEditable(true);
-        
+
         // All columns use standard cell value factories
         colName.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("name"));
         colId.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("id"));
@@ -82,145 +82,147 @@ public class ProctorStudentsController {
             {
                 // Modern smooth styling for buttons with gradients and shadows
                 String editStyle = "-fx-background-color: linear-gradient(to bottom, #00d4ff, #00b4d8); " +
-                                  "-fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; " +
-                                  "-fx-padding: 6 12; -fx-background-radius: 8; -fx-cursor: hand; " +
-                                  "-fx-effect: dropshadow(gaussian, rgba(0, 180, 216, 0.4), 8, 0.3, 0, 2);";
-                
+                        "-fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; " +
+                        "-fx-padding: 6 12; -fx-background-radius: 8; -fx-cursor: hand; " +
+                        "-fx-effect: dropshadow(gaussian, rgba(0, 180, 216, 0.4), 8, 0.3, 0, 2);";
+
                 String editHoverStyle = "-fx-background-color: linear-gradient(to bottom, #00b4d8, #0096c7); " +
-                                       "-fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; " +
-                                       "-fx-padding: 6 12; -fx-background-radius: 8; -fx-cursor: hand; " +
-                                       "-fx-effect: dropshadow(gaussian, rgba(0, 180, 216, 0.6), 10, 0.4, 0, 3);";
-                
+                        "-fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; " +
+                        "-fx-padding: 6 12; -fx-background-radius: 8; -fx-cursor: hand; " +
+                        "-fx-effect: dropshadow(gaussian, rgba(0, 180, 216, 0.6), 10, 0.4, 0, 3);";
+
                 String saveStyle = "-fx-background-color: linear-gradient(to bottom, #5fdc73, #4cd964); " +
-                                  "-fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; " +
-                                  "-fx-padding: 6 12; -fx-background-radius: 8; -fx-cursor: hand; " +
-                                  "-fx-effect: dropshadow(gaussian, rgba(76, 217, 100, 0.4), 8, 0.3, 0, 2);";
-                
+                        "-fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; " +
+                        "-fx-padding: 6 12; -fx-background-radius: 8; -fx-cursor: hand; " +
+                        "-fx-effect: dropshadow(gaussian, rgba(76, 217, 100, 0.4), 8, 0.3, 0, 2);";
+
                 String saveHoverStyle = "-fx-background-color: linear-gradient(to bottom, #4cd964, #3db54a); " +
-                                       "-fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; " +
-                                       "-fx-padding: 6 12; -fx-background-radius: 8; -fx-cursor: hand; " +
-                                       "-fx-effect: dropshadow(gaussian, rgba(76, 217, 100, 0.6), 10, 0.4, 0, 3);";
-                
+                        "-fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; " +
+                        "-fx-padding: 6 12; -fx-background-radius: 8; -fx-cursor: hand; " +
+                        "-fx-effect: dropshadow(gaussian, rgba(76, 217, 100, 0.6), 10, 0.4, 0, 3);";
+
                 String cancelStyle = "-fx-background-color: linear-gradient(to bottom, #ffad33, #ff9500); " +
-                                    "-fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; " +
-                                    "-fx-padding: 6 12; -fx-background-radius: 8; -fx-cursor: hand; " +
-                                    "-fx-effect: dropshadow(gaussian, rgba(255, 149, 0, 0.4), 8, 0.3, 0, 2);";
-                
+                        "-fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; " +
+                        "-fx-padding: 6 12; -fx-background-radius: 8; -fx-cursor: hand; " +
+                        "-fx-effect: dropshadow(gaussian, rgba(255, 149, 0, 0.4), 8, 0.3, 0, 2);";
+
                 String cancelHoverStyle = "-fx-background-color: linear-gradient(to bottom, #ff9500, #e68600); " +
-                                         "-fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; " +
-                                         "-fx-padding: 6 12; -fx-background-radius: 8; -fx-cursor: hand; " +
-                                         "-fx-effect: dropshadow(gaussian, rgba(255, 149, 0, 0.6), 10, 0.4, 0, 3);";
-                
+                        "-fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; " +
+                        "-fx-padding: 6 12; -fx-background-radius: 8; -fx-cursor: hand; " +
+                        "-fx-effect: dropshadow(gaussian, rgba(255, 149, 0, 0.6), 10, 0.4, 0, 3);";
+
                 String deleteStyle = "-fx-background-color: linear-gradient(to bottom, #ff8585, #ff6b6b); " +
-                                    "-fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; " +
-                                    "-fx-padding: 6 12; -fx-background-radius: 8; -fx-cursor: hand; " +
-                                    "-fx-effect: dropshadow(gaussian, rgba(255, 107, 107, 0.4), 8, 0.3, 0, 2);";
-                
+                        "-fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; " +
+                        "-fx-padding: 6 12; -fx-background-radius: 8; -fx-cursor: hand; " +
+                        "-fx-effect: dropshadow(gaussian, rgba(255, 107, 107, 0.4), 8, 0.3, 0, 2);";
+
                 String deleteHoverStyle = "-fx-background-color: linear-gradient(to bottom, #ff6b6b, #ff4757); " +
-                                         "-fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; " +
-                                         "-fx-padding: 6 12; -fx-background-radius: 8; -fx-cursor: hand; " +
-                                         "-fx-effect: dropshadow(gaussian, rgba(255, 107, 107, 0.6), 10, 0.4, 0, 3);";
-                
+                        "-fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; " +
+                        "-fx-padding: 6 12; -fx-background-radius: 8; -fx-cursor: hand; " +
+                        "-fx-effect: dropshadow(gaussian, rgba(255, 107, 107, 0.6), 10, 0.4, 0, 3);";
+
                 editBtn.setStyle(editStyle);
                 saveBtn.setStyle(saveStyle);
                 cancelBtn.setStyle(cancelStyle);
                 deleteBtn.setStyle(deleteStyle);
-                
+
                 // Smooth hover effects with enhanced shadows
                 editBtn.setOnMouseEntered(e -> editBtn.setStyle(editHoverStyle));
                 editBtn.setOnMouseExited(e -> editBtn.setStyle(editStyle));
-                
+
                 saveBtn.setOnMouseEntered(e -> saveBtn.setStyle(saveHoverStyle));
                 saveBtn.setOnMouseExited(e -> saveBtn.setStyle(saveStyle));
-                
+
                 cancelBtn.setOnMouseEntered(e -> cancelBtn.setStyle(cancelHoverStyle));
                 cancelBtn.setOnMouseExited(e -> cancelBtn.setStyle(cancelStyle));
-                
+
                 deleteBtn.setOnMouseEntered(e -> deleteBtn.setStyle(deleteHoverStyle));
                 deleteBtn.setOnMouseExited(e -> deleteBtn.setStyle(deleteStyle));
-                
+
                 editBtn.setOnAction(event -> {
                     int index = getIndex();
                     editingRowIndex = index;
                     studentsTable.refresh();
                 });
-                
+
                 saveBtn.setOnAction(event -> {
                     editingRowIndex = -1;
                     data.DataManager.getInstance().saveStudents();
                     studentsTable.refresh();
-                    
+
                     // Show success message
-                    javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
+                    javafx.scene.control.Alert alert = new javafx.scene.control.Alert(
+                            javafx.scene.control.Alert.AlertType.INFORMATION);
                     alert.setTitle("Success");
                     alert.setHeaderText(null);
                     alert.setContentText("Student information updated successfully!");
                     alert.getDialogPane().setStyle("-fx-background-color: #0A1A2F;");
                     alert.showAndWait();
                 });
-                
+
                 cancelBtn.setOnAction(event -> {
                     editingRowIndex = -1;
                     loadStudents(); // Reload to discard changes
                     studentsTable.refresh();
                 });
-                
+
                 deleteBtn.setOnAction(event -> {
                     models.Student student = getTableView().getItems().get(getIndex());
-                    
+
                     // Enhanced modern confirmation dialog
-                    javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.CONFIRMATION);
+                    javafx.scene.control.Alert alert = new javafx.scene.control.Alert(
+                            javafx.scene.control.Alert.AlertType.CONFIRMATION);
                     alert.setTitle("Delete Student");
                     alert.setHeaderText("⚠️  Confirm Deletion");
                     alert.setContentText("Are you sure you want to delete " + student.getName() + "?\n\n" +
-                                        "Student ID: " + student.getId() + "\n" +
-                                        "Department: " + student.getDepartment() + "\n\n" +
-                                        "This action cannot be undone.");
-                    
+                            "Student ID: " + student.getId() + "\n" +
+                            "Department: " + student.getDepartment() + "\n\n" +
+                            "This action cannot be undone.");
+
                     // Modern dark theme styling
                     javafx.scene.control.DialogPane dialogPane = alert.getDialogPane();
                     dialogPane.setStyle(
-                        "-fx-background-color: linear-gradient(to bottom, #0f2744, #0a1929);" +
-                        "-fx-border-color: #ff6b6b;" +
-                        "-fx-border-width: 2;" +
-                        "-fx-border-radius: 10;" +
-                        "-fx-background-radius: 10;" +
-                        "-fx-effect: dropshadow(gaussian, rgba(255, 107, 107, 0.5), 20, 0.3, 0, 0);"
-                    );
-                    
+                            "-fx-background-color: linear-gradient(to bottom, #0f2744, #0a1929);" +
+                                    "-fx-border-color: #ff6b6b;" +
+                                    "-fx-border-width: 2;" +
+                                    "-fx-border-radius: 10;" +
+                                    "-fx-background-radius: 10;" +
+                                    "-fx-effect: dropshadow(gaussian, rgba(255, 107, 107, 0.5), 20, 0.3, 0, 0);");
+
                     if (dialogPane.lookup(".header-panel") != null) {
-                        dialogPane.lookup(".header-panel").setStyle("-fx-background-color: transparent; -fx-padding: 20 20 10 20;");
+                        dialogPane.lookup(".header-panel")
+                                .setStyle("-fx-background-color: transparent; -fx-padding: 20 20 10 20;");
                     }
-                    
-                    javafx.scene.control.Label headerLabel = (javafx.scene.control.Label) dialogPane.lookup(".header .label");
+
+                    javafx.scene.control.Label headerLabel = (javafx.scene.control.Label) dialogPane
+                            .lookup(".header .label");
                     if (headerLabel != null) {
                         headerLabel.setStyle("-fx-text-fill: #ff6b6b; -fx-font-size: 18px; -fx-font-weight: bold;");
                     }
-                    
+
                     if (dialogPane.lookup(".content") != null) {
-                        dialogPane.lookup(".content").setStyle("-fx-text-fill: #e0e0e0; -fx-font-size: 14px; -fx-padding: 10 20 20 20;");
+                        dialogPane.lookup(".content")
+                                .setStyle("-fx-text-fill: #e0e0e0; -fx-font-size: 14px; -fx-padding: 10 20 20 20;");
                     }
-                    
+
                     dialogPane.lookupButton(javafx.scene.control.ButtonType.OK).setStyle(
-                        "-fx-background-color: linear-gradient(to bottom, #ff8585, #ff6b6b);" +
-                        "-fx-text-fill: white;" +
-                        "-fx-font-weight: bold;" +
-                        "-fx-padding: 8 20;" +
-                        "-fx-background-radius: 6;" +
-                        "-fx-cursor: hand;" +
-                        "-fx-effect: dropshadow(gaussian, rgba(255, 107, 107, 0.4), 8, 0.3, 0, 2);"
-                    );
-                    
+                            "-fx-background-color: linear-gradient(to bottom, #ff8585, #ff6b6b);" +
+                                    "-fx-text-fill: white;" +
+                                    "-fx-font-weight: bold;" +
+                                    "-fx-padding: 8 20;" +
+                                    "-fx-background-radius: 6;" +
+                                    "-fx-cursor: hand;" +
+                                    "-fx-effect: dropshadow(gaussian, rgba(255, 107, 107, 0.4), 8, 0.3, 0, 2);");
+
                     dialogPane.lookupButton(javafx.scene.control.ButtonType.CANCEL).setStyle(
-                        "-fx-background-color: linear-gradient(to bottom, #4a5568, #2d3748);" +
-                        "-fx-text-fill: white;" +
-                        "-fx-font-weight: bold;" +
-                        "-fx-padding: 8 20;" +
-                        "-fx-background-radius: 6;" +
-                        "-fx-cursor: hand;" +
-                        "-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0.3, 0, 2);"
-                    );
-                    
+                            "-fx-background-color: linear-gradient(to bottom, #4a5568, #2d3748);" +
+                                    "-fx-text-fill: white;" +
+                                    "-fx-font-weight: bold;" +
+                                    "-fx-padding: 8 20;" +
+                                    "-fx-background-radius: 6;" +
+                                    "-fx-cursor: hand;" +
+                                    "-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0.3, 0, 2);");
+
                     java.util.Optional<javafx.scene.control.ButtonType> result = alert.showAndWait();
                     if (result.isPresent() && result.get() == javafx.scene.control.ButtonType.OK) {
                         // Remove from room if assigned
@@ -237,55 +239,59 @@ public class ProctorStudentsController {
                                 }
                             }
                         }
-                        
+
                         // Remove student from list
                         data.DataManager.getInstance().getStudents().remove(student);
                         data.DataManager.getInstance().saveStudents();
                         loadStudents();
-                        
+
                         // Show modern success message
-                        javafx.scene.control.Alert successAlert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
+                        javafx.scene.control.Alert successAlert = new javafx.scene.control.Alert(
+                                javafx.scene.control.Alert.AlertType.INFORMATION);
                         successAlert.setTitle("Success");
                         successAlert.setHeaderText("✓  Student Deleted");
-                        successAlert.setContentText(student.getName() + " has been successfully removed from the system.");
-                        
+                        successAlert
+                                .setContentText(student.getName() + " has been successfully removed from the system.");
+
                         javafx.scene.control.DialogPane successPane = successAlert.getDialogPane();
                         successPane.setStyle(
-                            "-fx-background-color: linear-gradient(to bottom, #0f2744, #0a1929);" +
-                            "-fx-border-color: #4cd964;" +
-                            "-fx-border-width: 2;" +
-                            "-fx-border-radius: 10;" +
-                            "-fx-background-radius: 10;" +
-                            "-fx-effect: dropshadow(gaussian, rgba(76, 217, 100, 0.5), 20, 0.3, 0, 0);"
-                        );
-                        
+                                "-fx-background-color: linear-gradient(to bottom, #0f2744, #0a1929);" +
+                                        "-fx-border-color: #4cd964;" +
+                                        "-fx-border-width: 2;" +
+                                        "-fx-border-radius: 10;" +
+                                        "-fx-background-radius: 10;" +
+                                        "-fx-effect: dropshadow(gaussian, rgba(76, 217, 100, 0.5), 20, 0.3, 0, 0);");
+
                         if (successPane.lookup(".header-panel") != null) {
-                            successPane.lookup(".header-panel").setStyle("-fx-background-color: transparent; -fx-padding: 20 20 10 20;");
+                            successPane.lookup(".header-panel")
+                                    .setStyle("-fx-background-color: transparent; -fx-padding: 20 20 10 20;");
                         }
-                        
-                        javafx.scene.control.Label successHeaderLabel = (javafx.scene.control.Label) successPane.lookup(".header .label");
+
+                        javafx.scene.control.Label successHeaderLabel = (javafx.scene.control.Label) successPane
+                                .lookup(".header .label");
                         if (successHeaderLabel != null) {
-                            successHeaderLabel.setStyle("-fx-text-fill: #4cd964; -fx-font-size: 18px; -fx-font-weight: bold;");
+                            successHeaderLabel
+                                    .setStyle("-fx-text-fill: #4cd964; -fx-font-size: 18px; -fx-font-weight: bold;");
                         }
-                        
+
                         if (successPane.lookup(".content") != null) {
-                            successPane.lookup(".content").setStyle("-fx-text-fill: #e0e0e0; -fx-font-size: 14px; -fx-padding: 10 20 20 20;");
+                            successPane.lookup(".content")
+                                    .setStyle("-fx-text-fill: #e0e0e0; -fx-font-size: 14px; -fx-padding: 10 20 20 20;");
                         }
-                        
+
                         successPane.lookupButton(javafx.scene.control.ButtonType.OK).setStyle(
-                            "-fx-background-color: linear-gradient(to bottom, #5fdc73, #4cd964);" +
-                            "-fx-text-fill: white;" +
-                            "-fx-font-weight: bold;" +
-                            "-fx-padding: 8 20;" +
-                            "-fx-background-radius: 6;" +
-                            "-fx-cursor: hand;" +
-                            "-fx-effect: dropshadow(gaussian, rgba(76, 217, 100, 0.4), 8, 0.3, 0, 2);"
-                        );
-                        
+                                "-fx-background-color: linear-gradient(to bottom, #5fdc73, #4cd964);" +
+                                        "-fx-text-fill: white;" +
+                                        "-fx-font-weight: bold;" +
+                                        "-fx-padding: 8 20;" +
+                                        "-fx-background-radius: 6;" +
+                                        "-fx-cursor: hand;" +
+                                        "-fx-effect: dropshadow(gaussian, rgba(76, 217, 100, 0.4), 8, 0.3, 0, 2);");
+
                         successAlert.showAndWait();
                     }
                 });
-                
+
                 buttonBox.setAlignment(javafx.geometry.Pos.CENTER);
             }
 
@@ -314,13 +320,13 @@ public class ProctorStudentsController {
         setupGenderColumn();
         setupBuildingColumn();
         setupRoomColumn();
-        
+
         // Setup search functionality
         setupSearchFilter();
 
         loadStudents();
     }
-    
+
     private void setupSearchFilter() {
         if (searchField != null) {
             searchField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -328,7 +334,7 @@ public class ProctorStudentsController {
             });
         }
     }
-    
+
     private void filterStudents(String searchText) {
         if (searchText == null || searchText.trim().isEmpty()) {
             // Show all students when search is empty
@@ -338,14 +344,14 @@ public class ProctorStudentsController {
             }
             return;
         }
-        
+
         String search = searchText.toLowerCase().trim();
         java.util.List<models.Student> filtered = new java.util.ArrayList<>();
-        
+
         for (models.Student student : allStudents) {
             // Search in multiple fields
             boolean matches = false;
-            
+
             if (student.getName() != null && student.getName().toLowerCase().contains(search)) {
                 matches = true;
             } else if (student.getId() != null && student.getId().toLowerCase().contains(search)) {
@@ -354,21 +360,22 @@ public class ProctorStudentsController {
                 matches = true;
             } else if (student.getGender() != null && student.getGender().toLowerCase().contains(search)) {
                 matches = true;
-            } else if (student.getAssignedBuilding() != null && student.getAssignedBuilding().toLowerCase().contains(search)) {
+            } else if (student.getAssignedBuilding() != null
+                    && student.getAssignedBuilding().toLowerCase().contains(search)) {
                 matches = true;
             } else if (student.getAssignedRoom() != null && student.getAssignedRoom().toLowerCase().contains(search)) {
                 matches = true;
             } else if (student.getYear() != null && student.getYear().toLowerCase().contains(search)) {
                 matches = true;
             }
-            
+
             if (matches) {
                 filtered.add(student);
             }
         }
-        
+
         studentsTable.setItems(javafx.collections.FXCollections.observableArrayList(filtered));
-        
+
         // Update result label with null check
         if (searchResultLabel != null) {
             if (filtered.isEmpty()) {
@@ -380,11 +387,11 @@ public class ProctorStudentsController {
             }
         }
     }
-    
+
     private void setupEditableColumn(TableColumn<models.Student, String> column, String property) {
         column.setCellFactory(col -> new javafx.scene.control.TableCell<models.Student, String>() {
             private javafx.scene.control.TextField textField;
-            
+
             @Override
             protected void updateItem(String item, boolean empty) {
                 super.updateItem(item, empty);
@@ -415,24 +422,30 @@ public class ProctorStudentsController {
                     }
                 }
             }
-            
+
             @Override
             public void commitEdit(String newValue) {
                 super.commitEdit(newValue);
                 models.Student student = getTableView().getItems().get(getIndex());
-                switch(property) {
-                    case "name": student.setName(newValue); break;
-                    case "department": student.setDepartment(newValue); break;
-                    case "year": student.setYear(newValue); break;
+                switch (property) {
+                    case "name":
+                        student.setName(newValue);
+                        break;
+                    case "department":
+                        student.setDepartment(newValue);
+                        break;
+                    case "year":
+                        student.setYear(newValue);
+                        break;
                 }
             }
         });
     }
-    
+
     private void setupGenderColumn() {
         colGender.setCellFactory(col -> new javafx.scene.control.TableCell<models.Student, String>() {
             private javafx.scene.control.ComboBox<String> comboBox;
-            
+
             @Override
             protected void updateItem(String item, boolean empty) {
                 super.updateItem(item, empty);
@@ -465,11 +478,11 @@ public class ProctorStudentsController {
             }
         });
     }
-    
+
     private void setupBuildingColumn() {
         colBuilding.setCellFactory(col -> new javafx.scene.control.TableCell<models.Student, String>() {
             private javafx.scene.control.ComboBox<String> comboBox;
-            
+
             @Override
             protected void updateItem(String item, boolean empty) {
                 super.updateItem(item, empty);
@@ -483,7 +496,8 @@ public class ProctorStudentsController {
                             comboBox = new javafx.scene.control.ComboBox<>();
                             comboBox.getStyleClass().add("combo-box");
                             comboBox.setPrefHeight(32);
-                            comboBox.setOnAction(e -> updateStudentBuilding(getTableView().getItems().get(getIndex()), comboBox.getValue()));
+                            comboBox.setOnAction(e -> updateStudentBuilding(getTableView().getItems().get(getIndex()),
+                                    comboBox.getValue()));
                         }
                         comboBox.getItems().clear();
                         comboBox.getItems().add("Not Assigned");
@@ -506,11 +520,11 @@ public class ProctorStudentsController {
             }
         });
     }
-    
+
     private void setupRoomColumn() {
         colRoom.setCellFactory(col -> new javafx.scene.control.TableCell<models.Student, String>() {
             private javafx.scene.control.ComboBox<String> comboBox;
-            
+
             @Override
             protected void updateItem(String item, boolean empty) {
                 super.updateItem(item, empty);
@@ -524,7 +538,8 @@ public class ProctorStudentsController {
                             comboBox = new javafx.scene.control.ComboBox<>();
                             comboBox.getStyleClass().add("combo-box");
                             comboBox.setPrefHeight(32);
-                            comboBox.setOnAction(e -> updateStudentRoom(getTableView().getItems().get(getIndex()), comboBox.getValue()));
+                            comboBox.setOnAction(e -> updateStudentRoom(getTableView().getItems().get(getIndex()),
+                                    comboBox.getValue()));
                         }
                         comboBox.getItems().clear();
                         models.Student student = getTableView().getItems().get(getIndex());
@@ -577,10 +592,10 @@ public class ProctorStudentsController {
                 filteredList.add(s);
             }
         }
-        
+
         // Store filtered students for search
         allStudents = filteredList;
-        
+
         // Apply current search filter if any
         if (searchField != null && !searchField.getText().trim().isEmpty()) {
             filterStudents(searchField.getText());
@@ -591,11 +606,11 @@ public class ProctorStudentsController {
             }
         }
     }
-    
+
     private void updateStudentBuilding(models.Student student, String newBuilding) {
         String oldBuilding = student.getAssignedBuilding();
         String oldRoom = student.getAssignedRoom();
-        
+
         // Remove from old room
         if (!"Not Assigned".equals(oldBuilding)) {
             for (models.Building b : data.DataManager.getInstance().getBuildings()) {
@@ -610,7 +625,7 @@ public class ProctorStudentsController {
                 }
             }
         }
-        
+
         // Update building and auto-assign to first available room
         if ("Not Assigned".equals(newBuilding)) {
             student.setAssignedBuilding("Not Assigned");
@@ -637,15 +652,15 @@ public class ProctorStudentsController {
                 student.setAssignedRoom("");
             }
         }
-        
+
         data.DataManager.getInstance().saveStudents();
         loadStudents();
     }
-    
+
     private void updateStudentRoom(models.Student student, String newRoom) {
         String building = student.getAssignedBuilding();
         String oldRoom = student.getAssignedRoom();
-        
+
         if (!"Not Assigned".equals(building)) {
             for (models.Building b : data.DataManager.getInstance().getBuildings()) {
                 if (b.getName().equals(building)) {
@@ -658,7 +673,7 @@ public class ProctorStudentsController {
                             }
                         }
                     }
-                    
+
                     // Add to new room
                     for (models.Room r : b.getRooms()) {
                         if (r.getRoomNumber().equals(newRoom)) {
@@ -671,7 +686,7 @@ public class ProctorStudentsController {
                 }
             }
         }
-        
+
         data.DataManager.getInstance().saveStudents();
         loadStudents();
     }
@@ -679,7 +694,7 @@ public class ProctorStudentsController {
     @FXML
     void handleBack(ActionEvent event) {
         // Use NavigationUtils to preserve current scene and window size
-        utils.NavigationUtils.navigateTo(event, "/resources/ProctorDashboard.fxml");
+        utils.NavigationUtils.navigateTo(event, "/resources/ProctorDashboardEnhanced.fxml");
     }
 
     @FXML
@@ -688,95 +703,98 @@ public class ProctorStudentsController {
             showAlert("No Data", "There are no students to export.", javafx.scene.control.Alert.AlertType.WARNING);
             return;
         }
-        
+
         // Use JavaFX PrinterJob to print/save as PDF
         javafx.print.PrinterJob printerJob = javafx.print.PrinterJob.createPrinterJob();
-        
+
         if (printerJob != null) {
             // Show print dialog (user can select "Print to PDF")
             boolean proceed = printerJob.showPrintDialog(studentsTable.getScene().getWindow());
-            
+
             if (proceed) {
                 // Create a snapshot of the table for printing
                 javafx.scene.layout.VBox printContent = new javafx.scene.layout.VBox(15);
                 printContent.setPadding(new javafx.geometry.Insets(20));
-                
+
                 // Title
                 javafx.scene.text.Text title = new javafx.scene.text.Text("Student Allocation Report");
                 title.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
-                
+
                 // Timestamp
                 java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                javafx.scene.text.Text timestamp = new javafx.scene.text.Text("Generated: " + dateFormat.format(new java.util.Date()));
+                javafx.scene.text.Text timestamp = new javafx.scene.text.Text(
+                        "Generated: " + dateFormat.format(new java.util.Date()));
                 timestamp.setStyle("-fx-font-size: 10px;");
-                
+
                 // Student count
-                javafx.scene.text.Text count = new javafx.scene.text.Text("Total Students: " + studentsTable.getItems().size());
+                javafx.scene.text.Text count = new javafx.scene.text.Text(
+                        "Total Students: " + studentsTable.getItems().size());
                 count.setStyle("-fx-font-size: 10px;");
-                
+
                 // Create text representation of table
                 javafx.scene.layout.VBox tableText = new javafx.scene.layout.VBox(5);
-                
+
                 // Header
-                String header = String.format("%-20s %-12s %-15s %-6s %-8s %-20s %-20s", 
-                    "Name", "ID", "Department", "Year", "Gender", "Building", "Room");
+                String header = String.format("%-20s %-12s %-15s %-6s %-8s %-20s %-20s",
+                        "Name", "ID", "Department", "Year", "Gender", "Building", "Room");
                 javafx.scene.text.Text headerText = new javafx.scene.text.Text(header);
                 headerText.setStyle("-fx-font-family: 'Courier New'; -fx-font-size: 9px; -fx-font-weight: bold;");
                 tableText.getChildren().add(headerText);
-                
+
                 // Separator
                 javafx.scene.text.Text separator = new javafx.scene.text.Text("─".repeat(110));
                 separator.setStyle("-fx-font-family: 'Courier New'; -fx-font-size: 9px;");
                 tableText.getChildren().add(separator);
-                
+
                 // Rows
                 for (models.Student student : studentsTable.getItems()) {
                     String row = String.format("%-20s %-12s %-15s %-6s %-8s %-20s %-20s",
-                        truncate(student.getName(), 20),
-                        student.getId(),
-                        truncate(student.getDepartment(), 15),
-                        student.getYear(),
-                        student.getGender(),
-                        truncate(student.getAssignedBuilding(), 20),
-                        truncate(student.getAssignedRoom(), 20)
-                    );
+                            truncate(student.getName(), 20),
+                            student.getId(),
+                            truncate(student.getDepartment(), 15),
+                            student.getYear(),
+                            student.getGender(),
+                            truncate(student.getAssignedBuilding(), 20),
+                            truncate(student.getAssignedRoom(), 20));
                     javafx.scene.text.Text rowText = new javafx.scene.text.Text(row);
                     rowText.setStyle("-fx-font-family: 'Courier New'; -fx-font-size: 8px;");
                     tableText.getChildren().add(rowText);
                 }
-                
+
                 printContent.getChildren().addAll(title, timestamp, count, new javafx.scene.text.Text(""), tableText);
-                
+
                 // Print
                 boolean printed = printerJob.printPage(printContent);
-                
+
                 if (printed) {
                     printerJob.endJob();
-                    showAlert("Success", "Document sent to printer/PDF successfully!", 
-                             javafx.scene.control.Alert.AlertType.INFORMATION);
+                    showAlert("Success", "Document sent to printer/PDF successfully!",
+                            javafx.scene.control.Alert.AlertType.INFORMATION);
                 } else {
-                    showAlert("Error", "Failed to print document.", 
-                             javafx.scene.control.Alert.AlertType.ERROR);
+                    showAlert("Error", "Failed to print document.",
+                            javafx.scene.control.Alert.AlertType.ERROR);
                 }
             }
         } else {
-            showAlert("Error", "No printer available. Please install a PDF printer (e.g., Microsoft Print to PDF).", 
-                     javafx.scene.control.Alert.AlertType.ERROR);
+            showAlert("Error", "No printer available. Please install a PDF printer (e.g., Microsoft Print to PDF).",
+                    javafx.scene.control.Alert.AlertType.ERROR);
         }
     }
-    
+
     private String truncate(String text, int maxLength) {
-        if (text == null) return "";
-        if (text.length() <= maxLength) return text;
+        if (text == null)
+            return "";
+        if (text.length() <= maxLength)
+            return text;
         return text.substring(0, maxLength - 3) + "...";
     }
-    
+
     private void showAlert(String title, String content, javafx.scene.control.Alert.AlertType type) {
         javafx.scene.control.Alert alert = new javafx.scene.control.Alert(type);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(content);
-        
+
         // Style the dialog
         alert.getDialogPane().setStyle("-fx-background-color: #0A1A2F;");
         if (alert.getDialogPane().lookup(".header-panel") != null) {
@@ -785,7 +803,7 @@ public class ProctorStudentsController {
         if (alert.getDialogPane().lookup(".content") != null) {
             alert.getDialogPane().lookup(".content").setStyle("-fx-text-fill: #FFFFFF;");
         }
-        
+
         alert.showAndWait();
     }
 
@@ -808,7 +826,7 @@ public class ProctorStudentsController {
                     if (!b.getGender().equals(s.getGender())) {
                         continue;
                     }
-                    
+
                     for (models.Room r : b.getRooms()) {
                         if (!r.isFull()) {
                             r.addStudent(s.getId());
@@ -818,11 +836,13 @@ public class ProctorStudentsController {
                             break;
                         }
                     }
-                    if (assigned) break;
+                    if (assigned)
+                        break;
                 }
-                
+
                 if (!assigned) {
-                    System.out.println("Could not assign student " + s.getName() + " (" + s.getGender() + ") - no available " + s.getGender() + " buildings");
+                    System.out.println("Could not assign student " + s.getName() + " (" + s.getGender()
+                            + ") - no available " + s.getGender() + " buildings");
                 }
             }
         }

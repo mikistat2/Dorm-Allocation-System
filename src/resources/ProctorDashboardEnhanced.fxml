@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" 
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.ProctorDashboardEnhancedController"
+            stylesheets="@style.css"
+            prefHeight="768.0" prefWidth="1366.0">
+    
+    <!-- Top Navigation -->
+    <top>
+        <HBox spacing="20" alignment="CENTER_LEFT" style="-fx-background-color: rgba(15, 31, 56, 0.9); -fx-padding: 20 40;">
+            <Label text="🏠 Dorm Management System" styleClass="header-label" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Button text="Dashboard" styleClass="action-button" />
+            <Button text="Students" onAction="#handleStudentsView" styleClass="button" />
+            <Button text="Logout" onAction="#handleLogout" styleClass="danger-button" />
+        </HBox>
+    </top>
+    
+    <!-- Main Content -->
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="scroll-pane">
+            <VBox spacing="30" style="-fx-padding: 40;">
+                
+                <!-- Welcome Header -->
+                <VBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Welcome Back, Admin!" styleClass="title-label" />
+                    <Label text="Manage your student dormitory with ease and efficiency" styleClass="subtitle-label" />
+                </VBox>
+                
+                <!-- Stats Cards Row -->
+                <HBox spacing="20" alignment="TOP_CENTER">
+                    <VBox styleClass="stat-card" prefWidth="250" spacing="10">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Circle radius="25" fill="linear-gradient(to bottom right, #00b4d8, #0096c7)" />
+                            <VBox>
+                                <Label text="Total Students" styleClass="card-subtitle" />
+                                <Label fx:id="totalStudentsLabel" text="0" style="-fx-font-size: 32px; -fx-font-weight: 800; -fx-text-fill: #ffffff;" />
+                            </VBox>
+                        </HBox>
+                        <ProgressBar fx:id="occupancyProgress" progress="0.0" styleClass="progress-bar" maxWidth="Infinity" />
+                        <Label fx:id="occupancyLabel" text="0% Occupancy" styleClass="card-subtitle" />
+                        <Button text="View All" onAction="#handleTotalClick" styleClass="secondary-button" maxWidth="Infinity" />
+                    </VBox>
+                    
+                    <VBox styleClass="stat-card" prefWidth="250" spacing="10">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Circle radius="25" fill="linear-gradient(to bottom right, #4cd964, #2ecc71)" />
+                            <VBox>
+                                <Label text="Assigned" styleClass="card-subtitle" />
+                                <Label fx:id="assignedLabel" text="0" style="-fx-font-size: 32px; -fx-font-weight: 800; -fx-text-fill: #ffffff;" />
+                            </VBox>
+                        </HBox>
+                        <Button text="View Details" onAction="#handleAssignedClick" styleClass="secondary-button" maxWidth="Infinity" />
+                    </VBox>
+                    
+                    <VBox styleClass="stat-card" prefWidth="250" spacing="10">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Circle radius="25" fill="linear-gradient(to bottom right, #ffd166, #ffb347)" />
+                            <VBox>
+                                <Label text="Unassigned" styleClass="card-subtitle" />
+                                <Label fx:id="unassignedLabel" text="0" style="-fx-font-size: 32px; -fx-font-weight: 800; -fx-text-fill: #ffffff;" />
+                            </VBox>
+                        </HBox>
+                        <Button text="Review" onAction="#handleUnassignedClick" styleClass="secondary-button" maxWidth="Infinity" />
+                    </VBox>
+                    
+                    <VBox styleClass="stat-card" prefWidth="250" spacing="10">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Circle radius="25" fill="linear-gradient(to bottom right, #ff6b6b, #ff5252)" />
+                            <VBox>
+                                <Label text="Total Buildings" styleClass="card-subtitle" />
+                                <Label fx:id="buildingsCountLabel" text="0" style="-fx-font-size: 32px; -fx-font-weight: 800; -fx-text-fill: #ffffff;" />
+                            </VBox>
+                        </HBox>
+                        <Button text="Manage" onAction="#handleSettingsView" styleClass="secondary-button" maxWidth="Infinity" />
+                    </VBox>
+                </HBox>
+                
+                <!-- Graph and Overview Section -->
+                <HBox spacing="20" VBox.vgrow="ALWAYS">
+                    <!-- Left Side: Student Distribution Graph -->
+                    <VBox styleClass="card" spacing="15" prefWidth="500" HBox.hgrow="ALWAYS">
+
+                        
+                        <!-- Pie Chart Section with Custom Legend -->
+                        <VBox spacing="15" style="-fx-padding: 20 0 0 0;">
+                            <HBox alignment="CENTER_LEFT" spacing="10">
+                                <Rectangle width="4" height="24" styleClass="accent-bar-primary" />
+                                <Label text="Data Distribution" styleClass="card-title" />
+                                <Region HBox.hgrow="ALWAYS" />
+                                <Button fx:id="genderPieBtn" onAction="#handlePieGender" styleClass="action-button" text="Gender" />
+                                <Button fx:id="yearPieBtn" onAction="#handlePieYear" styleClass="filter-button" text="Year" />
+                                <Button fx:id="deptPieBtn" onAction="#handlePieDepartment" styleClass="filter-button" text="Department" />
+                            </HBox>
+                            
+                            <!-- Pie Chart -->
+                            <PieChart fx:id="studentPieChart" 
+                                      legendVisible="false" 
+                                      animated="true" 
+                                      prefHeight="280" 
+                                      labelsVisible="true" 
+                                      startAngle="90"
+                                      clockwise="false" />
+                            
+                            <!-- Custom Legend -->
+                            <FlowPane fx:id="customLegend" hgap="12" vgap="8" alignment="CENTER" style="-fx-padding: 10 0 0 0;" />
+                        </VBox>
+                    </VBox>
+                    
+                    <!-- Right Side: Building Overview -->
+                    <VBox styleClass="card" spacing="15" prefWidth="500" HBox.hgrow="ALWAYS">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Rectangle width="4" height="24" styleClass="accent-bar-success" />
+                            <Label text="Building Overview" styleClass="card-title" />
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Button fx:id="allBlocksBtn" onAction="#handleFilterAll" styleClass="action-button" text="All" />
+                            <Button fx:id="maleBlocksBtn" onAction="#handleFilterMale" styleClass="filter-button" text="Male" />
+                            <Button fx:id="femaleBlocksBtn" onAction="#handleFilterFemale" styleClass="filter-button" text="Female" />
+                        </HBox>
+                        
+                        <!-- Buildings List -->
+                        <ScrollPane fitToWidth="true" styleClass="scroll-pane" prefHeight="480">
+                            <TilePane fx:id="buildingsFlowPane" hgap="10" vgap="10" prefColumns="3" style="-fx-padding: 5;" />
+                        </ScrollPane>
+                    </VBox>
+                </HBox>
+                
+                <!-- Recent Students Table -->
+                <VBox styleClass="card" spacing="15">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Rectangle width="4" height="24" styleClass="accent-bar-warning" />
+                        <Label text="Recent Students" styleClass="card-title" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="searchField" promptText="Search students..." styleClass="search-field" prefWidth="250" />
+                        <Button text="View All" onAction="#handleStudentsView" styleClass="action-button" />
+                    </HBox>
+                    
+                    <TableView fx:id="recentStudentsTable" styleClass="table-view" prefHeight="300">
+                        <columns>
+                            <TableColumn text="Name" prefWidth="200" />
+                            <TableColumn text="Student ID" prefWidth="120" />
+                            <TableColumn text="Gender" prefWidth="100" />
+                            <TableColumn text="Year" prefWidth="100" />
+                            <TableColumn text="Room" prefWidth="100" />
+                            <TableColumn text="Building" prefWidth="100" />
+                            <TableColumn text="Status" prefWidth="120" />
+                        </columns>
+                    </TableView>
+                </VBox>
+                
+                <!-- Quick Actions -->
+                <VBox styleClass="card" spacing="15">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Rectangle width="4" height="24" styleClass="accent-bar-danger" />
+                        <Label text="Quick Actions" styleClass="card-title" />
+                    </HBox>
+                    <HBox spacing="15" alignment="CENTER">
+                        <Button text="➕ Add New Student" onAction="#handleStudentsView" styleClass="action-button" prefWidth="200" />
+                        <Button mnemonicParsing="false" onAction="#handleExportPDF" text="📊 Generate Report" styleClass="secondary-button" prefWidth="200" />
+                        <Button text="🏢 Manage Buildings" onAction="#handleSettingsView" styleClass="secondary-button" prefWidth="200" />
+                    </HBox>
+                </VBox>
+                
+            </VBox>
+        </ScrollPane>
+    </center>
+    
+    <!-- Bottom Footer -->
+    <bottom>
+        <HBox style="-fx-background-color: rgba(15, 31, 56, 0.9); -fx-padding: 15 40;" 
+              alignment="CENTER" spacing="20">
+            <Label text="© 2024 Dorm Management System" styleClass="card-subtitle" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="lastUpdatedLabel" text="Last Updated: Today" styleClass="card-subtitle" />
+        </HBox>
+    </bottom>
+    
+</BorderPane>

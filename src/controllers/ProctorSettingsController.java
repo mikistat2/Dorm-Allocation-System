@@ -17,7 +17,7 @@ import java.util.List;
 public class ProctorSettingsController {
 
     @FXML
-    private TextField numBuildingsField;
+    private javafx.scene.control.ComboBox<String> genderComboBox;
 
     @FXML
     private TextField numRoomsField;
@@ -28,7 +28,7 @@ public class ProctorSettingsController {
     @FXML
     void handleBack(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/resources/ProctorDashboard.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/resources/ProctorDashboardEnhanced.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -39,72 +39,63 @@ public class ProctorSettingsController {
     }
 
     @FXML
+    public void initialize() {
+        if (genderComboBox != null) {
+            genderComboBox.getItems().addAll("Male", "Female");
+            genderComboBox.getSelectionModel().selectFirst();
+        }
+    }
+
+    @FXML
     void handleSaveSettings(ActionEvent event) {
         try {
-            int buildingsCount = Integer.parseInt(numBuildingsField.getText());
             int roomsPerBuilding = Integer.parseInt(numRoomsField.getText());
+            String gender = genderComboBox.getValue();
 
-            if (buildingsCount <= 0 || roomsPerBuilding <= 0) {
+            if (roomsPerBuilding <= 0) {
                 messageLabel.setStyle("-fx-text-fill: #ff6b6b;");
-                messageLabel.setText("Please enter positive numbers.");
+                messageLabel.setText("Please enter a valid number of rooms.");
                 return;
             }
 
-            List<models.Building> buildings = new ArrayList<>();
-            
-            // Create dialog for each building to select gender
-            for (int i = 1; i <= buildingsCount; i++) {
-                String buildingName = "Block " + i;
-                
-                // Create choice dialog for gender selection
-                javafx.scene.control.ChoiceDialog<String> dialog = new javafx.scene.control.ChoiceDialog<>("Male", "Male", "Female");
-                dialog.setTitle("Building Gender Selection");
-                dialog.setHeaderText("Configure " + buildingName);
-                dialog.setContentText("Select gender for " + buildingName + ":");
-                
-                // Style the dialog
-                dialog.getDialogPane().setStyle(
-                    "-fx-background-color: linear-gradient(to bottom, #0f2744, #0a1929);" +
-                    "-fx-border-color: #00b4d8;" +
-                    "-fx-border-width: 2;" +
-                    "-fx-border-radius: 10;" +
-                    "-fx-background-radius: 10;"
-                );
-                
-                if (dialog.getDialogPane().lookup(".header-panel") != null) {
-                    dialog.getDialogPane().lookup(".header-panel").setStyle("-fx-background-color: transparent; -fx-padding: 20;");
-                }
-                
-                javafx.scene.control.Label headerLabel = (javafx.scene.control.Label) dialog.getDialogPane().lookup(".header .label");
-                if (headerLabel != null) {
-                    headerLabel.setStyle("-fx-text-fill: #00b4d8; -fx-font-size: 16px; -fx-font-weight: bold;");
-                }
-                
-                if (dialog.getDialogPane().lookup(".content") != null) {
-                    dialog.getDialogPane().lookup(".content").setStyle("-fx-text-fill: #e0e0e0; -fx-font-size: 14px;");
-                }
-                
-                // Show dialog and get result
-                java.util.Optional<String> result = dialog.showAndWait();
-                
-                if (result.isPresent()) {
-                    String gender = result.get();
-                    buildings.add(new models.Building(buildingName, roomsPerBuilding, gender));
-                } else {
-                    // User cancelled, stop creating buildings
-                    messageLabel.setStyle("-fx-text-fill: #ff9500;");
-                    messageLabel.setText("Configuration cancelled. Created " + buildings.size() + " blocks.");
-                    if (!buildings.isEmpty()) {
-                        data.DataManager.getInstance().setBuildings(buildings);
+            if (gender == null || gender.isEmpty()) {
+                messageLabel.setStyle("-fx-text-fill: #ff6b6b;");
+                messageLabel.setText("Please select a gender.");
+                return;
+            }
+
+            // Load existing buildings to append to them
+            List<models.Building> existingBuildings = new ArrayList<>(data.DataManager.getInstance().getBuildings());
+
+            // Determine the next block number
+            int nextBlockNum = 1;
+            for (models.Building b : existingBuildings) {
+                try {
+                    String name = b.getName(); // e.g., "Block 1"
+                    if (name.startsWith("Block ")) {
+                        int num = Integer.parseInt(name.substring(6).trim());
+                        if (num >= nextBlockNum) {
+                            nextBlockNum = num + 1;
+                        }
                     }
-                    return;
+                } catch (Exception ignored) {
+                    // Ignore parsing errors for non-standard names
                 }
             }
 
-            data.DataManager.getInstance().setBuildings(buildings);
-            
+            String newBuildingName = "Block " + nextBlockNum;
+            models.Building newBuilding = new models.Building(newBuildingName, roomsPerBuilding, gender);
+
+            existingBuildings.add(newBuilding);
+            data.DataManager.getInstance().setBuildings(existingBuildings);
+
             messageLabel.setStyle("-fx-text-fill: #4cd964;");
-            messageLabel.setText("✓ Configuration Saved! " + buildingsCount + " Blocks created.");
+            messageLabel.setText("✓ " + newBuildingName + " (" + gender + ") added!");
+
+            // Clear fields for next entry
+            // numRoomsField.clear();
+            // Keep room number as user might want to add multiple similar blocks
+
         } catch (NumberFormatException e) {
             messageLabel.setStyle("-fx-text-fill: #ff6b6b;");
             messageLabel.setText("Please enter valid numbers.");

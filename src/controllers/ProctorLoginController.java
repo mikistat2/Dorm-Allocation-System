@@ -44,7 +44,7 @@ public class ProctorLoginController {
 
         // Clear previous message
         messageLabel.setText("");
-        
+
         // Validate empty fields
         if (id.isEmpty() || password.isEmpty()) {
             messageLabel.setStyle("-fx-text-fill: #ff6b6b; -fx-font-weight: bold;"); // Red for error
@@ -69,9 +69,8 @@ public class ProctorLoginController {
             messageLabel.setText("✗ Invalid Proctor Credentials.");
         }
     }
-    
-    
+
     private void navigateToDashboard(ActionEvent event) {
-        utils.NavigationUtils.navigateTo(event, "/resources/ProctorDashboard.fxml");
+        utils.NavigationUtils.navigateTo(event, "/resources/ProctorDashboardEnhanced.fxml");
     }
 }
