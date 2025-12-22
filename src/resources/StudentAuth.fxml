@@ -44,7 +44,7 @@
                     <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED">
                         <content>
                             <VBox alignment="CENTER" spacing="12" style="-fx-padding: 20;">
-                                <Label text="Create Account" styleClass="header-label accent"/>
+                                <Label text="Create Account" styleClass="header-label accent" style="-fx-text-fill: #4ecdc4; -fx-font-size: 24px;"/>
                                 <TextField fx:id="regNameField" promptText="Full Name" maxWidth="380" styleClass="input-contrast"/>
                                 <TextField fx:id="regIdField" promptText="Student ID" maxWidth="380" styleClass="input-contrast"/>
                                 <PasswordField fx:id="regPasswordField" promptText="Password" maxWidth="380" styleClass="input-contrast"/>

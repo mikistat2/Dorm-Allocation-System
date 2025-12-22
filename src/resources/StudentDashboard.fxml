@@ -14,7 +14,7 @@
       <!-- Sidebar -->
       <VBox prefHeight="600.0" prefWidth="250.0" spacing="20.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label styleClass="title-label" text="Student Dashboard" style="-fx-font-size: 24px;" wrapText="true" />
+            <Label styleClass="sidebar-title" text="🎓 Student Portal" wrapText="true" />
             <VBox spacing="10.0" VBox.vgrow="ALWAYS">
                <children>
                   <Label styleClass="header-label" text="My Profile" style="-fx-font-size: 14px;" />

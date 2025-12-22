@@ -6,6 +6,7 @@ import models.Room;
 import models.Student;
 
 import java.io.*;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,14 +19,22 @@ public class DataManager {
     private List<Student> students;
     private List<Building> buildings;
     private List<Proctor> proctors;
+    private final DatabaseManager dbManager;
 
     private DataManager() {
         students = new ArrayList<>();
         buildings = new ArrayList<>();
         proctors = new ArrayList<>();
+        dbManager = DatabaseManager.getInstance();
+
         loadData();
-        
-        // Ensure at least one default proctor exists if file is empty
+
+        // Migrate CSV data to DB if DB is empty
+        if (students.isEmpty() && buildings.isEmpty() && proctors.isEmpty()) {
+            migrateCsvToDb();
+        }
+
+        // Ensure at least one default proctor exists if both file and DB are empty
         if (proctors.isEmpty()) {
             proctors.add(new Proctor("admin", "admin123"));
             saveProctors();
@@ -39,9 +48,17 @@ public class DataManager {
         return instance;
     }
 
-    public List<Student> getStudents() { return students; }
-    public List<Building> getBuildings() { return buildings; }
-    public List<Proctor> getProctors() { return proctors; }
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public List<Building> getBuildings() {
+        return buildings;
+    }
+
+    public List<Proctor> getProctors() {
+        return proctors;
+    }
 
     public void setBuildings(List<Building> buildings) {
         this.buildings = buildings;
@@ -52,65 +69,155 @@ public class DataManager {
         students.add(student);
         saveStudents();
     }
-    
+
     public void addProctor(Proctor proctor) {
         proctors.add(proctor);
         saveProctors();
     }
 
     public void saveStudents() {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(STUDENTS_FILE))) {
-            // Header
-            writer.println("Name,ID,Password,Phone,Department,Year,Gender,Building,Room");
+        String sql = "REPLACE INTO students (id, name, password, phone, department, year, gender, assigned_building, assigned_room) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try (Connection conn = dbManager.getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
             for (Student s : students) {
-                writer.printf("%s,%s,%s,%s,%s,%s,%s,%s,%s%n",
-                        s.getName(), s.getId(), s.getPassword(), s.getPhone(),
-                        s.getDepartment(), s.getYear(), s.getGender(),
-                        s.getAssignedBuilding(), s.getAssignedRoom());
+                pstmt.setString(1, s.getId());
+                pstmt.setString(2, s.getName());
+                pstmt.setString(3, s.getPassword());
+                pstmt.setString(4, s.getPhone());
+                pstmt.setString(5, s.getDepartment());
+                pstmt.setString(6, s.getYear());
+                pstmt.setString(7, s.getGender());
+                pstmt.setString(8, s.getAssignedBuilding());
+                pstmt.setString(9, s.getAssignedRoom());
+                pstmt.addBatch();
             }
-        } catch (IOException e) {
+            pstmt.executeBatch();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    
+
     public void saveProctors() {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(PROCTORS_FILE))) {
-            writer.println("ID,Password");
+        String sql = "REPLACE INTO proctors (id, password) VALUES (?, ?)";
+        try (Connection conn = dbManager.getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
             for (Proctor p : proctors) {
-                writer.printf("%s,%s%n", p.getId(), p.getPassword());
+                pstmt.setString(1, p.getId());
+                pstmt.setString(2, p.getPassword());
+                pstmt.addBatch();
             }
-        } catch (IOException e) {
+            pstmt.executeBatch();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     public void saveConfig() {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(CONFIG_FILE))) {
-            // Save each building: Name,RoomCount,Gender
+        String sql = "REPLACE INTO buildings (name, room_count, gender) VALUES (?, ?, ?)";
+        try (Connection conn = dbManager.getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
             for (Building b : buildings) {
-                writer.printf("%s,%d,%s%n", b.getName(), b.getRooms().size(), b.getGender());
+                pstmt.setString(1, b.getName());
+                pstmt.setInt(2, b.getRooms().size());
+                pstmt.setString(3, b.getGender());
+                pstmt.addBatch();
             }
-        } catch (IOException e) {
+            pstmt.executeBatch();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     public void loadData() {
+        loadConfigFromDb();
+        loadStudentsFromDb();
+        loadProctorsFromDb();
+    }
+
+    private void loadProctorsFromDb() {
+        String sql = "SELECT id, password FROM proctors";
+        try (Connection conn = dbManager.getConnection();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                proctors.add(new Proctor(rs.getString("id"), rs.getString("password")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadStudentsFromDb() {
+        String sql = "SELECT * FROM students";
+        try (Connection conn = dbManager.getConnection();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                Student s = new Student(
+                        rs.getString("name"),
+                        rs.getString("id"),
+                        rs.getString("password"),
+                        rs.getString("phone"),
+                        rs.getString("department"),
+                        rs.getString("year"),
+                        rs.getString("gender"));
+                s.setAssignedBuilding(rs.getString("assigned_building"));
+                s.setAssignedRoom(rs.getString("assigned_room"));
+                students.add(s);
+
+                if (!"Not Assigned".equals(s.getAssignedBuilding()) && !"--".equals(s.getAssignedRoom())) {
+                    assignStudentToModel(s);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadConfigFromDb() {
+        String sql = "SELECT name, room_count, gender FROM buildings";
+        try (Connection conn = dbManager.getConnection();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                buildings.add(new Building(
+                        rs.getString("name"),
+                        rs.getInt("room_count"),
+                        rs.getString("gender")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void migrateCsvToDb() {
+        System.out.println("Starting data migration from CSV to SQL...");
         loadConfig();
         loadStudents();
         loadProctors();
+
+        if (!students.isEmpty() || !buildings.isEmpty() || !proctors.isEmpty()) {
+            saveStudents();
+            saveConfig();
+            saveProctors();
+            System.out.println("Migration complete!");
+        }
     }
-    
+
     private void loadProctors() {
         File file = new File(PROCTORS_FILE);
-        if (!file.exists()) return;
+        if (!file.exists())
+            return;
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line = reader.readLine(); // Skip header
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts.length >= 2) {
-                    proctors.add(new Proctor(parts[0], parts[1]));
+                    Proctor p = new Proctor(parts[0], parts[1]);
+                    if (proctors.stream().noneMatch(pr -> pr.getId().equals(p.getId()))) {
+                        proctors.add(p);
+                    }
                 }
             }
         } catch (IOException e) {
@@ -120,37 +227,29 @@ public class DataManager {
 
     private void loadStudents() {
         File file = new File(STUDENTS_FILE);
-        if (!file.exists()) return;
+        if (!file.exists())
+            return;
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line = reader.readLine(); // Skip header
             while ((line = reader.readLine()) != null) {
-                if (line.trim().isEmpty()) continue; // Skip empty lines
-                
+                if (line.trim().isEmpty())
+                    continue;
                 String[] parts = line.split(",");
-                
-                // Need at least 7 fields for basic student info
                 if (parts.length >= 7) {
                     Student s = new Student(parts[0], parts[1], parts[2], parts[3], parts[4], parts[5], parts[6]);
-                    
-                    // Handle optional Building and Room fields
                     if (parts.length >= 8 && !parts[7].trim().isEmpty()) {
                         s.setAssignedBuilding(parts[7].trim());
                     } else {
                         s.setAssignedBuilding("Not Assigned");
                     }
-                    
                     if (parts.length >= 9 && !parts[8].trim().isEmpty()) {
                         s.setAssignedRoom(parts[8].trim());
                     } else {
                         s.setAssignedRoom("--");
                     }
-                    
-                    students.add(s);
-                    
-                    // If assigned, update the room in the building model
-                    if (!"Not Assigned".equals(s.getAssignedBuilding()) && !"--".equals(s.getAssignedRoom())) {
-                        assignStudentToModel(s);
+                    if (students.stream().noneMatch(st -> st.getId().equals(s.getId()))) {
+                        students.add(s);
                     }
                 }
             }
@@ -161,22 +260,20 @@ public class DataManager {
 
     private void loadConfig() {
         File file = new File(CONFIG_FILE);
-        if (!file.exists()) return;
+        if (!file.exists())
+            return;
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length >= 3) {
+                if (parts.length >= 2) {
                     String name = parts[0];
                     int roomCount = Integer.parseInt(parts[1]);
-                    String gender = parts[2];
-                    buildings.add(new Building(name, roomCount, gender));
-                } else if (parts.length >= 2) {
-                    // Backward compatibility: if no gender specified, default to "Male"
-                    String name = parts[0];
-                    int roomCount = Integer.parseInt(parts[1]);
-                    buildings.add(new Building(name, roomCount, "Male"));
+                    String gender = parts.length >= 3 ? parts[2] : "Male";
+                    if (buildings.stream().noneMatch(b -> b.getName().equals(name))) {
+                        buildings.add(new Building(name, roomCount, gender));
+                    }
                 }
             }
         } catch (IOException | NumberFormatException e) {

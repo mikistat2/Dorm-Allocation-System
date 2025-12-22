@@ -35,6 +35,15 @@
     -fx-font-weight: 300;
 }
 
+.sidebar-title {
+    -fx-font-size: 19px;
+    -fx-font-weight: 800;
+    -fx-text-fill: linear-gradient(to right, #00b4d8, #90e0ef);
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 180, 216, 0.4), 12, 0, 0, 3);
+    -fx-padding: 0 0 15 0;
+    -fx-letter-spacing: 0.5px;
+}
+
 .header-label {
     -fx-font-size: 26px;
     -fx-font-weight: 700;
