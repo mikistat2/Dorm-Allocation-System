@@ -176,7 +176,7 @@
     <bottom>
         <HBox style="-fx-background-color: rgba(15, 31, 56, 0.9); -fx-padding: 15 40;" 
               alignment="CENTER" spacing="20">
-            <Label text="© 2024 Dorm Management System" styleClass="card-subtitle" />
+            <Label text="© 2025 Dorm Management System" styleClass="card-subtitle" />
             <Region HBox.hgrow="ALWAYS" />
             <Label fx:id="lastUpdatedLabel" text="Last Updated: Today" styleClass="card-subtitle" />
         </HBox>
