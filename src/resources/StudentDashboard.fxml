@@ -30,8 +30,19 @@
       <!-- Content Area -->
       <VBox layoutX="250.0" prefHeight="600.0" prefWidth="550.0" spacing="30.0" style="-fx-padding: 40;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label styleClass="title-label" text="My Accommodation" style="-fx-font-size: 28px;" />
-            
+             <HBox spacing="12.0" alignment="CENTER_LEFT">
+                 <children>
+                     <Label styleClass="title-label"
+                            text="My Accommodation"
+                            style="-fx-font-size: 28px;" />
+                     <Label text="Updated" styleClass="title-badge" />
+                     <Button mnemonicParsing="false"
+                             onAction="#handleRequestChange"
+                             styleClass="secondary-button"
+                             text="Request Change" />
+                 </children>
+             </HBox>
+
             <!-- Assignment Card -->
             <HBox spacing="20.0" styleClass="card">
                <children>

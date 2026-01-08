@@ -27,6 +27,13 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0, 180, 216, 0.3), 15, 0, 0, 5);
     -fx-letter-spacing: 1px;
 }
+.title-badge {
+    -fx-font-size: 12px;
+    -fx-text-fill: #90e0ef;
+    -fx-background-color: rgba(144,224,239,0.06);
+    -fx-padding: 4px 8px;
+    -fx-background-radius: 8px;
+}
 
 .subtitle-label {
     -fx-font-size: 18px;

@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
@@ -80,6 +81,18 @@ public class StudentDashboardController {
 
     @FXML
     void handleLogout(ActionEvent event) {
-        utils.NavigationUtils.navigateTo(event, "/resources/LandingPage.fxml");
-    }
+        utils.NavigationUtils.navigateTo(event, "/resources/LandingPage.fxml");}
+    @FXML
+        public void handleRequestChange (ActionEvent event){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Request Change");
+            alert.setHeaderText(null);
+            alert.setContentText(
+                    "Request submitted. Please contact your proctor for reassignment options."
+            );
+            alert.getDialogPane().setStyle("-fx-background-color: #0A1A2F;");
+            alert.showAndWait();
+        }
+
 }
+
