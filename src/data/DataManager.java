@@ -229,31 +229,39 @@ public class DataManager {
         File file = new File(STUDENTS_FILE);
         if (!file.exists())
             return;
-
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line = reader.readLine(); // Skip header
+            int lineno = 1;
             while ((line = reader.readLine()) != null) {
-                if (line.trim().isEmpty())
+                lineno++;
+                if (line == null || line.trim().isEmpty())
                     continue;
-                String[] parts = line.split(",");
-                if (parts.length >= 7) {
-                    Student s = new Student(parts[0], parts[1], parts[2], parts[3], parts[4], parts[5], parts[6]);
-                    if (parts.length >= 8 && !parts[7].trim().isEmpty()) {
-                        s.setAssignedBuilding(parts[7].trim());
-                    } else {
-                        s.setAssignedBuilding("Not Assigned");
-                    }
-                    if (parts.length >= 9 && !parts[8].trim().isEmpty()) {
-                        s.setAssignedRoom(parts[8].trim());
-                    } else {
-                        s.setAssignedRoom("--");
-                    }
-                    if (students.stream().noneMatch(st -> st.getId().equals(s.getId()))) {
-                        students.add(s);
-                    }
+                String[] parts = line.split(",", -1);
+                if (parts.length < 7) {
+                    System.err.println("Skipping malformed students.csv line " + lineno + ": " +
+                            line);
+                    continue;
+                }for (int i = 0; i < parts.length; i++) {
+                    parts[i] = parts[i].trim();
                 }
-            }
-        } catch (IOException e) {
+                String name = parts[0];
+                String id = parts[1];
+                String password = parts[2];
+                String phone = parts[3];
+                String department = parts[4];
+                String year = parts[5];
+                String gender = parts[6];
+                if (id.isEmpty() || name.isEmpty()) {
+                    System.err.println("Skipping student with empty id/name at line " + lineno);
+                    continue;
+                }
+                Student s = new Student(name, id, password, phone, department, year, gender);
+                s.setAssignedBuilding((parts.length >= 8 && !parts[7].isEmpty()) ? parts[7] : "Not Assigned");
+                        s.setAssignedRoom((parts.length >= 9 && !parts[8].isEmpty()) ? parts[8] : "--");
+                if (students.stream().noneMatch(st -> st.getId().equals(s.getId()))) {
+                    students.add(s);
+                }
+            }} catch (IOException e) {
             e.printStackTrace();
         }
     }
