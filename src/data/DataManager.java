@@ -276,9 +276,17 @@ public class DataManager {
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts.length >= 2) {
-                    String name = parts[0];
-                    int roomCount = Integer.parseInt(parts[1]);
-                    String gender = parts.length >= 3 ? parts[2] : "Male";
+                    String name = parts[0].trim();
+
+                    int roomCount;try {
+                        roomCount = Integer.parseInt(parts[1].trim());
+                    } catch (NumberFormatException nfe) {
+                        System.err.println("Skipping config row with invalid roomCount: " + line);
+                        continue;
+                    }
+
+                    String gender = parts.length >= 3 && !parts[2].trim().isEmpty() ? parts[2].trim() : "Male";
+
                     if (buildings.stream().noneMatch(b -> b.getName().equals(name))) {
                         buildings.add(new Building(name, roomCount, gender));
                     }
