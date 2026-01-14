@@ -212,8 +212,12 @@ public class DataManager {
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line = reader.readLine(); // Skip header
             while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(",");
-                if (parts.length >= 2) {
+                String[] parts = line.split(",", -1);
+                for (int i = 0; i < parts.length; i++) {
+                    parts[i] = parts[i].trim();
+                }
+
+                if (parts.length >= 2 && !parts[0].isEmpty() && !parts[1].isEmpty()) {
                     Proctor p = new Proctor(parts[0], parts[1]);
                     if (proctors.stream().noneMatch(pr -> pr.getId().equals(p.getId()))) {
                         proctors.add(p);
