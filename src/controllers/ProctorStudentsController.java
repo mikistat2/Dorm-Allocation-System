@@ -11,6 +11,9 @@ import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import javafx.stage.FileChooser;
+import java.nio.charset.StandardCharsets;
+
 
 public class ProctorStudentsController {
 
@@ -46,6 +49,56 @@ public class ProctorStudentsController {
 
     @FXML
     private javafx.scene.control.Label searchResultLabel;
+    private String csvEscape(String value) {
+        if (value == null) return "";
+        String v = value.replace("\"", "\"\"");
+        return "\"" + v + "\"";
+    }
+    @FXML
+    void handleExportCSV(ActionEvent event) {
+        java.util.List<models.Student> items = studentsTable.getItems();
+        if (items == null || items.isEmpty()) {
+            showAlert("No Data", "There are no students to export.",
+                    javafx.scene.control.Alert.AlertType.WARNING);
+            return;
+        }
+
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Save Student Allocation CSV");
+        chooser.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter("CSV Files", "*.csv"));
+        chooser.setInitialFileName("student_allocation.csv");
+
+        java.io.File out =
+                chooser.showSaveDialog(studentsTable.getScene().getWindow());
+        if (out == null) return;
+
+        try (
+                java.io.OutputStream os = new java.io.FileOutputStream(out);
+                java.io.PrintWriter pw = new java.io.PrintWriter(
+                        new java.io.OutputStreamWriter(os, StandardCharsets.UTF_8))
+        ) {
+            pw.println("Name,ID,Department,Year,Gender,Building,Room");
+            for (models.Student s : items) {
+                pw.println(
+                        csvEscape(s.getName()) + "," +
+                                csvEscape(s.getId()) + "," +
+                                csvEscape(s.getDepartment()) + "," +
+                                csvEscape(s.getYear()) + "," +
+                                csvEscape(s.getGender()) + "," +
+                                csvEscape(s.getAssignedBuilding()) + "," +
+                                csvEscape(s.getAssignedRoom())
+                );
+            }
+            showAlert("Exported", "CSV exported to: " + out.getAbsolutePath(),
+                    javafx.scene.control.Alert.AlertType.INFORMATION);
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Error", "Failed to export CSV: " + e.getMessage(),
+                    javafx.scene.control.Alert.AlertType.ERROR);
+        }
+    }
+
 
     // Filter State
     public static String filterType = "ALL"; // ALL, ASSIGNED, UNASSIGNED, BUILDING
