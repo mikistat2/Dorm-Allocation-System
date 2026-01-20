@@ -18,14 +18,18 @@ public class PDFExporter {
 
     public static void exportStudentsToPDF(List<Student> students, File outputFile) throws IOException {
         try (PDDocument document = new PDDocument()) {
-            PDPage page = new PDPage(PDRectangle.A4);
-            document.addPage(page);
 
             PDDocumentInformation info = new PDDocumentInformation();
             info.setAuthor("Dorm Allocation Team - Elias");
             info.setTitle("Student Allocation Report");
             info.setCreationDate(Calendar.getInstance());
             document.setDocumentInformation(info);
+
+            PDPage page = new PDPage(PDRectangle.A4);
+            document.addPage(page);
+
+
+            int pageNumber = 1;
 
             float margin = 50;
             float yStart = page.getMediaBox().getHeight() - margin;
@@ -34,7 +38,7 @@ public class PDFExporter {
 
             PDPageContentStream contentStream = new PDPageContentStream(document, page);
 
-            // TITLE
+
             contentStream.beginText();
             contentStream.setFont(PDType1Font.HELVETICA_BOLD, 20);
             contentStream.newLineAtOffset(margin, yPosition);
@@ -42,7 +46,7 @@ public class PDFExporter {
             contentStream.endText();
             yPosition -= 30;
 
-            // TIMESTAMP
+
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             contentStream.beginText();
             contentStream.setFont(PDType1Font.HELVETICA, 10);
@@ -51,20 +55,25 @@ public class PDFExporter {
             contentStream.endText();
             yPosition -= 30;
 
-            // HEADERS
+
             drawTableHeaders(contentStream, margin, yPosition);
             yPosition -= rowHeight;
 
-            // ROWS
             contentStream.setFont(PDType1Font.HELVETICA, 10);
             for (Student student : students) {
-                // simple page break check
                 if (yPosition < margin) {
+
+                    drawFooter(contentStream, margin, margin - 20, pageNumber);
                     contentStream.close();
+
                     page = new PDPage(PDRectangle.A4);
                     document.addPage(page);
+
+
+                    pageNumber++;
+
                     contentStream = new PDPageContentStream(document, page);
-                    yPosition = page.getMediaBox().getHeight() - margin - 50; // New page start
+                    yPosition = page.getMediaBox().getHeight() - margin - 50;
 
                     drawTableHeaders(contentStream, margin, yPosition);
                     yPosition -= rowHeight;
@@ -75,6 +84,7 @@ public class PDFExporter {
                 yPosition -= rowHeight;
             }
 
+            drawFooter(contentStream, margin, margin - 20, pageNumber);
             contentStream.close();
             document.save(outputFile);
         }
@@ -85,17 +95,16 @@ public class PDFExporter {
         contentStream.beginText();
         contentStream.newLineAtOffset(margin, y);
         contentStream.showText("ID");
-        contentStream.newLineAtOffset(60, 0); // Column 1 width
+        contentStream.newLineAtOffset(60, 0);
         contentStream.showText("Name");
-        contentStream.newLineAtOffset(120, 0); // Column 2 width
+        contentStream.newLineAtOffset(120, 0);
         contentStream.showText("Gender");
-        contentStream.newLineAtOffset(60, 0); // Column 3 width
+        contentStream.newLineAtOffset(60, 0);
         contentStream.showText("Building");
-        contentStream.newLineAtOffset(80, 0); // Column 4 width
+        contentStream.newLineAtOffset(80, 0);
         contentStream.showText("Room");
         contentStream.endText();
 
-        // Horizontal line
         contentStream.moveTo(margin, y - 5);
         contentStream.lineTo(margin + 450, y - 5);
         contentStream.stroke();
@@ -117,6 +126,7 @@ public class PDFExporter {
         contentStream.endText();
     }
 
+
     private static String checkNull(String s) {
         if (s == null) return "-";
         String cleaned = s.replace("\r", " ")
@@ -124,5 +134,13 @@ public class PDFExporter {
                 .replace("\t", " ")
                 .trim();
         return cleaned.isEmpty() ? "-" : cleaned;
+    }
+
+    private static void drawFooter(PDPageContentStream contentStream, float margin, float y, int pageNumber) throws IOException {
+        contentStream.beginText();
+        contentStream.setFont(PDType1Font.HELVETICA, 9);
+        contentStream.newLineAtOffset(margin, y);
+        contentStream.showText("Page " + pageNumber);
+        contentStream.endText();
     }
 }
