@@ -1,12 +1,19 @@
+The Runnable interface is a functional interface because it has only one abstract method (run()). This makes it a perfect candidate for Java 8's lambda expressions, which provide a highly concise syntax.
+This is not a new way of creating threads, but rather a modern, compact syntax for creating a Runnable instance on the fly.
+
+The Runnable interface is a functional interface because it has only one abstract method (run()). This makes it a perfect candidate for Java 8's lambda expressions, which provide a highly concise syntax.
+This is not a new way of creating threads, but rather a modern, compact syntax for creating a Runnable instance on the fly.
+
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
-    </content>
+    </git push -u origin chore/Mohammed-logging>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="lib1" level="project" />
   </component>
 </module>
