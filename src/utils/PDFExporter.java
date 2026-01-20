@@ -6,7 +6,8 @@ import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
-
+import org.apache.pdfbox.pdmodel.PDDocumentInformation;
+import java.util.Calendar;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -19,6 +20,12 @@ public class PDFExporter {
         try (PDDocument document = new PDDocument()) {
             PDPage page = new PDPage(PDRectangle.A4);
             document.addPage(page);
+
+            PDDocumentInformation info = new PDDocumentInformation();
+            info.setAuthor("Dorm Allocation Team - Elias");
+            info.setTitle("Student Allocation Report");
+            info.setCreationDate(Calendar.getInstance());
+            document.setDocumentInformation(info);
 
             float margin = 50;
             float yStart = page.getMediaBox().getHeight() - margin;
