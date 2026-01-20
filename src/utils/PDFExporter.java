@@ -118,6 +118,11 @@ public class PDFExporter {
     }
 
     private static String checkNull(String s) {
-        return s == null ? "-" : s;
+        if (s == null) return "-";
+        String cleaned = s.replace("\r", " ")
+                .replace("\n", " ")
+                .replace("\t", " ")
+                .trim();
+        return cleaned.isEmpty() ? "-" : cleaned;
     }
 }
