@@ -444,6 +444,7 @@ public class ProctorDashboardEnhancedController {
 
     @FXML
     void handleLogout(ActionEvent event) {
+        SessionManager.logout();
         navigateTo(event, "/resources/LandingPage.fxml");
     }
 

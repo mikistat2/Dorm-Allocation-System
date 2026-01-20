@@ -55,6 +55,7 @@ public class ProctorLoginController {
         boolean loginSuccess = false;
         for (models.Proctor p : data.DataManager.getInstance().getProctors()) {
             if (p.getId().equals(id) && p.getPassword().equals(password)) {
+                SessionManager.setCurrentProctor(p);
                 loginSuccess = true;
                 break;
             }

@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 public class StudentAuthController {
 
@@ -116,6 +117,13 @@ public class StudentAuthController {
                 System.out.println("Validation failed: Empty fields");
                 regMessageLabel.setStyle("-fx-text-fill: #ff6b6b;"); // Red for error
                 regMessageLabel.setText("Please fill in all fields.");
+                return;
+            }
+
+            if (password.length() < 6) {
+                System.out.println("Validation failed: Password too short");
+                regMessageLabel.setStyle("-fx-text-fill: #ff6b6b;");
+                regMessageLabel.setText("Password must be at least 6 characters.");
                 return;
             }
 
