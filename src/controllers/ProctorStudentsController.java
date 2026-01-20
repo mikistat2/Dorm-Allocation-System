@@ -62,18 +62,7 @@ public class ProctorStudentsController {
                     javafx.scene.control.Alert.AlertType.WARNING);
             return;
         }
-        @FXML
-        void handleClearSearch(ActionEvent event) {
-            if (searchField != null) {
-                searchField.clear();
-            }
-            if (searchResultLabel != null) {
-                searchResultLabel.setText("");
-            }
-            studentsTable.setItems(
-                    javafx.collections.FXCollections.observableArrayList(allStudents)
-            );
-        }
+        
 
 
         FileChooser chooser = new FileChooser();
@@ -111,7 +100,18 @@ public class ProctorStudentsController {
                     javafx.scene.control.Alert.AlertType.ERROR);
         }
     }
-
+@FXML
+        void handleClearSearch(ActionEvent event) {
+            if (searchField != null) {
+                searchField.clear();
+            }
+            if (searchResultLabel != null) {
+                searchResultLabel.setText("");
+            }
+            studentsTable.setItems(
+                    javafx.collections.FXCollections.observableArrayList(allStudents)
+            );
+        }
 
     // Filter State
     public static String filterType = "ALL"; // ALL, ASSIGNED, UNASSIGNED, BUILDING
