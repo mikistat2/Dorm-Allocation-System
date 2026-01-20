@@ -57,23 +57,22 @@ public class StudentDashboardController {
         int roommateCount = 0;
         for (models.Student s : data.DataManager.getInstance().getStudents()) {
             if (s.getAssignedBuilding().equals(current.getAssignedBuilding()) &&
-                s.getAssignedRoom().equals(current.getAssignedRoom()) &&
-                !s.getId().equals(current.getId())) {
-                
+                    s.getAssignedRoom().equals(current.getAssignedRoom()) &&
+                    !s.getId().equals(current.getId())) {
+
                 // Format: Name | ID: xxx | Dept: xxx | Year: x | Phone: xxx
                 String roommateInfo = String.format("👤 %s  |  ID: %s  |  %s  |  Year %s  |  📞 %s",
-                    s.getName(),
-                    s.getId(),
-                    s.getDepartment(),
-                    s.getYear(),
-                    s.getPhone()
-                );
-                
+                        s.getName(),
+                        s.getId(),
+                        s.getDepartment(),
+                        s.getYear(),
+                        s.getPhone());
+
                 roommatesListView.getItems().add(roommateInfo);
                 roommateCount++;
             }
         }
-        
+
         if (roommateCount == 0) {
             roommatesListView.getItems().add("No roommates - You have this room to yourself");
         }
@@ -81,18 +80,19 @@ public class StudentDashboardController {
 
     @FXML
     void handleLogout(ActionEvent event) {
-        utils.NavigationUtils.navigateTo(event, "/resources/LandingPage.fxml");}
+        SessionManager.logout();
+        utils.NavigationUtils.navigateTo(event, "/resources/LandingPage.fxml");
+    }
+
     @FXML
-        public void handleRequestChange (ActionEvent event){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Request Change");
-            alert.setHeaderText(null);
-            alert.setContentText(
-                    "Request submitted. Please contact your proctor for reassignment options."
-            );
-            alert.getDialogPane().setStyle("-fx-background-color: #0A1A2F;");
-            alert.showAndWait();
-        }
+    public void handleRequestChange(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Request Change");
+        alert.setHeaderText(null);
+        alert.setContentText(
+                "Request submitted. Please contact your proctor for reassignment options.");
+        alert.getDialogPane().setStyle("-fx-background-color: #0A1A2F;");
+        alert.showAndWait();
+    }
 
 }
-
